@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  flex-grow: 1;
+  align-self: start;
+  align-items: stretch;
+  padding-bottom: 50px;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin-right: -1 * spacing(6);
+}
+
+.nav-link {
+  padding: spacing(5) spacing(6);
+  line-height: spacing(6);
+  color: $white;
+  text-decoration: none;
+  border-left: 1px solid color('neutral', 40);
+  transition: background-color 0.1s ease-in-out;
+}
+
+.nav-link:hover {
+  background: transparentize(color('neutral', 30), 0.5);
+}
+
+.nav-link:active {
+  background: transparentize(color('neutral', 30), 0.2);
+}
+
+.nav-link.is-active {
+  background: color('neutral', 30);
+  //border-color: #489ec7;
+}
+

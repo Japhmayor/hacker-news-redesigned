@@ -3,14 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "modern-normalize": "^0.4.0",
+    "node-sass-chokidar": "^1.1.0",
+    "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1"
   },
   "scripts": {
-    "start": "PORT=3050 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm-run-all -p build-css build-js",
+    "start-js": "PORT=3050 react-scripts start",
+    "build-js": "react-scripts build",
+    "build-css": "node-sass-chokidar --include-path node_modules/ --source-map true --source-map-contents true --precision 6 src/styles/index.scss -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path node_modules/ --source-map true --source-map-contents true --precision 6 src/styles/ -o src/ --watch --recursive",
     "eject": "react-scripts eject"
   }
 }

@@ -1,0 +1,83 @@
+// ========================================================================
+//
+// Typography
+//
+// ========================================================================
+
+
+//
+// Typefaces
+//
+
+$_font-family-native: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$_font-family: "Source Sans Pro";
+$font-family-base: /*$_font-family,*/ $_font-family-native;
+
+
+//
+// Font sizes
+//
+
+$font-size-small:       16px;
+$font-size-base:        18px;
+$font-size-large:       20px;
+$font-size-extra-large: 22px;
+
+
+
+//
+// Line heights
+//
+
+$line-height-tight: 1.25;
+$line-height-base: 1.5;
+$line-height-loose: 1.75;
+
+
+//
+// Weights
+//
+
+$font-weight-hairline:  100;
+$font-weight-thin:      200;
+$font-weight-light:     300;
+$font-weight-normal:    400;
+$font-weight-medium:    500;
+$font-weight-semibold:  600;
+$font-weight-bold:      700;
+$font-weight-extrabold: 800;
+$font-weight-black:     900;
+
+$font-weight-base: $font-weight-normal;
+
+
+
+//
+// Component-specific
+// ===============================================================
+
+//
+// Body
+//
+
+$body-color: color('neutral', 80);
+$body-background: $white;
+
+
+//
+// Headings
+//
+
+$h1-font-size: 48px;
+$h2-font-size: 42px;
+$h3-font-size: 36px;
+$h4-font-size: 30px;
+$h5-font-size: 24px;
+
+$h1-font-weight: $font-weight-light;
+$h2-font-weight: $font-weight-light;
+$h3-font-weight: $font-weight-semibold;
+$h4-font-weight: $font-weight-semibold;
+$h5-font-weight: $font-weight-semibold;
+
+$heading-line-height: $line-height-tight;

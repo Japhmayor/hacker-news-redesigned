@@ -1,0 +1,8 @@
+@function spacing($index) {
+  @if (map_has_key($_spacing, $index) == true) {
+    @return map_get($_spacing, $index);
+  }
+  @else {
+    @error "Invalid index '#{$index}' for spacing. See available options in 'settings/_settings.spacing.scss'.";
+  }
+}

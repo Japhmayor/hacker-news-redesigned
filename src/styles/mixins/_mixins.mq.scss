@@ -1,0 +1,21 @@
+@mixin mq-up($breakpoint, $breakpoints: $global-breakpoints) {
+  $min-width: map-get($breakpoints, $breakpoint);
+
+  @if $min-width == 0 {
+    @content;
+  }
+
+  @else {
+    @media (min-width: $min-width) {
+      @content;
+    }
+  }
+}
+
+
+// Adds a dash for all breakpoints with non-zero value.
+// Used in various utility generators to add a media query suffix to the classname.
+
+@function mq-suffix($breakpoint) {
+  @return if(map_get($global-breakpoints, $breakpoint) == 0, null, \:#{$breakpoint});
+}

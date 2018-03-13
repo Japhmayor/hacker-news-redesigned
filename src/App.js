@@ -1,10 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+
+const Header = (props) => {
+  return (
+    <header className="header">
+      <h1 className="header__logo">HN</h1>
+    </header>
+  );
+};
+
 
 class App extends Component {
   render() {
     return (
-      <div>
-      </div>
+      <Fragment>
+        <Header/>
+      </Fragment>
     );
   }
 }

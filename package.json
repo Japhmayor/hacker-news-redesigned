@@ -6,10 +6,12 @@
     "modern-normalize": "^0.4.0",
     "node-sass-chokidar": "^1.1.0",
     "npm-run-all": "^4.1.2",
+    "polished": "^1.9.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "styled-components": "^3.2.2"
   },
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",

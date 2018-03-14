@@ -2,18 +2,26 @@
   @include container;
   display: flex;
   height: 64px;
+  margin-bottom: 52px;
   color: $white;
-  background: color('neutral', 20);
+  background: color('primary');
   overflow: hidden;
 }
 
 .header__logo {
   align-self: center;
-  margin-bottom: 0;
   margin-right: spacing(6);
-  font-size: $font-size-extra-large;
-  font-weight: $font-weight-bold;
-  white-space: nowrap;
+  transition: opacity 0.1s ease-in-out;
 }
 
+.header__logo:hover {
+  opacity: 0.85;
+}
 
+.header__logo:active {
+  opacity: 0.7;
+}
+
+.header__logo img {
+  display: block;
+}

@@ -2,6 +2,12 @@
 
 }
 
+.entry + .entry {
+  margin-top: spacing(6);
+  padding-top: spacing(5);
+  border-top: 1px solid #ccc;
+}
+
 .entry__title {
   font-size: $font-size-large;
   color: color('neutral', 10);

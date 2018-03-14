@@ -10,24 +10,24 @@
 }
 
 .nav-link {
-  padding: spacing(5) spacing(6);
+  padding: spacing(5) spacing(5);
   line-height: spacing(6);
   color: $white;
   text-decoration: none;
-  border-left: 1px solid color('neutral', 40);
   transition: background-color 0.1s ease-in-out;
+  //border-left: 1px solid color('primary', 70);
+  box-shadow: 0 -4px 0 0 transparent inset;
 }
 
 .nav-link:hover {
-  background: transparentize(color('neutral', 30), 0.5);
+  background-color: rgba($white, 0.07);
 }
 
 .nav-link:active {
-  background: transparentize(color('neutral', 30), 0.2);
 }
 
 .nav-link.is-active {
-  background: color('neutral', 30);
-  //border-color: #489ec7;
+  background-color: rgba(#de5f16, 0.6);
 }
 
+// TODO: Figure out nice colors for :hover/:active/.is-active states

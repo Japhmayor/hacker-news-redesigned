@@ -1,12 +1,13 @@
 import React from 'react';
+import logo from '../images/hn-logo.svg'
 
 const Header = (props) => {
   return (
     <header className="header">
-      <h1 className="header__logo">HN</h1>
-      
       <nav className="nav">
-        <a className="nav-link is-active" href="">Top</a>
+        <a className="header__logo" href="" title="Back to Homepage (Top News)">
+          <img src={logo} alt="Hacker News" />
+        </a>
         <a className="nav-link" href="">New</a>
         <a className="nav-link" href="">Show</a>
         <a className="nav-link" href="">Ask</a>

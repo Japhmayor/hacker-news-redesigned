@@ -1,0 +1,22 @@
+.entry {
+
+}
+
+.entry__title {
+  font-size: $font-size-extra-large;
+  font-weight: $font-weight-bold;
+}
+
+.entry__link {
+  color: $body-color;
+  text-decoration: none;
+}
+
+.entry__hostname {
+  font-weight: 400;
+  margin-left: spacing(1);
+}
+
+.entry__meta {
+
+}

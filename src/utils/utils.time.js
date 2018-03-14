@@ -6,7 +6,7 @@ import pluralize from './pluralize';
  * @param {Number} seconds – UNIX Time
  * @return {String|undefined}
  * */
-function timePassed(seconds) {
+export function getTimePassed(seconds) {
   const
     now = Math.round(Date.now() / 1000),
     secondsPassed = now - seconds;
@@ -34,10 +34,42 @@ function timePassed(seconds) {
     currentRange = ranges.find(range => range.seconds < secondsPassed),
     amount = Math.round(secondsPassed / currentRange.seconds),
     keyword = currentRange.keyword;
-
+  
   return keyword === 'just now'
     ? keyword
     : `${amount} ${pluralize(keyword, amount)} ago`
 }
 
-export default timePassed;
+
+/**
+ * Convert given timestamp to March 13, 2018, at 12:45 PM
+ *
+ * @param {Number} seconds – UNIX Time
+ * @return {String|undefined}
+ * */
+export function getExactTime(seconds) {
+  return new Date(seconds * 1000)
+    .toLocaleDateString(
+      navigator.language || 'en-US',
+      {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }
+    );
+}
+
+
+/**
+ * Convert given timestamp to ISO Format: 2011-10-05T14:48:00.000Z
+ *
+ * @param {Number} seconds – UNIX Time
+ * @return {String|undefined}
+ * */
+export function getISOTime(seconds) {
+  return new Date(seconds * 1000).toISOString();
+}
+
+

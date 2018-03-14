@@ -1,29 +1,31 @@
 import React from 'react';
 import * as time from '../utils/utils.time';
 import { getExactTime } from '../utils/utils.time';
-
-
-
+import commentIcon from '../images/icon-comment.svg'
 
 const Entry = (props) => {
   return (
     <div className="entry">
-      <div className="entry__title">
+      <header className="entry__title">
         <a className="entry__link" href="">
           Show HN: RoughJS – Create hand-drawn graphics using JavaScript
         </a>
         
         <small className="entry__hostname">(roughjs.com)</small>
-      </div>
+      </header>
       
       <div className="entry__meta">
-        <time className="entry__time" dateTime={time.getISOTime(1520884294)} title={getExactTime(1520884294)}>2 hours ago</time>
-        
+        <span className="entry__score">+ 88</span>
+  
         <span className="entry__user">
-          by fallingmeat
+          by <a className="entry__user-link" href="">fallingmeat</a>
         </span>
         
-        <a className="entry__comments-link">32 comments</a>{/* Discuss, if no comments*/}
+        <time className="entry__time" dateTime={time.getISOTime(1520884294)} title={getExactTime(1520884294)}>2 hours ago</time>
+        
+        <a className="entry__comments-link" href="" aria-label="32 comments">
+          32
+        </a>
       </div>
     </div>
   );

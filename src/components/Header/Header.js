@@ -8,7 +8,7 @@ import HeaderWrap from './HeaderWrap';
 const Header = (props) => {
   return (
     <HeaderWrap>
-      <Logo href="" title="Back to Homepage (Top News)">
+      <Logo>
         <img src={logo} alt="Hacker News" />
       </Logo>
       

@@ -4,9 +4,9 @@ import { colors } from '../../styles/settings/colors';
 
 const EntryWrapper = styled.div`
   & + & {
-    margin-top: ${spacing(6)};
+    margin-top: ${spacing(5)};
     padding-top: ${spacing(5)};
-    border-top: 1px solid ${colors.neutral['70']};
+    border-top: 1px solid ${colors.neutral['80']};
   }
 `;
 

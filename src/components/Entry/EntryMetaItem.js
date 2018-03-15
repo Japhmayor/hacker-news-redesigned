@@ -4,6 +4,8 @@ import { colors } from '../../styles/settings/colors';
 import { fontWeightSemibold } from '../../styles/settings/typography';
 
 export const EntryMetaItem = styled.span`
+  white-space: nowrap;
+
   &:not(:first-child) {
     margin-left: ${spacing(2)};
     padding-left: ${spacing(2)};

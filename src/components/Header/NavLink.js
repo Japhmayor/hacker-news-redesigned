@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { spacing } from '../../styles/settings/spacing';
 import { white } from '../../styles/settings/colors';
+import { rgba } from 'polished';
 
 const NavLink = styled.a`
   padding: ${spacing(5)} ${spacing(5)};
@@ -11,14 +12,14 @@ const NavLink = styled.a`
   box-shadow: 0 -4px 0 0 transparent inset;
   
   & :hover {
-    background-color: rgba($white, 0.07);
+    background-color: rgba(${white}, 0.07);
   }
   
   & :active {
   }
   
-  & .is-active {
-    background-color: rgba(#de5f16, 0.6);
+  &.is-active {
+    background-color: ${rgba('#de5f16', 0.6)};
   }
 `;
 

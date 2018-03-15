@@ -8,6 +8,7 @@ const EntryCommentLink = styled.a`
   margin-left: auto;
   color: ${colors.neutral['30']};
   text-decoration: none;
+  white-space: nowrap;
   transition: 0.2s ease-in-out;
 
   &::after {

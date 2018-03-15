@@ -20,7 +20,7 @@ export const fontFamilyBase = `${fontFamily}, ${fontFamilyNative}`;
 // Font sizes
 //
 
-export const fontSizeSmall      = '15px';
+export const fontSizeSmall      = '14px';
 export const fontSizeBase       = '18px';
 export const fontSizeLarge      = '20px';
 export const fontSizeExtraLarge = '24px';
@@ -40,7 +40,9 @@ export const lineHeightLoose = 1.75;
 //
 
 export const fontWeightNormal =    400;
+export const fontWeightMedium =    500;
 export const fontWeightSemibold =  600;
+export const fontWeightBold =  700;
 
 export const fontWeightBase = fontWeightNormal;
 
@@ -59,6 +61,8 @@ export const bodyBackground = colors.neutral['90'];
 //
 // Headings
 //
+
+export const headingFont = fontFamilyBase;
 
 export const h1FontSize = '48px';
 export const h2FontSize = '42px';

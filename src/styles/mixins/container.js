@@ -1,11 +1,17 @@
 import { css } from 'styled-components';
-import { containerGutter, containerWidth } from '../settings/container';
+import { containerGutterLarge, containerGutterSmall, containerWidth } from '../settings/container';
+import { breakpoints } from '../settings/breakpoints';
 
 const container = css`
-  padding-left: ${containerGutter}px;
-  padding-right: ${containerGutter}px;
+  padding-left: ${containerGutterSmall}px;
+  padding-right: ${containerGutterSmall}px;
   
-  @media (min-width: ${containerWidth + containerGutter * 2}px) { // "CSS is hard. CSS is broken".
+  @media (min-width: ${breakpoints.sm}) {
+    padding-left: ${containerGutterLarge}px;
+    padding-right: ${containerGutterLarge}px;
+  }
+  
+  @media (min-width: ${containerWidth + containerGutterSmall * 2}px) { // "CSS is hard. CSS is broken".
     padding-right: calc((100vw - ${containerWidth}px) / 2);
     padding-left: calc((100vw - ${containerWidth}px) / 2);
   }

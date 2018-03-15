@@ -4,7 +4,7 @@ import mockData from '../../mock';
 import EntryListWrapper from './EntryListWrapper';
 
 const EntryList = (props) => (
-  <EntryListWrapper className="entry-list">
+  <EntryListWrapper>
     {mockData.map(entryData => (
       <Entry key={entryData.id} {...entryData} />
     ))}

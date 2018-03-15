@@ -44,7 +44,7 @@ const Entry = ({ by, score, time, title, url, descendants, text }) => {
           {timeUtils.getTimePassed(time)}
         </EntryTime>
         
-        <EntryCommentLink href="" aria-label={`${descendants} comments`}>
+        <EntryCommentLink href="" title={`${descendants} comments`}>
           {descendants}
         </EntryCommentLink>
       </EntryMeta>

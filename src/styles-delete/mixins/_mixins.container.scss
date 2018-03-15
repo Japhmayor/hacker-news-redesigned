@@ -1,9 +1,0 @@
-@mixin container {
-  padding-right: $container-gutter;
-  padding-left: $container-gutter;
-
-  @media (min-width: ($contaner-width + ($container-gutter * 2))) {
-    padding-right: calc((100vw - #{$contaner-width}) / 2);
-    padding-left: calc((100vw - #{$contaner-width}) / 2);
-  }
-}

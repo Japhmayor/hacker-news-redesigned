@@ -1,5 +1,0 @@
-@each $key, $value in $z-index {
-  .u-z-index-#{$key} {
-    z-index: $value !important;
-  }
-}

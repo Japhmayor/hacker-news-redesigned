@@ -8,7 +8,7 @@ const EntryTitle = styled.header`
   line-height: 1.4;
   font-weight: ${fontWeightMedium};
   color: ${colors.neutral['10']};
-  margin-bottom: ${spacing(3)};
+  margin-bottom: ${spacing(2)};
   
   @media (min-width: ${breakpoints.md}) {
     font-size: ${fontSizeLarge};

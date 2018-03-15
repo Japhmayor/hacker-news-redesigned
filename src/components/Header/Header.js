@@ -8,11 +8,12 @@ import HeaderWrap from './HeaderWrap';
 const Header = (props) => {
   return (
     <HeaderWrap>
+      <Logo href="" title="Back to Homepage (Top News)">
+        <img src={logo} alt="Hacker News" />
+      </Logo>
+      
       <Nav>
-        <Logo href="" title="Back to Homepage (Top News)">
-          <img src={logo} alt="Hacker News" />
-        </Logo>
-        
+        <NavLink className="is-active" href="">Top</NavLink>
         <NavLink href="">New</NavLink>
         <NavLink href="">Show</NavLink>
         <NavLink href="">Ask</NavLink>

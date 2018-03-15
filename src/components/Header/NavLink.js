@@ -8,18 +8,23 @@ const NavLink = styled.a`
   line-height: ${spacing(6)};
   color: ${white};
   text-decoration: none;
-  transition: background-color 0.1s ease-in-out;
   box-shadow: 0 -4px 0 0 transparent inset;
+  transition: all 0.1s ease-in-out;
   
-  & :hover {
-    background-color: rgba(${white}, 0.07);
+  // TODO: Still not looking good
+  &:hover {
+     background-color: rgba(245,125,56,0.4);
+     box-shadow: 0 -4px 0 0 rgba(255,216,189,0.5) inset;
   }
   
-  & :active {
+  &:active {
+    background-color: rgba(245,125,56,0.7);
   }
   
   &.is-active {
-    background-color: ${rgba('#de5f16', 0.6)};
+    pointer-events: none;
+    background-color: rgba(245,125,56,0.7);
+    box-shadow: 0 -4px 0 0 #ffd8bd inset;
   }
 `;
 

@@ -5,6 +5,7 @@ import { colors } from '../../styles/settings/colors';
 
 const EntryMeta = styled.div`
   display: flex;
+  align-items: flex-start;
   font-size: ${fontSizeSmall};
   line-height: ${spacing(5)};
   color: ${colors.neutral['40']};

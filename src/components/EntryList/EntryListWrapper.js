@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import container from '../styles/mixins/container';
+import container from '../../styles/mixins/container';
 
 const EntryListWrapper = styled.div`
   ${container};

@@ -1,6 +1,6 @@
 import React from 'react';
-import Entry from '../components/Entry/';
-import mockData from '../mock';
+import Entry from '../Entry/index';
+import mockData from '../../mock';
 import EntryListWrapper from './EntryListWrapper';
 
 const EntryList = (props) => (

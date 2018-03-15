@@ -17,6 +17,14 @@ export const EntryScore = styled(EntryMetaItem)`
   font-weight: ${fontWeightSemibold};
 `;
 
-export const EntryTime = EntryMetaItem.withComponent('time');
+// Truncate the username when there's no enough space
+export const EntryAuthor = styled(EntryMetaItem)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const EntryTime = EntryMetaItem.withComponent('time').extend`
+  margin-right: ${spacing(2)};
+`;
 
 

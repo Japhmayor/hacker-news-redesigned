@@ -6,7 +6,7 @@ import EntryTitle from './EntryTitle';
 import EntryLink from './EntryLink';
 import EntryHostname from './EntryHostname';
 import EntryMeta from './EntryMeta';
-import { EntryMetaItem, EntryScore, EntryTime } from './EntryMetaItem';
+import { EntryAuthor, EntryMetaItem, EntryScore, EntryTime } from './EntryMetaItem';
 import EntryUserLink from './EntryUserLink';
 import EntryCommentLink from './EntryCommentLink';
 
@@ -33,9 +33,9 @@ const Entry = ({ by, score, time, title, url, descendants, text }) => {
       <EntryMeta>
         <EntryScore>+ {score}</EntryScore>
         
-        <EntryMetaItem>
+        <EntryAuthor>
           by <EntryUserLink href={`/${by}`}>{by}</EntryUserLink>
-        </EntryMetaItem>
+        </EntryAuthor>
         
         <EntryTime
           dateTime={timeUtils.getISOTime(time)}

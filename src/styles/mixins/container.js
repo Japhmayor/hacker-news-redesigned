@@ -3,7 +3,7 @@ import { containerGutter, containerWidth } from '../settings/container';
 
 const container = css`
   padding-left: ${containerGutter}px;
-  padding-right: ${containerGutter};
+  padding-right: ${containerGutter}px;
   
   @media (min-width: ${containerWidth + containerGutter * 2}px) { // "CSS is hard. CSS is broken".
     padding-right: calc((100vw - ${containerWidth}px) / 2);

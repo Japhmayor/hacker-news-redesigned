@@ -42,7 +42,7 @@ export const lineHeightLoose = 1.75;
 export const fontWeightNormal =    400;
 export const fontWeightSemibold =  600;
 
-const fontWeightBase = fontWeightNormal;
+export const fontWeightBase = fontWeightNormal;
 
 //
 // Component-specific

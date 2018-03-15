@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Header from './components/Header';
+import Header from './components/Header/';
 import Main from './components/Main';
 import EntryList from './components/EntryList';
 
@@ -9,7 +9,7 @@ class App extends Component {
       <Fragment>
         <Header/>
         <Main>
-          <EntryList/>
+          {/*<EntryList/>*/}
         </Main>
       </Fragment>
     );

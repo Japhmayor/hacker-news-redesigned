@@ -6,18 +6,20 @@ import EntryTitle from './EntryTitle';
 import EntryLink from './EntryLink';
 import EntryHostname from './EntryHostname';
 import EntryMeta from './EntryMeta';
-import { EntryAuthor, EntryMetaItem, EntryScore, EntryTime } from './EntryMetaItem';
+import { EntryAuthor, EntryScore, EntryTime } from './EntryMetaItem';
 import EntryUserLink from './EntryUserLink';
 import EntryCommentLink from './EntryCommentLink';
 
-const Entry = ({ by, score, time, title, url, descendants, text }) => {
-  // type: story
-  // type: job ( just title and date)
-  // type: poll (maybe)
+const Entry = ({ id, type, url, title, text, score, by, time, descendants }) => {
+  const isJob = (type === 'job');
+  let isLink = false;
   
-  
-  // When the entry doesn't have `url`, but has `text` instead (ask, show, job)
-  // url should point to the entry in that case, not to outside link.
+  if (typeof url !== 'undefined') {
+    isLink = true;
+  }
+  else {
+    url = `/${id}`;
+  }
   
   return (
     <EntryWrapper>
@@ -26,16 +28,19 @@ const Entry = ({ by, score, time, title, url, descendants, text }) => {
           {title}
         </EntryLink>
         
+        {isLink &&
         <EntryHostname>({getHostName(url)})</EntryHostname>
-        {/* Don't render if show/ask */}
+        }
       </EntryTitle>
       
       <EntryMeta>
-        <EntryScore>+ {score}</EntryScore>
-        
+        {!isJob &&
+        <EntryScore>+ {score}</EntryScore>}
+  
+        {!isJob &&
         <EntryAuthor>
           by <EntryUserLink href={`/${by}`}>{by}</EntryUserLink>
-        </EntryAuthor>
+        </EntryAuthor>}
         
         <EntryTime
           dateTime={timeUtils.getISOTime(time)}
@@ -43,10 +48,11 @@ const Entry = ({ by, score, time, title, url, descendants, text }) => {
         >
           {timeUtils.getTimePassed(time)}
         </EntryTime>
-        
+  
+        {!isJob &&
         <EntryCommentLink href="" title={`${descendants} comments`}>
           {descendants}
-        </EntryCommentLink>
+        </EntryCommentLink>}
       </EntryMeta>
     </EntryWrapper>
   );

@@ -18,7 +18,7 @@ function fetchNow() {
   fetch(`${baseURL}${arr[i]}.json`)
     .then(response => response.json())
     .then(data => {
-      fs.appendFile('./mock.js', JSON.stringify(data) + ",", (err) => {
+      fs.appendFile('./mock-simple.js', JSON.stringify(data) + ",", (err) => {
         if(err) throw err;
       });
       i++;

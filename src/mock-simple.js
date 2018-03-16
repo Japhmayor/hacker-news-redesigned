@@ -8,7 +8,7 @@ export default [
     "time": 1521044797,
     "title": "Theranos, CEO Holmes, and Former President Balwani Charged with Fraud",
     "type": "story",
-    "url": "https://www.sec.gov/news/press-release/2018-41"
+    "text": "https://www.sec.gov/news/press-release/2018-41"
   }, {
     "by": "clayt6",
     "descendants": 68,
@@ -60,15 +60,15 @@ export default [
     "type": "story",
     "url": "http://www.bbc.com/news/uk-43396008"
   }, {
-    "by": "em3rgent0rdr",
-    "descendants": 232,
-    "id": 16583348,
-    "kids": [16583908, 16586829, 16584089, 16583570, 16583589, 16587239, 16583665, 16585305, 16584337, 16584793, 16586433, 16584741, 16586948, 16587088, 16586563, 16585812, 16583598, 16584266, 16584699, 16586406, 16584914, 16584085, 16585622, 16584710, 16585499, 16584250, 16584963, 16586602, 16584804, 16584947, 16584341, 16584732, 16583820, 16583881, 16584103, 16585827],
-    "score": 483,
-    "time": 1521018686,
-    "title": "Google bans cryptocurrency ads",
+    "by": "samclemens",
+    "descendants": 9,
+    "id": 16562147,
+    "kids": [16581868, 16582938, 16583413, 16581505],
+    "score": 57,
+    "time": 1520755616,
+    "title": "Jimmy Is Everywhere: On James Baldwin's FBI File",
     "type": "story",
-    "url": "https://support.google.com/adwordspolicy/answer/7648803"
+    "url": "https://www.the-tls.co.uk/articles/public/james-baldwin-fbi-files/"
   }, {
     "by": "zerogvt",
     "descendants": 50,
@@ -110,15 +110,15 @@ export default [
     "type": "story",
     "url": "https://www.wsj.com/articles/navy-medics-get-prepared-for-combatwith-tour-of-duty-in-chicago-1521028800"
   }, {
-    "by": "kevintxwu",
-    "descendants": 29,
-    "id": 16586250,
-    "kids": [16587035, 16587554, 16586782, 16586501, 16587290, 16586837, 16586745],
-    "score": 34,
-    "text": "Hi HN,<p>I&#x27;m Kevin, co-founder of Pathrise (<a href=\"https:&#x2F;&#x2F;www.pathrise.com\" rel=\"nofollow\">https:&#x2F;&#x2F;www.pathrise.com</a>). Pathrise is an online replacement for career services that helps students get better jobs and make more money. If and only if they get hired during our program, students pay us back a tuition fee of 7% of their income for 1 year.<p>For more context, you can read about us here: <a href=\"https:&#x2F;&#x2F;venturebeat.com&#x2F;2018&#x2F;03&#x2F;09&#x2F;pathrise-wants-to-be-the-y-combinator-for-tech-students&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;venturebeat.com&#x2F;2018&#x2F;03&#x2F;09&#x2F;pathrise-wants-to-be-the-...</a>.<p>The problem: universities aren&#x27;t directly incentivized to get students good jobs since they make all their money in upfront tuition. As a result, college career services centers aren&#x27;t results-driven and can&#x27;t properly support their students. Most students are essentially left to figure things out on their own, and they think to themselves, career services are useless. The easiest way to verify this is to ask your average student how many times they&#x27;ve visited their career services center in the last year.<p>In reality, career services (that actually work) are probably one of the highest value things a student can receive. You can take any step of the job search (e.g. online applications), train students on one technique (e.g. lead gen and cold emailing), and produce significant and measurable returns (e.g. we&#x27;ve measured that this technique in particular can 4X response rate from under 5% to over 20%). Pathrise does this with every step of the job-hunting process, from training students from a 2&#x2F;6 to a 5&#x2F;6 in technical interviewing scores based on real company rubrics to helping students get a 10%+ higher salary through negotiation.<p>In this sense, we&#x27;re kind of like YC for students instead of startups. Founders give 7% equity to YC because they know YC will increase their company&#x27;s prospects by more than 7%. Students give us 7% of their first year&#x27;s income, and our program is designed to increase their job prospects by more than 7%. They know we&#x27;ll do everything in our power to provide them that value because we have aligned incentives - we only make money if they do.<p>What this ends up looking like is an online accelerator for students that takes place in 12 monthly batches a year, followed by an average of 3-4 months of support until a student is placed. Instead of focusing on a technical education (like our friends at Lambda School), Pathrise is entirely about optimizing your job search. This involves services like resume review, prospecting, referrals, interview preparation, and negotiation advice. Again, unlike career services today, we track every data point so we can hold ourselves accountable to actually produce significant and measurable value for our students.<p>Thanks for reading! I&#x27;d be happy to answer any of your questions and would greatly appreciate your feedback.",
-    "time": 1521046927,
-    "title": "Launch HN: Pathrise (YC W18) – Career accelerator for students, free until hired",
-    "type": "story"
+    "by": "em3rgent0rdr",
+    "descendants": 63,
+    "id": 16583348,
+    "kids": [16583908, 16584089, 16583570, 16584337, 16583589, 16583665, 16583598, 16584085, 16584266, 16584250, 16583820, 16583881, 16584103],
+    "score": 177,
+    "time": 1521018686,
+    "title": "Google bans cryptocurrency ads",
+    "type": "story",
+    "url": "https://support.google.com/adwordspolicy/answer/7648803"
   }, {
     "by": "aston",
     "descendants": 61,
@@ -250,13 +250,15 @@ export default [
     "type": "story",
     "url": "https://www.justice.gov/usao-ndga/pr/former-equifax-employee-indicted-insider-trading"
   }, {
-    "by": "d8niel",
-    "id": 16586030,
-    "score": 1,
-    "text": "Medical records are a mess. Too many hospitals continue to use paper charts, or archaic, proprietary software. We&#x27;re solving the problem using consumer iPads, and open APIs. If revolutionizing healthcare excites you, join our growing team and help us achieve our mission to build better software for doctors and patients, improving healthcare for all.<p>We are a YCombinator funded Silicon Valley startup working out of the chronoplex in Sunnyvale, CA and Hunt Valley, Maryland.<p>Find a position that interests you and apply here: <a href=\"https:&#x2F;&#x2F;www.drchrono.com&#x2F;careers&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.drchrono.com&#x2F;careers&#x2F;</a>",
-    "time": 1521045725,
-    "title": "Drchrono is looking for Python/Django engineers to help fix healthcare",
-    "type": "job"
+    "by": "hvo",
+    "descendants": 44,
+    "id": 16579649,
+    "kids": [16580627, 16581201, 16580687, 16580772, 16582090, 16581971, 16580604, 16582119, 16580879],
+    "score": 110,
+    "time": 1520974090,
+    "title": "Madison Square Garden Has Used Face-Scanning Technology on Customers",
+    "type": "story",
+    "url": "https://www.nytimes.com/2018/03/13/sports/facial-recognition-madison-square-garden.html"
   }, {
     "by": "DanielleMolloy",
     "descendants": 18,

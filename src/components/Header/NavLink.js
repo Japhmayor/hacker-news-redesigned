@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { spacing } from '../../styles/settings/spacing';
 import { white } from '../../styles/settings/colors';
-import { rgba } from 'polished';
 
 const NavLink = styled.a`
   padding: ${spacing(5)} ${spacing(5)};

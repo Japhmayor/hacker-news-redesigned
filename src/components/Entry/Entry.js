@@ -10,7 +10,7 @@ import { EntryAuthor, EntryScore, EntryTime } from './EntryMetaItem';
 import EntryUserLink from './EntryUserLink';
 import EntryCommentLink from './EntryCommentLink';
 
-const Entry = ({ id, type, url, title, text, score, by, time, descendants }) => {
+const Entry = ({ id, type, url, title, text, score, author, time, commentCount }) => {
   const isJob = (type === 'job');
   let isLink = false;
   
@@ -34,12 +34,12 @@ const Entry = ({ id, type, url, title, text, score, by, time, descendants }) => 
       </EntryTitle>
       
       <EntryMeta>
-        {!isJob &&
+        {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
         <EntryScore>+ {score}</EntryScore>}
   
-        {!isJob &&
+        {!isJob && author &&
         <EntryAuthor>
-          by <EntryUserLink href={`/${by}`}>{by}</EntryUserLink>
+          by <EntryUserLink href={`/${author}`}>{author}</EntryUserLink>
         </EntryAuthor>}
         
         <EntryTime
@@ -49,9 +49,9 @@ const Entry = ({ id, type, url, title, text, score, by, time, descendants }) => 
           {timeUtils.getTimePassed(time)}
         </EntryTime>
   
-        {!isJob &&
-        <EntryCommentLink href="" title={`${descendants} comments`}>
-          {descendants}
+        {commentCount && commentCount > 0 && // check for descendants/kids instead ?
+        <EntryCommentLink href="" title={`${commentCount} comments`}>
+        {commentCount}
         </EntryCommentLink>}
       </EntryMeta>
     </EntryWrapper>

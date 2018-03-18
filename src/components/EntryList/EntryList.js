@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Entry from '../Entry/index';
-import mockData from '../../mock';
-import EntryListWrapper from './EntryListWrapper';
+import mockData from '../../mock-ask';
 
 const EntryList = (props) => (
-  <EntryListWrapper>
+  <Fragment>
     {mockData.map(entryData => (
       <Entry key={entryData.id} {...entryData} />
     ))}
-  </EntryListWrapper>
+  </Fragment>
 );
 
 export default EntryList;

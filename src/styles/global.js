@@ -79,7 +79,7 @@ injectGlobal`
   h4,
   h5 {
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     line-height: ${headingLineHeight};
   }
   

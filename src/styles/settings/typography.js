@@ -20,8 +20,8 @@ export const fontFamilyBase = `${fontFamily}, ${fontFamilyNative}`;
 // Font sizes
 //
 
-export const fontSizeSmall      = '14px';
-export const fontSizeBase       = '18px';
+export const fontSizeSmall      = '14px'; // TODO: Rename to extra-small
+export const fontSizeBase       = '18px'; // TODO: Add small '16px', find replace all occurences
 export const fontSizeLarge      = '20px';
 export const fontSizeExtraLarge = '24px';
 

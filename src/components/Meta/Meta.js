@@ -3,7 +3,7 @@ import { fontSizeExtraSmall, fontSizeSmall } from '../../styles/settings/typogra
 import { spacing } from '../../styles/settings/spacing';
 import { colors } from '../../styles/settings/colors';
 
-const EntryMeta = styled.div`
+const Meta = styled.div`
   display: flex;
   align-items: flex-start;
   font-size: ${props => props.large ? fontSizeSmall : fontSizeExtraSmall};
@@ -11,4 +11,4 @@ const EntryMeta = styled.div`
   color: ${colors.neutral['40']};
 `;
 
-export default EntryMeta;
+export default Meta;

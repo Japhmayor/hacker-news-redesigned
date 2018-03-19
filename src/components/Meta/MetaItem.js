@@ -3,7 +3,7 @@ import { spacing } from '../../styles/settings/spacing';
 import { colors } from '../../styles/settings/colors';
 import { fontWeightSemibold } from '../../styles/settings/typography';
 
-export const EntryMetaItem = styled.span`
+export const MetaItem = styled.span`
   white-space: nowrap;
 
   &:not(:first-child) {
@@ -13,17 +13,17 @@ export const EntryMetaItem = styled.span`
   }
 `;
 
-export const EntryScore = styled(EntryMetaItem)`
+export const Score = styled(MetaItem)`
   font-weight: ${fontWeightSemibold};
 `;
 
 // Truncate the username when there's no enough space
-export const EntryAuthor = styled(EntryMetaItem)`
+export const Author = styled(MetaItem)`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
-export const EntryTime = EntryMetaItem.withComponent('time').extend`
+export const Time = MetaItem.withComponent('time').extend`
   margin-right: ${spacing(2)};
 `;
 

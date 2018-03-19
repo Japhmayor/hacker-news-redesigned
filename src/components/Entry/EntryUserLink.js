@@ -15,3 +15,5 @@ const EntryUserLink = styled.a`
 `;
 
 export default EntryUserLink;
+
+// TODO Probably could be refactored to a generic link

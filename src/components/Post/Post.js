@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 import * as timeUtils from '../../utils/utils.time';
 import getHostName from '../../utils/getHostname';
 
-import EntryMeta from '../Entry/EntryMeta';
-import { EntryAuthor, EntryScore, EntryTime } from '../Entry/EntryMetaItem';
+import Meta from '../Meta/Meta';
+import { Author, Score, Time } from '../Meta/MetaItem';
 import EntryUserLink from '../Entry/EntryUserLink';
 import EntryLink from '../Entry/EntryLink';
 import EntryHostname from '../Entry/EntryHostname';
@@ -15,46 +15,52 @@ import PostHeader from './PostHeader';
 import CommentList from '../CommentList/CommentList';
 
 
-const Post = ({ id, title, url, text, score, author, time, commentCount }) => {
+const Post = ({ id, title, url, text, score, author, time, comments }) => {
   const isLink = typeof url !== 'undefined';
   
   return (
-    <article>
-      <PostHeader>
-        <PostTitle>
-          {isLink ? (
-            <Fragment>
-              <EntryLink href={url}>
-                {title}
-              </EntryLink>
+    <Fragment>
+      <article>
+        <PostHeader>
           
-              <EntryHostname>({getHostName(url)})</EntryHostname>
-            </Fragment> )
-            
-          : title }
-        </PostTitle>
+          <PostTitle>
+            {isLink ? (
+                <Fragment>
+                  <EntryLink href={url}>
+                    {title}
+                  </EntryLink>
+              
+                  <EntryHostname>({getHostName(url)})</EntryHostname>
+                </Fragment> )
+          
+              : title }
+          </PostTitle>
+      
+          <Meta large> {/* TODO: Larger font size would be nice. Make optional via prop*/}
+            {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
+            <Score>+ {score}</Score>}
+        
+            {author &&
+            <Author>
+              by <EntryUserLink href={`/${author}`}>{author}</EntryUserLink>
+            </Author>
+            }
+        
+            <Time
+              dateTime={timeUtils.getISOTime(time)}
+              title={timeUtils.getExactTime(time)}
+            >
+              {timeUtils.getTimePassed(time)}
+            </Time>
+          </Meta>
+          
+        </PostHeader>
+    
+        <PostBody dangerouslySetInnerHTML={{ __html: text }} />
+      </article>
   
-        <EntryMeta large> {/* TODO: Larger font size would be nice. Make optional via prop*/}
-          {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
-          <EntryScore>+ {score}</EntryScore>}
-    
-          {author &&
-          <EntryAuthor>
-            by <EntryUserLink href={`/${author}`}>{author}</EntryUserLink>
-          </EntryAuthor>
-          }
-    
-          <EntryTime
-            dateTime={timeUtils.getISOTime(time)}
-            title={timeUtils.getExactTime(time)}
-          >
-            {timeUtils.getTimePassed(time)}
-          </EntryTime>
-        </EntryMeta>
-      </PostHeader>
-
-      <PostBody dangerouslySetInnerHTML={{ __html: text }} />
-    </article>
+      <CommentList comments={comments}/>
+    </Fragment>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Entry from '../Entry/index';
-import mockData from '../../mock-ask';
+import mockData from '../../mock-simple';
 
 const EntryList = (props) => (
   <Fragment>

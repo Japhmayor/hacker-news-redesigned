@@ -1,21 +1,37 @@
 import React, { Fragment } from 'react';
+
 import * as timeUtils from '../../utils/utils.time';
-import EntryTitle from '../Entry/EntryTitle';
+import getHostName from '../../utils/getHostname';
+
 import EntryMeta from '../Entry/EntryMeta';
 import { EntryAuthor, EntryScore, EntryTime } from '../Entry/EntryMetaItem';
 import EntryUserLink from '../Entry/EntryUserLink';
+import EntryLink from '../Entry/EntryLink';
+import EntryHostname from '../Entry/EntryHostname';
+
 import PostBody from './PostBody';
 import PostTitle from './PostTitle';
 import PostHeader from './PostHeader';
+import CommentList from '../CommentList/CommentList';
 
-const Post = ({ id, title, text, score, author, time, commentCount }) => {
-  console.log(text);
+
+const Post = ({ id, title, url, text, score, author, time, commentCount }) => {
+  const isLink = typeof url !== 'undefined';
   
   return (
     <article>
       <PostHeader>
         <PostTitle>
-          {title}
+          {isLink ? (
+            <Fragment>
+              <EntryLink href={url}>
+                {title}
+              </EntryLink>
+          
+              <EntryHostname>({getHostName(url)})</EntryHostname>
+            </Fragment> )
+            
+          : title }
         </PostTitle>
   
         <EntryMeta large> {/* TODO: Larger font size would be nice. Make optional via prop*/}
@@ -25,7 +41,8 @@ const Post = ({ id, title, text, score, author, time, commentCount }) => {
           {author &&
           <EntryAuthor>
             by <EntryUserLink href={`/${author}`}>{author}</EntryUserLink>
-          </EntryAuthor>}
+          </EntryAuthor>
+          }
     
           <EntryTime
             dateTime={timeUtils.getISOTime(time)}

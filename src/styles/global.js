@@ -113,8 +113,12 @@ injectGlobal`
   // Paragraphs
   //
   
+  // TODO: Add add margin to to the paragraphs
+  // First paragraph isn't wrapped in "p" in the API
+  // Look into other variations as well, e.g. if the second element(paragraph) is a list or whatever
+  
   p {
-    margin-top: 0;
+    margin-top: 1rem;
     margin-bottom: 1rem;
   }
   

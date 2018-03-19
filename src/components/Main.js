@@ -5,7 +5,8 @@ import { spacing } from '../styles/settings/spacing';
 
 const Main = styled.main`
   ${container};
-  padding:${spacing(8)} 0  72px;
+  padding-top: ${spacing(8)};
+  padding-bottom: 72px;
   
   @media (min-width: ${breakpoints.md}) {
     padding-top: ${spacing(10)};

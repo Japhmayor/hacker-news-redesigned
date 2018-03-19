@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { fontSizeSmall } from '../../styles/settings/typography';
 
 const PostTitle = styled.h1`
   & > small {
-    font-size: 16px;
+    font-size: ${fontSizeSmall};
   }
 `;
 

@@ -18,7 +18,7 @@ const Post = ({ id, title, text, score, author, time, commentCount }) => {
           {title}
         </PostTitle>
   
-        <EntryMeta> {/* TODO: Larger font size would be nice. Make optional via prop*/}
+        <EntryMeta large> {/* TODO: Larger font size would be nice. Make optional via prop*/}
           {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
           <EntryScore>+ {score}</EntryScore>}
     

@@ -10,7 +10,7 @@ import { Author, Score, Time } from '../Meta/MetaItem';
 import EntryUserLink from './EntryUserLink';
 import EntryCommentLink from './EntryCommentLink';
 
-const Entry = ({ id, type, url, title, text, score, author, time, commentCount }) => {
+const Entry = ({ id, type, url, title, text, score, by: author, time, descendants: commentCount }) => {
   const isJob = (type === 'job');
   let isLink = typeof url !== 'undefined'; // Whether or not is an external link
 
@@ -42,7 +42,7 @@ const Entry = ({ id, type, url, title, text, score, author, time, commentCount }
           {timeUtils.getTimePassed(time)}
         </Time>
 
-        {commentCount && commentCount > 0 && // check for descendants/kids instead ?
+        {commentCount &&
         <EntryCommentLink href="" title={`${commentCount} comments`}>
         {commentCount}
         </EntryCommentLink>}

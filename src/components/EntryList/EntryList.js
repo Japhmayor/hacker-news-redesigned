@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import Entry from '../Entry/index';
-import mockData from '../../mock-simple';
 
-const EntryList = (props) => (
+const EntryList = ({entries}) => (
   <Fragment>
-    {mockData.map(entryData => (
-      <Entry key={entryData.id} {...entryData} />
+    {entries.map(entry => (
+      <Entry key={entry.id} {...entry} />
     ))}
   </Fragment>
 );

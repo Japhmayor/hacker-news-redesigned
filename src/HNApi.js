@@ -10,23 +10,31 @@ export const api = firebase.database().ref('/v0');
 /**
  *
  * @param {String} feedName – Name of the feed (top, new, etc.)
- * @param {Number} page     – Current page of the feed, grabbed from route: 1, 2, ...
+ * @param {Number} page     – String representation of the page number grabbed from route: /2, show/3, ...
  * @param {Number} limit    – Number of entried per page
  *
  * @return {Promise<Array>} Array of entries
  *
  * */
 export function getFeed(feedName, page = 1, limit = ENTRIES_PER_PAGE) {
-  const skip = (page - 1) * limit;
-
+  const skip = `${(page - 1) * limit}`; // Firebase expects a string for `startAt`
+  
   return new Promise((resolve, reject) => {
     api.child(FEED_ENDPOINTS[feedName])
+      .orderByKey()
+      .startAt(skip)
+      .limitToFirst(limit + 10)
       .on('value', function(snapshot) {
-        const allRequests = snapshot.val()
-          .slice(skip, skip + ENTRIES_PER_PAGE)
+        const allEntryPromises = snapshot.val()
           .map(id => getEntry(id));
-      
-        resolve(Promise.all(allRequests))
+        
+        Promise.all(allEntryPromises)
+          .then(entries => entries
+            .filter(entry => entry !== null)
+            .slice(0, limit)
+          )
+          .then(entries => resolve(entries))
+          .catch(error => console.error(error));
       }, reject);
   });
 }
@@ -38,13 +46,28 @@ export function getFeed(feedName, page = 1, limit = ENTRIES_PER_PAGE) {
  *
  * */
 export function getEntry(id) {
+  return fetch(`item/${id}`);
+}
+
+
+function fetch(path) {
   return new Promise((resolve, reject) => {
-    api.child(`item/${id}`)
-      .on('value', snapshot => {
-        resolve(snapshot.val())
-      }, reject);
+    api.child(path).on('value', function(snapshot) {
+      resolve(snapshot.val())
+    }, reject);
   });
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // Listen to all feeds
 

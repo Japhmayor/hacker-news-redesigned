@@ -5,7 +5,7 @@ firebase.initializeApp({
   databaseURL: 'https://hacker-news.firebaseio.com/',
 });
 
-const api = firebase.database().ref('/v0');
+export const api = firebase.database().ref('/v0');
 
 /**
  *
@@ -18,14 +18,17 @@ const api = firebase.database().ref('/v0');
  * */
 export function getFeed(feedName, page = 1, limit = ENTRIES_PER_PAGE) {
   const skip = (page - 1) * limit;
-  
-  return api.child(FEED_ENDPOINTS[feedName])
-    .once('value')
-    .then(snapshot => snapshot.val())
-    .then(IDList => IDList.slice(skip, skip + limit))
-    .then(IDList => IDList.map(id => getEntry(id)))
-    .then(entryPromises => Promise.all(entryPromises))
-    .catch(error => `Failed to load the feed: ${error}`);
+
+  return new Promise((resolve, reject) => {
+    api.child(FEED_ENDPOINTS[feedName])
+      .on('value', function(snapshot) {
+        const allRequests = snapshot.val()
+          .slice(skip, skip + ENTRIES_PER_PAGE)
+          .map(id => getEntry(id));
+      
+        resolve(Promise.all(allRequests))
+      }, reject);
+  });
 }
 
 /**
@@ -35,9 +38,20 @@ export function getFeed(feedName, page = 1, limit = ENTRIES_PER_PAGE) {
  *
  * */
 export function getEntry(id) {
-  return api.child(`item/${id}`)
-    .once('value')
-    .then(snapshot => snapshot.val());
+  return new Promise((resolve, reject) => {
+    api.child(`item/${id}`)
+      .on('value', snapshot => {
+        resolve(snapshot.val())
+      }, reject);
+  });
 }
 
+// Listen to all feeds
+
+// Object.keys(FEED_ENDPOINTS).forEach(endpoint => {
+//   api.child(FEED_ENDPOINTS[endpoint]).on('value', function(snapshot) {
+//     console.log(endpoint, snapshot.val());
+//   });
+// });
+//
 

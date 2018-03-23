@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/';
 import Main from './components/Main';
-import EntryList from './components/EntryList/';
 import EntryListContainer from './containers/EntryListContainer';
 
 class App extends Component {
@@ -11,10 +10,11 @@ class App extends Component {
       <Router>
         <Fragment>
           <Header />
-          <Main>
-            <Route path="/" component={EntryListContainer} exact/>
-            <Route path="/:feed(top|new|ask|show|jobs|best)/:page([1-9][0-9]?)?" component={EntryListContainer} exact/>
-            {/*<EntryListContainer feedType="new" page="1"/>*/}
+          <Main role="main">
+            <Switch>
+              <Route path="/:feed(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={EntryListContainer} exact/>
+              <Route  render={() => <div>404 muthafucka</div>} />
+            </Switch>
           </Main>
         </Fragment>
       </Router>

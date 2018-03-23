@@ -13,11 +13,11 @@ const Header = (props) => {
       </Logo>
       
       <Nav>
-        <NavLink className="is-active" href="">Top</NavLink>
-        <NavLink href="">New</NavLink>
-        <NavLink href="">Show</NavLink>
-        <NavLink href="">Ask</NavLink>
-        <NavLink href="">Jobs</NavLink>
+        <NavLink activeClassName="is-active" to="/" exact>Top</NavLink>
+        <NavLink activeClassName="is-active" to="/new">New</NavLink>
+        <NavLink activeClassName="is-active" to="/show">Show</NavLink>
+        <NavLink activeClassName="is-active" to="/ask">Ask</NavLink>
+        <NavLink activeClassName="is-active" to="/jobs">Jobs</NavLink>
       </Nav>
     </HeaderWrap>
   );

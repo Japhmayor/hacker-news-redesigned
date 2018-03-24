@@ -5,6 +5,10 @@ firebase.initializeApp({
   databaseURL: 'https://hacker-news.firebaseio.com/',
 });
 
+// firebase.database.enableLogging(function(message) {
+//   console.log("[FIREBASE]", message);
+// });
+
 export const api = firebase.database().ref('/v0');
 
 /**

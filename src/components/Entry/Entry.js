@@ -13,7 +13,7 @@ import EntryCommentLink from './EntryCommentLink';
 const Entry = ({ id, type, url, title, text, score, by: author, time, descendants: commentCount }) => {
   const isJob = (type === 'job');
   let isLink = typeof url !== 'undefined'; // Whether or not is an external link
-
+  
   return (
     <EntryWrapper>
       <EntryTitle>
@@ -33,8 +33,10 @@ const Entry = ({ id, type, url, title, text, score, by: author, time, descendant
         {!isJob && author &&
         <Author>
           by <EntryUserLink href={`/${author}`}>{author}</EntryUserLink>
-        </Author>}
+        </Author>
+        }
 
+        {/* TODO: Sometimes Time is the only way to access entry's page (when no comments), consider making a link */}
         <Time
           dateTime={timeUtils.getISOTime(time)}
           title={timeUtils.getExactTime(time)}
@@ -42,10 +44,11 @@ const Entry = ({ id, type, url, title, text, score, by: author, time, descendant
           {timeUtils.getTimePassed(time)}
         </Time>
 
-        {commentCount &&
+        {!!commentCount &&
         <EntryCommentLink href="" title={`${commentCount} comments`}>
-        {commentCount}
-        </EntryCommentLink>}
+          {commentCount}
+        </EntryCommentLink>
+        }
       </EntryMeta>
     </EntryWrapper>
   );

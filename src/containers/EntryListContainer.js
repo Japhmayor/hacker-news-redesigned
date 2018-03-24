@@ -25,9 +25,7 @@ class EntryListContainer extends React.Component {
       loading: true
     });
     
-    const {feed = 'top', page = 1} = this.props.match.params;
-  
-    console.log(feed, page);
+    const { feed = 'top', page = 1 } = this.props.match.params;
     
     getFeed(feed, page)
       .then(entries => {
@@ -36,7 +34,7 @@ class EntryListContainer extends React.Component {
           entries
         });
       });
-  }
+  };
   
   render() {
     if (this.state.loading) {

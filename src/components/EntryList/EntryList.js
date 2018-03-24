@@ -28,7 +28,7 @@ const EntryList = ({ entries, entryCount, page = '1', feed }) => {
           {currentPage > 1 &&
             <PrevLink
               to={prevUrl}>
-              Prev
+              Previous
             </PrevLink>
           }
           

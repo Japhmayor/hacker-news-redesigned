@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/';
 import Main from './components/Main';
 import EntryListContainer from './containers/EntryListContainer';
+import ScrollToTop from './components/ScrollToTop';
 
 class App extends Component {
   render() {
@@ -16,6 +17,8 @@ class App extends Component {
               <Route  render={() => <div>404 muthafucka</div>} />
             </Switch>
           </Main>
+  
+          <ScrollToTop/>
         </Fragment>
       </Router>
     );

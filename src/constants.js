@@ -5,7 +5,7 @@ export const FEED_ENDPOINTS = {
   new:  'newstories',
   show: 'showstories',
   ask:  'askstories',
-  jobs:  'jobstories',
-  best:  'beststories',
+  jobs: 'jobstories',
+  best: 'beststories',
 };
 

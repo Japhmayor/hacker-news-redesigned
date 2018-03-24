@@ -14,14 +14,14 @@ export const api = firebase.database().ref('/v0');
 /**
  *
  * @param {String} feedName – Name of the feed (top, new, etc.)
- * @param {Number} page     – String representation of the page number grabbed from route: /2, show/3, ...
+ * @param {String} page     – String representation of the page number grabbed from route: /2, show/3, ...
  * @param {Number} limit    – Number of entried per page
  *
  * @return {Promise<Array>} Array of entries
  *
  * */
-export function getFeed(feedName, page = 1, limit = ENTRIES_PER_PAGE) {
-  const skip = `${(page - 1) * limit}`; // Firebase expects a string for `startAt`
+export function getFeed(feedName, page = '1', limit = ENTRIES_PER_PAGE) {
+  const skip = (parseInt(page, 10) - 1) * limit;
   
   return new Promise((resolve, reject) => {
     api.child(FEED_ENDPOINTS[feedName])

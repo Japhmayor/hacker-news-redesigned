@@ -1,13 +1,13 @@
 import React from 'react';
 import EntryList from '../components/EntryList'
-import { ENTRIES_PER_PAGE } from '../constants';
 import { getFeed } from '../HNApi';
 
 class EntryListContainer extends React.Component {
   state = {
     entries: [],
     error: false,
-    loading: true
+    loading: true,
+    entryCount: 0
   };
   
   componentDidMount() {
@@ -15,8 +15,8 @@ class EntryListContainer extends React.Component {
   }
   
   componentDidUpdate(prevProps) {
-    const { feed = 'top', page = 1 } = this.props.match.params;
-    const { feed: prevFeed = 'top', page: prevPage = 1 } = prevProps.match.params;
+    const { feed = 'top', page = '1' } = this.props.match.params;
+    const { feed: prevFeed = 'top', page: prevPage = '1' } = prevProps.match.params;
   
     if (feed !== prevFeed || page !== prevPage) {
       this.update();
@@ -28,9 +28,9 @@ class EntryListContainer extends React.Component {
       loading: true
     });
     
-    const { feed = 'top', page = 1 } = this.props.match.params;
+    const { feed = 'top', page = '1' } = this.props.match.params;
     
-    getFeed(feed, page, 5)
+    getFeed(feed, page)
       .then(result => {
         this.setState({
           loading: false,
@@ -52,7 +52,15 @@ class EntryListContainer extends React.Component {
     else if (this.state.error) {
       return <div>Something went wrong. Please try again/*TODO: Link/Button?*/</div>
     }
-    return <EntryList entries={this.state.entries} />
+    
+    else {
+      return <EntryList
+        entries={this.state.entries}
+        entryCount={this.state.entryCount}
+        page={this.props.match.params.page}
+        feed={this.props.match.params.feed}
+      />
+    }
   }
 }
 

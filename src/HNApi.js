@@ -25,11 +25,9 @@ export function getFeed(feedName, page = 1, limit = ENTRIES_PER_PAGE) {
   
   return new Promise((resolve, reject) => {
     api.child(FEED_ENDPOINTS[feedName])
-      .orderByKey()
-      .startAt(skip)
-      .limitToFirst(limit + 10)
       .on('value', function(snapshot) {
         const allEntryPromises = snapshot.val()
+          .slice(skip, skip + limit)
           .map(id => getEntry(id));
         
         Promise.all(allEntryPromises)

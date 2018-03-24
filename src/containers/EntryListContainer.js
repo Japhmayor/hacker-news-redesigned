@@ -15,7 +15,10 @@ class EntryListContainer extends React.Component {
   }
   
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.feed !== this.props.match.params.feed) {
+    const { feed = 'top', page = 1 } = this.props.match.params;
+    const { feed: prevFeed = 'top', page: prevPage = 1 } = prevProps.match.params;
+  
+    if (feed !== prevFeed || page !== prevPage) {
       this.update();
     }
   }
@@ -27,11 +30,17 @@ class EntryListContainer extends React.Component {
     
     const { feed = 'top', page = 1 } = this.props.match.params;
     
-    getFeed(feed, page)
-      .then(entries => {
+    getFeed(feed, page, 5)
+      .then(result => {
         this.setState({
           loading: false,
-          entries
+          entries: result.entries,
+          entryCount: result.entryCount
+        });
+      })
+      .catch(error => {
+        this.setState({
+          error: true
         });
       });
   };

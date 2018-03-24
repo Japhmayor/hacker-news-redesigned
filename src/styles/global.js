@@ -20,6 +20,7 @@ import {
   h4FontSize, h4FontWeight,
   h5FontSize, h5FontWeight,
 } from './settings/typography';
+import { colors } from './settings/colors';
 
 injectGlobal`
 
@@ -140,5 +141,22 @@ injectGlobal`
   hr {
     margin: 0 1rem;
   }
-
+  
+  
+  //
+  // Links
+  //
+  
+  a {
+    color: ${colors.neutral[20]};
+    transition: 0.1s ease-in-out;
+    
+    &:hover {
+      color: ${colors.neutral[40]};
+    }
+    
+    &:active {
+      color: ${colors.neutral[50]};
+    }
+  }
 `;

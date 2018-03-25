@@ -15,7 +15,7 @@ import PostHeader from './PostHeader';
 import CommentList from '../CommentList/CommentList';
 
 
-const Post = ({ id, title, url, text, score, author, time, comments }) => {
+const Post = ({ id, title, url, text, score, by: author, time, descendants: commentCount, kids: comments }) => {
   const isLink = typeof url !== 'undefined';
   
   return (
@@ -25,13 +25,13 @@ const Post = ({ id, title, url, text, score, author, time, comments }) => {
           
           <PostTitle>
             {isLink ? (
-                <Fragment>
-                  <EntryLink href={url}>
-                    {title}
-                  </EntryLink>
-              
-                  <EntryHostname>({getHostName(url)})</EntryHostname>
-                </Fragment> )
+              <Fragment>
+                <EntryLink href={url}>
+                  {title}
+                </EntryLink>
+            
+                <EntryHostname>({getHostName(url)})</EntryHostname>
+              </Fragment> )
           
               : title }
           </PostTitle>
@@ -59,9 +59,11 @@ const Post = ({ id, title, url, text, score, author, time, comments }) => {
         <PostBody dangerouslySetInnerHTML={{ __html: text }} />
       </article>
   
-      <CommentList comments={comments}/>
+      {/*<CommentList comments={comments}/>*/}
     </Fragment>
   );
 };
 
 export default Post;
+
+// TODO: No way of recognizing and rendering a poll

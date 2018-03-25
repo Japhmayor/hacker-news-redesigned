@@ -4,6 +4,7 @@ import Header from './components/Header/';
 import Main from './components/Main';
 import EntryListContainer from './containers/EntryListContainer';
 import ScrollToTop from './components/ScrollToTop';
+import PostContainer from './containers/PostContainer';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <Main role="main">
             <Switch>
               <Route path="/:feed(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={EntryListContainer} exact/>
+              <Route path="/post/:id" component={PostContainer} />
               <Route  render={() => <div>404 muthafucka</div>} />
             </Switch>
           </Main>

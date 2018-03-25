@@ -46,10 +46,7 @@ class EntryListContainer extends React.Component {
   };
   
   render() {
-    if (this.state.loading) {
-      return <div>Loading</div>
-    }
-    else if (this.state.error) {
+    if (this.state.error) {
       return <div>Something went wrong. Please try again/*TODO: Link/Button?*/</div>
     }
     
@@ -59,6 +56,7 @@ class EntryListContainer extends React.Component {
         entryCount={this.state.entryCount}
         page={this.props.match.params.page}
         feed={this.props.match.params.feed}
+        loading={this.state.loading}
       />
     }
   }

@@ -3,8 +3,15 @@ import Entry from '../Entry/index';
 import { DirectionalNav } from '../DirectionalNav/';
 import { NextLink, PrevLink } from '../DirectionalNav';
 import { ENTRIES_PER_PAGE } from '../../constants';
+import EntryPlaceholder from '../Entry/EntryPlaceholder';
 
-const EntryList = ({ entries, entryCount, page = '1', feed }) => {
+const EntryList = ({ entries, entryCount, feed, page = '1', loading }) => {
+  if (loading) {
+    return Array(ENTRIES_PER_PAGE).fill(1).map((x, i) =>
+      <EntryPlaceholder key={i} />
+    );
+  }
+  
   const currentPage = parseInt(page, 10);
   
   const pageCount = Math.ceil(
@@ -45,3 +52,5 @@ const EntryList = ({ entries, entryCount, page = '1', feed }) => {
 };
 
 export default EntryList;
+
+// TODO: Consider renaming EntryList -> Feed, Entry -> FeedItem

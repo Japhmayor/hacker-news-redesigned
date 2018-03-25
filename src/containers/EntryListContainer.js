@@ -23,7 +23,7 @@ class EntryListContainer extends React.Component {
     }
   }
   
-  update = () => {
+  update = () => { // TODO: Not a great name for this function. Rethink.
     this.setState({
       loading: true
     });

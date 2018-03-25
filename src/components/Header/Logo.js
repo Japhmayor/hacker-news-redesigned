@@ -12,3 +12,7 @@ const Logo = styled.div`
 `;
 
 export default Logo;
+
+// TODO: Constantly find myself wanting to click on the logo.
+//       Not sure if it should replace the "Top" and otherwise
+//       indicate that you're on the Top feed.

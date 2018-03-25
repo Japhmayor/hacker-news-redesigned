@@ -7,3 +7,7 @@ const EntryHostname = styled.small`
 `;
 
 export default EntryHostname;
+
+// TODO: Not particularly thrilled with the design of this.
+//       Try designing a less obstrusive way of seeing the link:
+//         * Should be clearly distuingishable as an external link

@@ -1,4 +1,6 @@
-import firebase from 'firebase'
+import * as firebase from 'firebase/app'
+import 'firebase/database';
+
 import { FEED_ENDPOINTS, ENTRIES_PER_PAGE } from './constants';
 
 firebase.initializeApp({
@@ -23,13 +25,14 @@ export const api = firebase.database().ref('/v0');
 export function getFeed(feedName, page = '1', limit = ENTRIES_PER_PAGE) {
   const skip = (parseInt(page, 10) - 1) * limit;
   
+  // 1. +5 is a crappy way of semi-ensuring having 30 posts per feed, after filtering nulls.
   return new Promise((resolve, reject) => {
     api.child(FEED_ENDPOINTS[feedName])
       .on('value', function(snapshot) {
         const entryCount = snapshot.val().length;
         
         const allEntryPromises = snapshot.val()
-          .slice(skip, skip + limit)
+          .slice(skip, skip + limit + 5) // [1]
           .map(id => getEntry(id));
         
         Promise.all(allEntryPromises)

@@ -12,17 +12,21 @@ import EntryCommentLink from './EntryCommentLink';
 
 const Entry = ({ id, type, url, title, text, score, by: author, time, descendants: commentCount }) => {
   const isJob = (type === 'job');
-  let isLink = typeof url !== 'undefined'; // Whether or not is an external link
+  // Decide or not is an external link
+  let isLink = typeof url !== 'undefined';
+  url = isLink ? url : `/post/${id}`;
   
   return (
     <EntryWrapper>
       <EntryTitle>
-        <EntryLink href={isLink ? url : `/${id}`}>
-          {title}
-        </EntryLink>
-
+        <EntryLink
+          title={title}
+          href={url}
+          external={isLink}
+        />
+        
         {isLink &&
-        <EntryHostname>({getHostName(url)})</EntryHostname>
+          <EntryHostname>({getHostName(url)})</EntryHostname>
         }
       </EntryTitle>
 

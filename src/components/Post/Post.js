@@ -13,6 +13,7 @@ import PostBody from './PostBody';
 import PostTitle from './PostTitle';
 import PostHeader from './PostHeader';
 import CommentList from '../CommentList/CommentList';
+import { Link } from 'react-router-dom';
 
 
 const Post = ({ id, title, url, text, score, by: author, time, descendants: commentCount, kids: comments }) => {
@@ -26,9 +27,7 @@ const Post = ({ id, title, url, text, score, by: author, time, descendants: comm
           <PostTitle>
             {isLink ? (
               <Fragment>
-                <EntryLink href={url}>
-                  {title}
-                </EntryLink>
+                <EntryLink title={title} href={url} external={isLink} />
             
                 <EntryHostname>({getHostName(url)})</EntryHostname>
               </Fragment> )

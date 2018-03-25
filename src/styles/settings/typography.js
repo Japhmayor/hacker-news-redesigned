@@ -65,11 +65,11 @@ export const bodyBackground = colors.neutral['90'];
 
 export const headingFont = fontFamilyBase;
 
-export const h1FontSize = '36px';
-export const h2FontSize = '28px';
-export const h3FontSize = '24px';
-export const h4FontSize = '20px';
-export const h5FontSize = '18px';
+export const h1FontSize = '28px';
+export const h2FontSize = '24px';
+export const h3FontSize = '20px';
+export const h4FontSize = '18px';
+export const h5FontSize = '16px';
 
 export const h1FontWeight = fontWeightSemibold;
 export const h2FontWeight = fontWeightSemibold;

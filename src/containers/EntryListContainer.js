@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import EntryList from '../components/EntryList'
 import { getFeed } from '../HNApi';
 
@@ -17,7 +18,7 @@ class EntryListContainer extends React.Component {
   componentDidUpdate(prevProps) {
     const { feed = 'top', page = '1' } = this.props.match.params;
     const { feed: prevFeed = 'top', page: prevPage = '1' } = prevProps.match.params;
-  
+    
     if (feed !== prevFeed || page !== prevPage) {
       this.update();
     }
@@ -62,5 +63,13 @@ class EntryListContainer extends React.Component {
   }
 }
 
+EntryListContainer.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      page: PropTypes.string,
+      feed: PropTypes.string,
+    })
+  }).isRequired
+};
 
 export default EntryListContainer;

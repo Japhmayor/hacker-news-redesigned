@@ -45,7 +45,7 @@ const Entry = ({ id, type, url, title, text, score, by: author, time, descendant
         </Time>
 
         {!!commentCount &&
-        <EntryCommentLink href="" title={`${commentCount} comments`}>
+        <EntryCommentLink to={`/post/${id}`} title={`${commentCount} comments`}>
           {commentCount}
         </EntryCommentLink>
         }
@@ -55,3 +55,5 @@ const Entry = ({ id, type, url, title, text, score, by: author, time, descendant
 };
 
 export default Entry;
+
+

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import commentIcon from '../../images/icon-comment.svg'
 import { colors } from '../../styles/settings/colors';
+import { Link as RouterLink } from 'react-router-dom';
 
 // 1. The recommended size for tap targets is about 44x44px.
 // Adding a faux padding around the small elements makes it
 // harder to miss on touch devices.
 
-const EntryCommentLink = styled.a`
+const EntryCommentLink = styled(RouterLink)`
   display: block;
   position: relative;
   margin: -8px 0 -8px auto; // [1]

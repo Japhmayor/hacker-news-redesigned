@@ -9,7 +9,7 @@ const HeaderWrap = styled.header`
   height: 64px;
   font-family: ${headingFont};
   color: ${white};
-  background: ${colors.primary['50']};
+  background: ${colors.primary['50']}; // TODO: Need better orange
   overflow: hidden;
 `;
 

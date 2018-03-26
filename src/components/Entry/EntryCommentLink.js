@@ -28,12 +28,12 @@ const EntryCommentLink = styled(RouterLink)`
   }
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.85;
     color: ${colors.neutral['40']};
   }
 
   &:active {
-    opacity: 0.6;
+    opacity: 0.7;
   }
 `;
 

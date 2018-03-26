@@ -4,8 +4,8 @@ export const black = '#000';
 const paletteColors = {
   gray: {
     10: '#282828',
-    20: '#474747',
-    30: '#646464',
+    20: '#393939',
+    30: '#525252',
     40: '#777777',
     50: '#a1a1a1',
     60: '#c8c8c8',
@@ -46,4 +46,3 @@ export const colors = {
   light: white,
   dark: black
 };
-

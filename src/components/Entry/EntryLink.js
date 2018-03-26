@@ -6,14 +6,14 @@ import React from 'react';
 const EntryLink = styled(Link)`
   color: ${colors.neutral['10']};
   text-decoration: none;
-  transition: color 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 
   &:hover {
-    color: ${colors.neutral['20']};
+    opacity: 0.8;
   }
 
   &:active {
-    color: ${colors.neutral['30']};
+    opacity: 0.7;
   }
 `;
 

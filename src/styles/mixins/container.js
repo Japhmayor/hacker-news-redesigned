@@ -11,7 +11,7 @@ const container = css`
     padding-right: ${containerGutterLarge}px;
   }
   
-  @media (min-width: ${containerWidth + containerGutterSmall * 2}px) { // "CSS is hard. CSS is broken".
+  @media (min-width: ${containerWidth + containerGutterLarge * 2}px) { // "CSS is hard. CSS is broken".
     padding-right: calc((100vw - ${containerWidth}px) / 2);
     padding-left: calc((100vw - ${containerWidth}px) / 2);
   }

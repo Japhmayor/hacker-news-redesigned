@@ -1,21 +1,19 @@
 import React from 'react';
 import CommentsTitle from './CommentTitle';
-import Comment from '../Comment/Comment';
-import { getTimePassed } from '../../utils/utils.time';
+import CommentContainer from '../../containers/CommentContainer';
 
-// This should receive an array of comment objects, and recursively render them with kids
-const CommentList = ({comments}) => {
-  console.log(comments);
-  
+const CommentList = ({ commentIDs }) => {
   return (
     <div>
       <CommentsTitle>Comments</CommentsTitle>
       
-      {comments.map(comment =>
-        <Comment key={comment.id} {...comment}/>)
+      {commentIDs.map(id =>
+        <CommentContainer key={id} commentID={id} />)
       }
     </div>
   );
 };
 
 export default CommentList;
+
+// TODO: Need an empty state for when there's no comments. "No one commented yet"

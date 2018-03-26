@@ -15,18 +15,18 @@ class PostContainer extends React.Component {
   componentDidMount() {
     this.update();
   }
-  
+
   componentDidUpdate(prevProps) {
-  
+    // TODO: Probably need this when post links to another post
   }
   
-  update = () => { // TODO: Not a great name for this function. Rethink.
+  update = async () => { // TODO: Not a great name for this function. Rethink.
     this.setState({
       loading: true
     });
   
-    const id = this.props.match.params.id; // TODO: Check?
-  
+    const id = this.props.match.params.id;
+    
     getEntry(id)
       .then(post => {
         this.setState({
@@ -42,7 +42,7 @@ class PostContainer extends React.Component {
     }
     
     if (this.state.error) {
-      return 'Failed loading the post. Please try again'; // TODO: Generic error design.
+      return 'Failed loading the post. Please try again';
     }
     
     return (
@@ -52,3 +52,6 @@ class PostContainer extends React.Component {
 }
 
 export default PostContainer;
+
+// TODO: Generic error design.
+// TODO: PropTypes

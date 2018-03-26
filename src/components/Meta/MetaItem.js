@@ -23,6 +23,7 @@ export const Author = styled(MetaItem)`
   text-overflow: ellipsis;
 `;
 
+// TODO: Time should be a link to the post/comment
 export const Time = MetaItem.withComponent('time').extend`
   margin-right: ${spacing(2)};
 `;

@@ -34,7 +34,7 @@ export function getFeed(feedName, page = '1', limit = ENTRIES_PER_PAGE) {
         const allEntryPromises = snapshot.val()
           .slice(skip, skip + limit + 5) // [1]
           .map(id => getEntry(id));
-        
+  
         Promise.all(allEntryPromises)
           .then(entries => entries
             .filter(entry => entry !== null)
@@ -48,7 +48,7 @@ export function getFeed(feedName, page = '1', limit = ENTRIES_PER_PAGE) {
 
 /**
  *
- * @param {String} id – ID of the entry
+ * @param {Number} id – ID of the entry
  * @return {Promise<Object>} – Single entry
  *
  * */
@@ -60,7 +60,7 @@ export function getEntry(id) {
 function fetch(path) {
   return new Promise((resolve, reject) => {
     api.child(path).on('value', function(snapshot) {
-      resolve(snapshot.val())
+      resolve(snapshot.val());
     }, reject);
   });
 }

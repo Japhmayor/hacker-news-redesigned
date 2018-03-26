@@ -6,17 +6,25 @@ import { Author, Time } from '../Meta/MetaItem';
 import EntryUserLink from '../Entry/EntryUserLink';
 import Meta from '../Meta/Meta';
 import { spacing } from '../../styles/settings/spacing';
+import CommentContainer from '../../containers/CommentContainer';
 
 const CommentWrapper = styled.div`
   margin-bottom: ${spacing(10)}; // TODO: Temporary
   font-size: ${fontSizeSmall};
+  
+  & > & {
+    margin-left: 40px;
+  }
 `;
 
 const CommentBody = styled.div`
   margin-top: ${spacing(2)};
 `;
 
-const Comment = ({ author, id, parent, text, time, deleted }) => {
+const Comment = ({ by: author, id, parent, text, time, deleted, kids: commentIDs }) => {
+  
+  console.log(id, commentIDs);
+  
   if (deleted) {
     // Skipping deleted comments for now.
     // Not sure if replies do deleted comments are being kept
@@ -41,8 +49,17 @@ const Comment = ({ author, id, parent, text, time, deleted }) => {
       </Meta>
       
       <CommentBody dangerouslySetInnerHTML={{ __html: text }} />
+      
+      {commentIDs && commentIDs.length > 0 &&
+        commentIDs.map(id => <CommentContainer key={id} commentID={id} />)
+      }
     </CommentWrapper>
   );
 };
 
 export default Comment;
+
+
+// TODO: Some <pre> shit needs to be handled.
+//       See an example here https://news.ycombinator.com/item?id=16667036
+//       Limit width, overflow-x: auto

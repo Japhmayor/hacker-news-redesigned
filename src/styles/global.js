@@ -118,7 +118,6 @@ injectGlobal`
   // Look into other variations as well, e.g. if the second element(paragraph) is a list or whatever
   
   p {
-    margin-top: 1rem;
     margin-bottom: 1rem;
   }
   

@@ -9,28 +9,39 @@ import { spacing } from '../../styles/settings/spacing';
 import CommentContainer from '../../containers/CommentContainer';
 
 const CommentWrapper = styled.div`
-  margin-bottom: ${spacing(10)}; // TODO: Temporary
   font-size: ${fontSizeSmall};
+  margin-bottom: ${spacing(8)};
   
   & > & {
-    margin-left: 40px;
+    margin: ${spacing(5)} 0 0 ${spacing(5)};
   }
 `;
 
 const CommentBody = styled.div`
   margin-top: ${spacing(2)};
+  
+  // Comment text from API is HTML, and a weird one.
+  // This tweaks the spacing to ensure consistency.
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+  
+  p {
+    margin-top: ${spacing(3)};
+    margin-bottom: 0;
+  }
 `;
 
 const Comment = ({ by: author, id, parent, text, time, deleted, kids: commentIDs }) => {
-  
-  console.log(id, commentIDs);
-  
   if (deleted) {
-    // Skipping deleted comments for now.
-    // Not sure if replies do deleted comments are being kept
+    // Skipping deleted comments for now; not sure if replies to those are kept
     return null;
   }
   
+  // if (id === 16688013) {
+  //   console.log(text)
+  // }
+  //
   return (
     <CommentWrapper>
       <Meta>
@@ -63,3 +74,6 @@ export default Comment;
 // TODO: Some <pre> shit needs to be handled.
 //       See an example here https://news.ycombinator.com/item?id=16667036
 //       Limit width, overflow-x: auto
+
+// TODO: Comments can collapse. Collapsed comments are saved in localStorage.
+//       Older than X days comments should be removed from localStorage for performance reasons.

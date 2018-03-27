@@ -33,8 +33,8 @@ const Post = ({ id, title, url, text, score, by: author, time, descendants: comm
               : title }
           </PostTitle>
 
-          <Meta large> {/* TODO: Larger font size would be nice. Make optional via prop*/}
-            {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
+          <Meta comment>
+            {score &&
             <Score>+ {score}</Score>}
 
             {author &&

@@ -6,7 +6,7 @@ import EntryWrapper from './EntryWrapper';
 import EntryTitle from './EntryTitle';
 import EntryLink from './EntryLink';
 import EntryHostname from './EntryHostname';
-import EntryMeta from '../Meta/Meta';
+import Meta from '../Meta/Meta';
 import { Author, Score, Time } from '../Meta/MetaItem';
 import EntryUserLink from './EntryUserLink';
 import EntryCommentLink from './EntryCommentLink';
@@ -31,7 +31,7 @@ const Entry = ({ id, type, url, title, text, score, by: author, time, descendant
         }
       </EntryTitle>
       
-      <EntryMeta>
+      <Meta small>
         {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
         <Score>+ {score}</Score>}
         
@@ -57,7 +57,7 @@ const Entry = ({ id, type, url, title, text, score, by: author, time, descendant
           {commentCount}
         </EntryCommentLink>
         }
-      </EntryMeta>
+      </Meta>
     </EntryWrapper>
   );
 };

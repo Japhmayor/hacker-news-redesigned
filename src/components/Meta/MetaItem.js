@@ -28,4 +28,3 @@ export const Time = MetaItem.withComponent('time').extend`
   margin-right: ${spacing(2)};
 `;
 
-

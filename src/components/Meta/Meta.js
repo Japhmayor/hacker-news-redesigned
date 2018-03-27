@@ -6,7 +6,7 @@ import { colors } from '../../styles/settings/colors';
 const Meta = styled.div`
   display: flex;
   align-items: flex-start;
-  font-size: ${props => props.large ? fontSizeSmall : fontSizeExtraSmall};
+  font-size: ${props => props.small ? fontSizeExtraSmall: fontSizeSmall };
   line-height: ${spacing(5)};
   color: ${colors.neutral['40']};
 `;

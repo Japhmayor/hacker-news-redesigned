@@ -20,6 +20,8 @@ import {
   h4FontSize, h4FontWeight,
   h5FontSize, h5FontWeight,
 } from './settings/typography';
+import { spacing } from './settings/spacing';
+import { colors } from './settings/colors';
 
 injectGlobal`
 
@@ -119,6 +121,14 @@ injectGlobal`
   
   p {
     margin-bottom: 1rem;
+  }
+  
+  blockquote {
+    margin-left: 0;
+    padding-left: ${spacing(2)};
+    font-style: italic;
+    color: ${colors.neutral[30]};
+    border-left: 2px solid ${colors.neutral[60]};
   }
   
   

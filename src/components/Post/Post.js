@@ -33,7 +33,7 @@ const Post = ({ id, title, url, text, score, by: author, time, descendants: comm
               : title }
           </PostTitle>
 
-          <Meta comment>
+          <Meta>
             {score &&
             <Score>+ {score}</Score>}
 

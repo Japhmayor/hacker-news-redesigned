@@ -7,13 +7,14 @@ import EntryUserLink from '../Entry/EntryUserLink';
 import Meta from '../Meta/Meta';
 import { spacing } from '../../styles/settings/spacing';
 import CommentContainer from '../../containers/CommentContainer';
+import { blockquotify } from '../../utils/utils.string';
 
 const CommentWrapper = styled.div`
   font-size: ${fontSizeSmall};
   margin-bottom: ${spacing(8)};
   
   & > & {
-    margin: ${spacing(5)} 0 0 ${spacing(5)};
+    margin: ${spacing(5)} 0 0 ${spacing(6)};
   }
 `;
 
@@ -26,10 +27,14 @@ const CommentBody = styled.div`
     margin-bottom: 0;
   }
   
-  p {
+  p, blockquote, pre {
     margin-top: ${spacing(3)};
     margin-bottom: 0;
   }
+  
+  // blockquote:not(:first-child) {
+  //   margin-top: ${spacing(6)};
+  // }
 `;
 
 const Comment = ({ by: author, id, parent, text, time, deleted, kids: commentIDs }) => {
@@ -38,13 +43,11 @@ const Comment = ({ by: author, id, parent, text, time, deleted, kids: commentIDs
     return null;
   }
   
-  // if (id === 16688013) {
-  //   console.log(text)
-  // }
-  //
+  text = blockquotify(text); // TODO: Temporary. Serve text "blockquotified" from GraphQL
+  
   return (
     <CommentWrapper>
-      <Meta>
+      <Meta comment>
         {author &&
         <Author>
            <EntryUserLink href={`/${author}`}>{author}</EntryUserLink>

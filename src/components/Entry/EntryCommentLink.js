@@ -12,7 +12,7 @@ const EntryCommentLink = styled(RouterLink)`
   position: relative;
   margin: -8px 0 -8px auto; // [1]
   padding: 8px 0; // [1]
-  color: ${colors.neutral['30']};
+  color: ${colors.neutral['40']};
   text-decoration: none;
   white-space: nowrap;
   transition: 0.2s ease-in-out;
@@ -29,7 +29,7 @@ const EntryCommentLink = styled(RouterLink)`
 
   &:hover {
     opacity: 0.85;
-    color: ${colors.neutral['40']};
+    color: ${colors.neutral['50']};
   }
 
   &:active {

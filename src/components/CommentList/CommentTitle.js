@@ -5,7 +5,7 @@ import { spacing } from '../../styles/settings/spacing';
 const CommentsTitle = styled.h2`
   margin-bottom: ${spacing(8)};
   padding-bottom: ${spacing(3)};
-  border-bottom: 1px solid ${colors.neutral['70']};
+  border-bottom: 1px solid ${colors.neutral['80']};
 `;
 
 

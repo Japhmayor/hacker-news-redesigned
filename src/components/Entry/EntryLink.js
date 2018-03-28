@@ -9,7 +9,7 @@ const EntryLink = styled(Link)`
   transition: all 0.1s ease-in-out;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.85;
   }
 
   &:active {

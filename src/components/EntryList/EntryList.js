@@ -14,7 +14,6 @@ const EntryList = ({ entries, entryCount, feed, page, loading, someProp}) => {
   }
   
   const currentPage = parseInt(page, 10);
-  
   const pageCount = Math.ceil(
     entryCount / ENTRIES_PER_PAGE
   );

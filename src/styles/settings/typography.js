@@ -20,7 +20,7 @@ export const fontFamilyBase = `${fontFamily}, ${fontFamilyNative}`;
 // Font sizes
 //
 
-export const fontSizeExtraSmall = '14px';
+export const fontSizeExtraSmall = '15px';
 export const fontSizeSmall      = '16px';
 export const fontSizeBase       = '18px';
 export const fontSizeLarge      = '20px';
@@ -56,7 +56,7 @@ export const fontWeightBase = fontWeightNormal;
 //
 
 export const bodyColor = colors.neutral['20'];
-export const bodyBackground = colors.neutral['90'];
+export const bodyBackground = colors.neutral['110'];
 
 
 //

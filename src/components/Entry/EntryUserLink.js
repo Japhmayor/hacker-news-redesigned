@@ -6,13 +6,12 @@ import { fontWeightMedium, fontWeightNormal } from '../../styles/settings/typogr
 
 const EntryUserLink = styled.a`
   transition: opacity 0.1s ease-in-out;
-  color: ${({comment}) => comment ? '#2675a7' :  colors.neutral['30']}; // [1]
+  color: ${({comment}) => comment ? '#2675a7' :  colors.neutral['40']}; // [1]
   font-weight: ${({comment}) => comment ? fontWeightMedium :  fontWeightNormal}; // [1]
   text-decoration: ${({comment}) => comment ? 'none' :  'underline'}; // [1]
   
-  
   &:hover {
-    opacity: 0.85;
+    opacity: 0.8;
   }
   
   &:active {

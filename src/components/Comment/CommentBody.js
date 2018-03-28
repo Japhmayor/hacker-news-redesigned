@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { spacing } from '../../styles/settings/spacing';
+import { colors } from '../../styles/settings/colors';
 
 const CommentBody = styled.div`
   margin-top: 6px;
@@ -18,6 +19,10 @@ const CommentBody = styled.div`
   // blockquote:not(:first-child) {
   //   margin-top: ${spacing(6)};
   // }
+  
+  a {
+    color: ${colors.neutral['20']};
+  }
 `;
 
 export default CommentBody;

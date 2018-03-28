@@ -80,3 +80,9 @@ export default Comment;
 
 // TODO: Comments can collapse. Collapsed comments are saved in localStorage.
 //       Older than X days comments should be removed from localStorage for performance reasons.
+
+// TODO: Don't load collapsed comments
+
+// TODO: Collapse ridiculous amount of threads, perhaps those that are way below the fold.
+
+// TODO: Would be kinda nice to parse links into titles or something, but not sure how and how costly it is.

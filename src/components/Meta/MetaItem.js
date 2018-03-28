@@ -1,7 +1,11 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import { spacing } from '../../styles/settings/spacing';
 import { colors } from '../../styles/settings/colors';
 import { fontWeightSemibold } from '../../styles/settings/typography';
+import React from 'react';
+import * as timeUtils from '../../utils/utils.time';
 
 export const MetaItem = styled.span`
   white-space: nowrap;
@@ -23,8 +27,4 @@ export const Author = styled(MetaItem)`
   text-overflow: ellipsis;
 `;
 
-// TODO: Time should be a link to the post/comment
-export const Time = MetaItem.withComponent('time').extend`
-  margin-right: ${spacing(2)};
-`;
 

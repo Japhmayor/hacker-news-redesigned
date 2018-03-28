@@ -7,9 +7,10 @@ import EntryTitle from './EntryTitle';
 import EntryLink from './EntryLink';
 import EntryHostname from './EntryHostname';
 import Meta from '../Meta/Meta';
-import { Author, Score, Time } from '../Meta/MetaItem';
+import { Author, Score } from '../Meta/MetaItem';
 import EntryUserLink from './EntryUserLink';
 import EntryCommentLink from './EntryCommentLink';
+import Time from '../Time';
 
 const Entry = ({ id, type, url, title, text, score, by: author, time, descendants: commentCount }) => {
   const isJob = (type === 'job');
@@ -37,17 +38,14 @@ const Entry = ({ id, type, url, title, text, score, by: author, time, descendant
         
         {!isJob && author &&
         <Author>
-          by <EntryUserLink href={`/${author}`}>{author}</EntryUserLink>
+          by <EntryUserLink href={`/user/${author}`}>{author}</EntryUserLink>
         </Author>
         }
         
-        {/* TODO: Sometimes Time is the only way to access entry's page (when no comments), consider making a link */}
         <Time
-          dateTime={timeUtils.getISOTime(time)}
-          title={timeUtils.getExactTime(time)}
-        >
-          {timeUtils.getTimePassed(time)}
-        </Time>
+          to={`/post/${id}`}
+          time={time}
+        />
         
         {!!commentCount &&
         <EntryCommentLink

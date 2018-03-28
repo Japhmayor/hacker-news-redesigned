@@ -6,9 +6,10 @@ import CommentContainer from '../../containers/CommentContainer';
 import CommentWrapper from './CommentWrapper';
 import Meta from '../Meta/Meta';
 import EntryUserLink from '../Entry/EntryUserLink';
-import { Author, Time } from '../Meta/MetaItem';
+import { Author, MetaItem } from '../Meta/MetaItem';
 
 import CommentBody from './CommentBody';
+import Time from '../Time';
 
 
 
@@ -26,18 +27,16 @@ const Comment = ({ by: author, id, parent, text, time, deleted, kids: commentIDs
       <Meta>
         {author &&
         <Author>
-           <EntryUserLink href={`/${author}`} comment>
+           <EntryUserLink href={`/user/${author}`} comment>
              {author}
            </EntryUserLink>
         </Author>
         }
-    
+  
         <Time
-          dateTime={timeUtils.getISOTime(time)}
-          title={timeUtils.getExactTime(time)}
-        >
-          {timeUtils.getTimePassed(time)}
-        </Time>
+          to={`/comment/${id}`}
+          time={time}
+        />
       </Meta>
       
       <CommentBody dangerouslySetInnerHTML={{ __html: text }} />

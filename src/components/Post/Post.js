@@ -4,10 +4,11 @@ import * as timeUtils from '../../utils/utils.time';
 import getHostName from '../../utils/getHostname';
 
 import Meta from '../Meta/Meta';
-import { Author, Score, Time } from '../Meta/MetaItem';
+import { Author, Score } from '../Meta/MetaItem';
 import EntryUserLink from '../Entry/EntryUserLink';
 import EntryLink from '../Entry/EntryLink';
 import EntryHostname from '../Entry/EntryHostname';
+import Time from '../Time';
 
 import PostBody from './PostBody';
 import PostTitle from './PostTitle';
@@ -39,16 +40,14 @@ const Post = ({ id, title, url, text, score, by: author, time, descendants: comm
 
             {author &&
             <Author>
-              by <EntryUserLink href={`/${author}`}>{author}</EntryUserLink>
+              by <EntryUserLink href={`/user/${author}`}>{author}</EntryUserLink>
             </Author>
             }
-
+  
             <Time
-              dateTime={timeUtils.getISOTime(time)}
-              title={timeUtils.getExactTime(time)}
-            >
-              {timeUtils.getTimePassed(time)}
-            </Time>
+              to={`/post/${id}`}
+              time={time}
+            />
           </Meta>
 
         </PostHeader>

@@ -65,6 +65,5 @@ const Post = ({ id, title, url, text, score, by: author, time, descendants: comm
 
 export default Post;
 
-// TODO: No way of recognizing and rendering a poll https://news.ycombinator.com/item?id=2595605
 // TODO: Add a plecholder
 // TODO: Need to recognize and rendering a poll https://news.ycombinator.com/item?id=2595605

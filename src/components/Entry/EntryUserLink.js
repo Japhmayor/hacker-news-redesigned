@@ -1,16 +1,22 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/settings/colors';
+import { fontWeightMedium, fontWeightNormal } from '../../styles/settings/typography';
+
+// 1. FML
 
 const EntryUserLink = styled.a`
-  color: ${colors.neutral['30']};
-  transition: color 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
+  color: ${({comment}) => comment ? '#2675a7' :  colors.neutral['30']}; // [1]
+  font-weight: ${({comment}) => comment ? fontWeightMedium :  fontWeightNormal}; // [1]
+  text-decoration: ${({comment}) => comment ? 'none' :  'underline'}; // [1]
+  
   
   &:hover {
-    color: ${colors.neutral['40']};
+    opacity: 0.85;
   }
   
   &:active {
-    color: ${colors.neutral['50']};
+    opacity: 0.7;
   }
 `;
 

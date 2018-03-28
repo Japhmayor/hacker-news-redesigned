@@ -52,15 +52,22 @@ const Comment = ({ by: author, id, parent, text, time, deleted, kids: commentIDs
 export default Comment;
 
 
+
 // TODO: Some <pre> shit needs to be handled.
 //       See an example here https://news.ycombinator.com/item?id=16667036
 //       Limit width, overflow-x: auto
 
-// TODO: Comments can collapse. Collapsed comments are saved in localStorage.
+// TODO: Placeholders
+
+// TODO: Comments should be collapsible. Collapsed comments are saved in localStorage.
 //       Older than X days comments should be removed from localStorage for performance reasons.
+
+// TODO: Comments have their own page (similar to post)
 
 // TODO: Don't load collapsed comments
 
 // TODO: Collapse ridiculous amount of threads, perhaps those that are way below the fold.
+
+// TODO: Avoid rendering more than 5-7 replies per thread, instead link to the comment (now that comments have pages;)
 
 // TODO: Would be kinda nice to parse links into titles or something, but not sure how and how costly it is.

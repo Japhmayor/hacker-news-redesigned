@@ -131,6 +131,10 @@ injectGlobal`
     border-left: 2px solid ${colors.neutral[60]};
   }
   
+  a {
+    color: ${colors.neutral[10]};;
+  }
+  
   
   //
   // Lists

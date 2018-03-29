@@ -13,10 +13,11 @@ import PostBody from './PostBody';
 import PostTitle from './PostTitle';
 import PostHeader from './PostHeader';
 import CommentList from '../CommentList/CommentList';
+import CommentsEmptyState from '../CommentList/CommentsEmptyState';
 
-
-const Post = ({ id, title, url, text, score, by: author, time, descendants: commentCount, kids: comments }) => {
+const Post = ({ id, url, title, text, score, by: author, time, descendants: commentCount, kids: comments }) => {
   const isLink = typeof url !== 'undefined';
+  
   
   return (
     <Fragment>
@@ -51,12 +52,15 @@ const Post = ({ id, title, url, text, score, by: author, time, descendants: comm
           </Meta>
 
         </PostHeader>
-
+        
+        {text &&
         <PostBody dangerouslySetInnerHTML={{ __html: text }} />
+        }
       </article>
 
-      {commentCount > 0 &&
-        <CommentList commentIDs={comments} commentCount={commentCount}/>
+      {commentCount > 0
+        ? <CommentList commentIDs={comments} commentCount={commentCount}/>
+        : <CommentsEmptyState>No one commented yet</CommentsEmptyState>
       }
     </Fragment>
   );

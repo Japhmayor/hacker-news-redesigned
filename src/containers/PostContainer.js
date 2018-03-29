@@ -17,7 +17,12 @@ class PostContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // TODO: Probably need this when post links to another post
+    const currentID = this.props.match.params.id;
+    const prevID = prevProps.match.params.id;
+    
+    if (prevID !== currentID) {
+      this.update();
+    }
   }
   
   update = async () => { // TODO: Not a great name for this function. Rethink.

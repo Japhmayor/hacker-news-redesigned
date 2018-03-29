@@ -14,9 +14,9 @@ import PostTitle from './PostTitle';
 import PostHeader from './PostHeader';
 import CommentList from '../CommentList/CommentList';
 
+
 const Post = ({ id, title, url, text, score, by: author, time, descendants: commentCount, kids: comments }) => {
   const isLink = typeof url !== 'undefined';
-  
   
   return (
     <Fragment>

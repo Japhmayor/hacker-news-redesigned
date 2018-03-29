@@ -1,21 +1,19 @@
 import React from 'react';
 import Post from '../components/Post/Post';
 import { getEntry } from '../HNApi';
-
-// Take a prop from router (id), fetch data, put to state, render Post
-
+import PostPlaceholder from '../components/Post/PostPlaceholder';
 
 class PostContainer extends React.Component {
   state = {
     post: null,
     loading: true,
-    error: false
+    error: false,
   };
-  
+
   componentDidMount() {
     this.update();
   }
-
+  
   componentDidUpdate(prevProps) {
     const currentID = this.props.match.params.id;
     const prevID = prevProps.match.params.id;
@@ -25,11 +23,11 @@ class PostContainer extends React.Component {
     }
   }
   
-  update = async () => { // TODO: Not a great name for this function. Rethink.
+  update = () => { // TODO: Not a great name for this function. Rethink.
     this.setState({
       loading: true
     });
-  
+    
     const id = this.props.match.params.id;
     
     getEntry(id)
@@ -38,12 +36,16 @@ class PostContainer extends React.Component {
           loading: false,
           post,
         });
+      })
+      .catch(error => {
+        this.setState({ error: true });
+        console.error(error)
       });
   };
-
+  
   render() {
     if (this.state.loading) {
-      return 'Loading';
+      return <PostPlaceholder/>
     }
     
     if (this.state.error) {
@@ -51,7 +53,7 @@ class PostContainer extends React.Component {
     }
     
     return (
-      <Post {...this.state.post}/>
+      <Post {...this.state.post} />
     )
   }
 }

@@ -16,12 +16,17 @@ const CommentBody = styled.div`
     margin-bottom: 0;
   }
   
-  // blockquote:not(:first-child) {
-  //   margin-top: ${spacing(6)};
-  // }
-  
   a {
     color: ${colors.neutral['20']};
+    transition: opacity 0.1s ease-in-out;
+    
+    &:hover { // TODO: Occureneces of this are all over the place and need to be refactored.
+      opacity: 0.85;
+    }
+    
+    &:active {
+      opacity: 0.7;
+    }
   }
 `;
 

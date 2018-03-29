@@ -1,9 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Post from '../components/Post/Post';
-import { getEntry } from '../HNApi';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
+import { getEntry } from '../HNApi';
 
 class PostContainer extends React.Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+      })
+    }).isRequired
+  };
+  
   state = {
     post: null,
     loading: true,
@@ -61,4 +70,3 @@ class PostContainer extends React.Component {
 export default PostContainer;
 
 // TODO: Generic error design.
-// TODO: PropTypes

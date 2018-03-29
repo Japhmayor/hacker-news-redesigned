@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import getHostName from '../../utils/getHostname';
 
@@ -64,6 +65,24 @@ const Post = ({ id, url, title, text, score, by: author, time, descendants: comm
       }
     </Fragment>
   );
+};
+
+
+// TODO: Change accordingly when switching to GraphQL
+//       id -> string
+//       by -> rename to author
+//       descendants -> rename to commentCount
+Post.propTypes = {
+  id: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  score: PropTypes.number.isRequired,
+  by: PropTypes.string,
+  time: PropTypes.number.isRequired,
+  descendants: PropTypes.number,
+  kids: PropTypes.array,
 };
 
 export default Post;

@@ -13,7 +13,7 @@ import getHostName from '../../utils/getHostname';
 
 const Entry = ({ id, type, url, title, text, score, by: author, time, descendants: commentCount }) => {
   const isJob = (type === 'job');
-  // Decide or not is an external link
+  // Decide if external link
   let isLink = typeof url !== 'undefined';
   url = isLink ? url : `/post/${id}`;
   

@@ -2,10 +2,10 @@ import React from 'react';
 import CommentsTitle from './CommentTitle';
 import CommentContainer from '../../containers/CommentContainer';
 
-const CommentList = ({ commentIDs }) => {
+const CommentList = ({ commentIDs, commentCount }) => {
   return (
     <div>
-      <CommentsTitle>Comments</CommentsTitle>
+      <CommentsTitle>{commentCount} Comments</CommentsTitle>
       
       {commentIDs.map(id =>
         <CommentContainer key={id} commentID={id} />)
@@ -16,4 +16,5 @@ const CommentList = ({ commentIDs }) => {
 
 export default CommentList;
 
+// TODO: Sorting dropdown (Top/Recent). See the sketch file
 // TODO: Need an empty state for when there's no comments. "No one commented yet"

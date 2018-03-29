@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 
-import * as timeUtils from '../../utils/utils.time';
 import getHostName from '../../utils/getHostname';
 
 import Meta from '../Meta/Meta';
@@ -17,7 +16,8 @@ import CommentList from '../CommentList/CommentList';
 
 const Post = ({ id, title, url, text, score, by: author, time, descendants: commentCount, kids: comments }) => {
   const isLink = typeof url !== 'undefined';
-
+  
+  
   return (
     <Fragment>
       <article>
@@ -56,7 +56,7 @@ const Post = ({ id, title, url, text, score, by: author, time, descendants: comm
       </article>
 
       {commentCount > 0 &&
-        <CommentList commentIDs={comments}/>
+        <CommentList commentIDs={comments} commentCount={commentCount}/>
       }
     </Fragment>
   );

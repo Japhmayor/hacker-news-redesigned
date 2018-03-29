@@ -1,12 +1,11 @@
 import React from 'react';
-import * as timeUtils from '../../utils/utils.time';
 import { blockquotify } from '../../utils/utils.string';
 
 import CommentContainer from '../../containers/CommentContainer';
 import CommentWrapper from './CommentWrapper';
 import Meta from '../Meta/Meta';
 import EntryUserLink from '../Entry/EntryUserLink';
-import { Author, MetaItem } from '../Meta/MetaItem';
+import { Author } from '../Meta/MetaItem';
 
 import CommentBody from './CommentBody';
 import Time from '../Time';

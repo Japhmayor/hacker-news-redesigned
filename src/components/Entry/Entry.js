@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as timeUtils from '../../utils/utils.time';
-import getHostName from '../../utils/getHostname';
 import EntryWrapper from './EntryWrapper';
 import EntryTitle from './EntryTitle';
 import EntryLink from './EntryLink';
@@ -11,6 +9,7 @@ import { Author, Score } from '../Meta/MetaItem';
 import EntryUserLink from './EntryUserLink';
 import EntryCommentLink from './EntryCommentLink';
 import Time from '../Time';
+import getHostName from '../../utils/getHostname';
 
 const Entry = ({ id, type, url, title, text, score, by: author, time, descendants: commentCount }) => {
   const isJob = (type === 'job');

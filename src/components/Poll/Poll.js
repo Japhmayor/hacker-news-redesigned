@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { spacing } from '../../styles/settings/spacing';
-import { PollOption } from './index';
+import PollOption from './PollOption';
+import PollWrapper from './PollWrapper';
+import PollTotal from './PollTotal';
 
 const Poll = ({ options }) => {
   const totalVotes = options.reduce((sum, option) => {
@@ -20,10 +21,10 @@ const Poll = ({ options }) => {
   });
   
   return (
-    <div style={{ maxWidth: 750, marginTop: spacing(10) }}>
+    <PollWrapper>
       {pollOptions}
-      <div style={{textAlign: 'right', marginTop: spacing(3)}}>{totalVotes} votes</div>
-    </div>
+      <PollTotal>{totalVotes} votes</PollTotal>
+    </PollWrapper>
   );
 };
 

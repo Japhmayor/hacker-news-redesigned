@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getEntry } from '../HNApi';
 import { Poll } from '../components/Poll';
+import PollPlaceholder from '../components/Poll/PollPlaceholder';
+import Repeat from '../components/Repeat';
 
 class PollContainer extends React.Component {
   static propTypes = {
@@ -33,11 +35,14 @@ class PollContainer extends React.Component {
   
   render() {
     if (this.state.loading) {
-      return 'Loading polls'
+      return (
+      <Repeat times={this.props.pollIDs.length}>
+        <PollPlaceholder/>
+      </Repeat>)
     }
     
     if (this.state.error) {
-      return 'Uh oh, no polls for today.'
+      return ('Uh oh, no polls for today.')
     }
     
     return <Poll options={this.state.pollOptions} />

@@ -11,10 +11,8 @@ import CommentBody from './CommentBody';
 import Time from '../Time';
 
 
-
-
-const Comment = ({ by: author, id, parent, text, time, deleted, kids: commentIDs }) => {
-  if (deleted) {
+const Comment = ({ by: author, id, parent, text, time, deleted, dead, kids: commentIDs }) => {
+  if (deleted || dead) {
     // Skipping deleted comments for now; not sure if replies to those are kept
     return null;
   }
@@ -69,3 +67,13 @@ export default Comment;
 // TODO: Avoid rendering more than 5-7 replies per thread, instead link to the comment (now that comments have pages;)
 
 // TODO: Would be kinda nice to parse links into titles or something, but not sure how and how costly it is.
+
+
+// Below actions should ideally be performed on server as a single step, so the client gets clean parsed markup
+
+// TODO: Detect internal links and swap/remove the domain so it links into this app. (only item and author)
+
+// TODO: Replace <i> with <em>
+
+// TODO: blockquotify
+

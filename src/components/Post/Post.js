@@ -10,13 +10,14 @@ import EntryLink from '../Entry/EntryLink';
 import EntryHostname from '../Entry/EntryHostname';
 import Time from '../Time';
 
-import PostBody from './PostBody';
-import PostTitle from './PostTitle';
 import PostHeader from './PostHeader';
+import PostTitle from './PostTitle';
+import PostBody from './PostBody';
 import CommentList from '../CommentList/CommentList';
 import CommentsEmptyState from '../CommentList/CommentsEmptyState';
+import PollContainer from '../../containers/PollContainer';
 
-const Post = ({ id, url, title, text, score, by: author, time, descendants: commentCount, kids: comments }) => {
+const Post = ({ id, type, url, title, text, score, by: author, time, parts, descendants: commentCount, kids: comments }) => {
   const isLink = typeof url !== 'undefined';
   
   
@@ -24,43 +25,47 @@ const Post = ({ id, url, title, text, score, by: author, time, descendants: comm
     <Fragment>
       <article>
         <PostHeader>
-
+          
           <PostTitle>
             {isLink ? (
-              <Fragment>
-                <EntryLink title={title} href={url} external={isLink} />
-
-                <EntryHostname>({getHostName(url)})</EntryHostname>
-              </Fragment> )
-
-              : title }
+                <Fragment>
+                  <EntryLink title={title} href={url} external={isLink} />
+                  
+                  <EntryHostname>({getHostName(url)})</EntryHostname>
+                </Fragment>)
+              
+              : title}
           </PostTitle>
-
+          
           <Meta>
             {score &&
             <Score>+ {score}</Score>}
-
+            
             {author &&
             <Author>
               by <EntryUserLink href={`/user/${author}`}>{author}</EntryUserLink>
             </Author>
             }
-  
+            
             <Time
               to={`/post/${id}`}
               time={time}
             />
           </Meta>
-
+        
         </PostHeader>
         
         {text &&
         <PostBody dangerouslySetInnerHTML={{ __html: text }} />
         }
+        
+        {type === 'poll' && parts && parts.length > 0 &&
+        <PollContainer pollIDs={parts}/>
+        }
       </article>
-
+      
       {commentCount > 0
-        ? <CommentList commentIDs={comments} commentCount={commentCount}/>
+        ? <CommentList commentIDs={comments} commentCount={commentCount} />
         : <CommentsEmptyState>No one commented yet</CommentsEmptyState>
       }
     </Fragment>
@@ -81,11 +86,9 @@ Post.propTypes = {
   score: PropTypes.number.isRequired,
   by: PropTypes.string,
   time: PropTypes.number.isRequired,
+  parts: PropTypes.array,
   descendants: PropTypes.number,
   kids: PropTypes.array,
 };
 
 export default Post;
-
-// TODO: Add a plecholder
-// TODO: Need to recognize and rendering a poll https://news.ycombinator.com/item?id=2595605

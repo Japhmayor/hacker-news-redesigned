@@ -4,15 +4,9 @@ import Entry from '../Entry/index';
 import { DirectionalNav } from '../DirectionalNav/';
 import { NextLink, PrevLink } from '../DirectionalNav';
 import { ENTRIES_PER_PAGE } from '../../constants';
-import EntryPlaceholder from '../Entry/EntryPlaceholder';
 
-const EntryList = ({ entries, entryCount, feed, page, loading, someProp}) => {
-  if (loading) {
-    return Array(ENTRIES_PER_PAGE).fill(1).map((x, i) =>
-      <EntryPlaceholder key={i} />
-    );
-  }
-  
+
+const EntryList = ({ entries, entryCount, feed, page, someProp}) => {
   const currentPage = parseInt(page, 10);
   const pageCount = Math.ceil(
     entryCount / ENTRIES_PER_PAGE

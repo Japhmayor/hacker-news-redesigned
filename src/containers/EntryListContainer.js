@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EntryList from '../components/EntryList'
 import { getFeed } from '../HNApi';
+import { ENTRIES_PER_PAGE } from '../constants';
+import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
 
 class EntryListContainer extends React.Component {
   state = {
@@ -50,16 +52,20 @@ class EntryListContainer extends React.Component {
     if (this.state.error) {
       return <div>Something went wrong. Please try again/*TODO: Link/Button?*/</div>
     }
-    
-    else {
-      return <EntryList
-        entries={this.state.entries}
-        entryCount={this.state.entryCount}
-        page={this.props.match.params.page}
-        feed={this.props.match.params.feed}
-        loading={this.state.loading}
-      />
+  
+    if (this.state.loading) {
+      return Array(ENTRIES_PER_PAGE).fill(1).map((x, i) =>
+        <EntryPlaceholder key={i} />
+      );
     }
+    
+    return <EntryList
+      entries={this.state.entries}
+      entryCount={this.state.entryCount}
+      page={this.props.match.params.page}
+      feed={this.props.match.params.feed}
+      loading={this.state.loading}
+    />
   }
 }
 

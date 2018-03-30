@@ -40,6 +40,4 @@ class CommentContainer extends React.Component {
   }
 }
 
-
-
 export default CommentContainer;

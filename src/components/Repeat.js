@@ -7,8 +7,6 @@ const Repeat = ({ times, children }) => {
     items.push(children)
   }
   
-  console.log(children);
-  
   return items;
 };
 

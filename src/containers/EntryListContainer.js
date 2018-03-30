@@ -4,13 +4,14 @@ import EntryList from '../components/EntryList'
 import { getFeed } from '../HNApi';
 import { ENTRIES_PER_PAGE } from '../constants';
 import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
+import Repeat from '../components/Repeat';
 
 class EntryListContainer extends React.Component {
   state = {
     entries: [],
     error: false,
     loading: true,
-    entryCount: 0
+    entryCount: 0,
   };
   
   componentDidMount() {
@@ -22,15 +23,15 @@ class EntryListContainer extends React.Component {
     const { feed: prevFeed = 'top', page: prevPage = '1' } = prevProps.match.params;
     
     if (feed !== prevFeed || page !== prevPage) {
+      this.setState({
+        loading: true
+      });
+  
       this.update();
     }
   }
   
   update = () => { // TODO: Not a great name for this function. Rethink.
-    this.setState({
-      loading: true
-    });
-    
     const { feed = 'top', page = '1' } = this.props.match.params;
     
     getFeed(feed, page)
@@ -54,8 +55,10 @@ class EntryListContainer extends React.Component {
     }
   
     if (this.state.loading) {
-      return Array(ENTRIES_PER_PAGE).fill(1).map((x, i) =>
-        <EntryPlaceholder key={i} />
+      return (
+        <Repeat times={ENTRIES_PER_PAGE}>
+          <EntryPlaceholder/>
+        </Repeat>
       );
     }
     

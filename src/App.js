@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './styles/global'
 import Header from './components/Header/';
+import ScrollToTop from './components/ScrollToTop';
 import Main from './components/Main';
 import EntryListContainer from './containers/EntryListContainer';
-import ScrollToTop from './components/ScrollToTop';
 import PostContainer from './containers/PostContainer';
 import CommentPage from './components/CommentPage/CommentPage';
 

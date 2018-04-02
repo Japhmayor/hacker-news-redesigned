@@ -3,7 +3,7 @@
 * Global styles
 *
 */
-
+import 'modern-normalize/modern-normalize.css';
 
 import { injectGlobal } from 'styled-components';
 import {

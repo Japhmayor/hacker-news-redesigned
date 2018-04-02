@@ -12,3 +12,5 @@ ReactDOM.render(
 // if (module.hot) {
 //   module.hot.accept();
 // }
+
+/* TODO: Replace this piece of shit styled components with something sane */

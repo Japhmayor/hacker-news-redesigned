@@ -39,3 +39,4 @@ export default App;
 // http://almerosteyn.com/2017/03/accessible-react-navigation
 // https://simplyaccessible.com/article/react-a11y/
 
+// TODO: Shouldn't silently fail when API is not available

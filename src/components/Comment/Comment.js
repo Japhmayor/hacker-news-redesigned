@@ -12,8 +12,9 @@ import Time from '../Time';
 
 
 const Comment = ({ by: author, id, parent, text, time, deleted, dead, kids: commentIDs }) => {
-  if (deleted || dead) {
+  if (deleted || dead || !text) {
     // Skipping deleted comments for now; not sure if replies to those are kept
+    // TODO: Rarely some comments come without text, these should be filtered in GraphQL
     return null;
   }
   

@@ -16,7 +16,7 @@ class App extends Component {
           <Header />
           <Main role="main">
             <Switch>
-              <Route path="/:feed(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={EntryListContainer} exact/>
+              <Route path="/:feedName(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={EntryListContainer} exact/>
               <Route path="/post/:id(\d+)" component={PostContainer} />
               <Route path="/comment/:id(\d+)" component={CommentPage} />
               <Route  render={() => <div>404 muthafucka</div>} />

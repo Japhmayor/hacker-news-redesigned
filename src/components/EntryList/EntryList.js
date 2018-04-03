@@ -6,8 +6,7 @@ import { NextLink, PrevLink } from '../DirectionalNav';
 import { ENTRIES_PER_PAGE } from '../../constants';
 
 
-const EntryList = ({ entries, entryCount, feed, page, someProp}) => {
-  const currentPage = parseInt(page, 10);
+const EntryList = ({ entries, entryCount, feed, page }) => {
   const pageCount = Math.ceil(
     entryCount / ENTRIES_PER_PAGE
   );
@@ -15,8 +14,8 @@ const EntryList = ({ entries, entryCount, feed, page, someProp}) => {
   // Make sure top feed is just homepage: i.e. top -> "/", top page 2 -> "/2"
   const baseUrl = feed !== 'top' ? `/${feed}` : '';
   // Don't render add "/1" to the path
-  const prevUrl = (currentPage === 2) ? baseUrl : `${baseUrl}/${currentPage - 1}`;
-  const nextUrl = `${baseUrl}/${currentPage + 1}`;
+  const prevUrl = (page === 2) ? baseUrl : `${baseUrl}/${page - 1}`;
+  const nextUrl = `${baseUrl}/${page + 1}`;
   
   return (
     <Fragment>
@@ -26,14 +25,14 @@ const EntryList = ({ entries, entryCount, feed, page, someProp}) => {
       
       {entryCount > ENTRIES_PER_PAGE &&
         <DirectionalNav>
-          {currentPage > 1 &&
+          {page > 1 &&
             <PrevLink
               to={prevUrl}>
               Previous
             </PrevLink>
           }
           
-          {currentPage < pageCount &&
+          {page < pageCount &&
             <NextLink
               to={nextUrl}>
               Next
@@ -53,8 +52,7 @@ EntryList.defaultProps = {
 EntryList.propTypes = {
   entries: PropTypes.array.isRequired,
   entryCount: PropTypes.number.isRequired,
-  loading: PropTypes.bool.isRequired,
-  page: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 export default EntryList;

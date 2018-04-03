@@ -11,10 +11,10 @@ import EntryCommentLink from './EntryCommentLink';
 import Time from '../Time';
 import getHostName from '../../utils/getHostname';
 
-const Entry = ({ id, type, url, title, text, score, by: author, time, descendants: commentCount }) => {
+const Entry = ({ id, type, url, title, text, score, author, time, commentCount }) => {
   const isJob = (type === 'job');
   // Decide if external link
-  let isLink = typeof url !== 'undefined';
+  let isLink = (url !== null);
   url = isLink ? url : `/post/${id}`;
   
   return (
@@ -59,19 +59,15 @@ const Entry = ({ id, type, url, title, text, score, by: author, time, descendant
   );
 };
 
-// TODO: Change accordingly when switching to GraphQL
-//       id -> string
-//       by -> rename to author
-//       descendants -> rename to commentCount
 Entry.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   url: PropTypes.string,
   title: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
-  by: PropTypes.string,
+  author: PropTypes.string,
   time: PropTypes.number.isRequired,
-  descendants: PropTypes.number,
+  commentCount: PropTypes.number,
 };
 
 export default Entry;

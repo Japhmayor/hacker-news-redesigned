@@ -60,7 +60,6 @@ export function getEntry(id) {
 function fetch(path) {
   return new Promise((resolve, reject) => {
     api.child(path).on('value', function(snapshot) {
-      console.log(snapshot.val());
       resolve(snapshot.val());
     }, reject);
   });

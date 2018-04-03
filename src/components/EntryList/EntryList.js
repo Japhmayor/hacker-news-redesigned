@@ -14,12 +14,17 @@ const EntryList = ({ entries, entryCount, feed, page }) => {
   // Make sure top feed is just homepage: i.e. top -> "/", top page 2 -> "/2"
   const baseUrl = feed !== 'top' ? `/${feed}` : '';
   
-  // Don't add "/1" to the path
-  const prevUrl = (page === 2)
-    ? baseUrl
-    : `${baseUrl}/${page - 1}`;
-  
-  const nextUrl = `${baseUrl}/${page + 1}`;
+  // 1. Show "Previous" link starting from the second page
+  // 2. Don't display "Next" link on the last page
+  // 3. Display `:feedName/` instead of `:feedName/1` when on first page.
+  const dirNavProps = {
+    shown: entryCount > ENTRIES_PER_PAGE,
+    prevLinkShown: page > 1, //[1]
+    nextLinkShown: page < pageCount, // [2]
+    prevUrl: (page === 2) ? baseUrl : `${baseUrl}/${page - 1}`, // [3]
+    nextUrl: `${baseUrl}/${page + 1}`,
+    
+  };
   
   return (
     <Fragment>
@@ -27,23 +32,7 @@ const EntryList = ({ entries, entryCount, feed, page }) => {
         <Entry key={entry.id} {...entry} />
       ))}
       
-      {entryCount > ENTRIES_PER_PAGE &&
-        <DirectionalNav>
-          {page > 1 &&
-            <PrevLink
-              to={prevUrl}>
-              Previous
-            </PrevLink>
-          }
-          
-          {page < pageCount &&
-            <NextLink
-              to={nextUrl}>
-              Next
-            </NextLink>
-          }
-        </DirectionalNav>
-      }
+      <DirectionalNav {...dirNavProps} />
     </Fragment>
   );
 };

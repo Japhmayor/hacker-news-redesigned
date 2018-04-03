@@ -36,10 +36,11 @@ export const PrevLink = styled(DirectionalLink)`
 `;
 
 export const NextLink = styled(DirectionalLink)`
+  margin-left: auto;
+  
   &::after {
     background-image: url(${arrowIcon});
     transform: rotate(180deg);
     margin-left: ${spacing(2)};
   }
-  margin-left: auto;
 `;

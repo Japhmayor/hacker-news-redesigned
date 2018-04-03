@@ -4,7 +4,7 @@ import './styles/global'
 import Header from './components/Header/';
 import ScrollToTop from './components/ScrollToTop';
 import Main from './components/Main';
-import EntryListContainer from './containers/EntryListContainer';
+import FeedContainer from './containers/FeedContainer';
 import PostContainer from './containers/PostContainer';
 import CommentPage from './components/CommentPage/CommentPage';
 
@@ -16,7 +16,7 @@ class App extends Component {
           <Header />
           <Main role="main">
             <Switch>
-              <Route path="/:feedName(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={EntryListContainer} exact/>
+              <Route path="/:feedName(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={FeedContainer} exact/>
               <Route path="/post/:id(\d+)" component={PostContainer} />
               <Route path="/comment/:id(\d+)" component={CommentPage} />
               <Route  render={() => <div>404 muthafucka</div>} />

@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Entry from '../Entry/index';
+import Entry from '../Entry';
 import { DirectionalNav } from '../DirectionalNav/';
 import { NextLink, PrevLink } from '../DirectionalNav';
 import { ENTRIES_PER_PAGE } from '../../constants';
 
 
-const EntryList = ({ entries, entryCount, feedName, page }) => {
+const Feed = ({ entries, entryCount, feedName, page }) => {
   const pageCount = Math.ceil(
     entryCount / ENTRIES_PER_PAGE
   );
@@ -36,17 +36,17 @@ const EntryList = ({ entries, entryCount, feedName, page }) => {
   );
 };
 
-EntryList.defaultProps = {
+Feed.defaultProps = {
   page: '1',
   feedName: 'top',
 };
 
-EntryList.propTypes = {
+Feed.propTypes = {
   entries: PropTypes.array.isRequired,
   entryCount: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
 };
 
-export default EntryList;
+export default Feed;
 
-// TODO: Consider renaming EntryList -> Feed, Entry -> FeedItem
+// TODO: Consider renaming Feed -> Feed, Entry -> FeedItem

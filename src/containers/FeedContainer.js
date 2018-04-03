@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import EntryList from '../components/EntryList'
+import Feed from '../components/Feed'
 import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
 import Repeat from '../components/Repeat';
 import { ENTRIES_PER_PAGE } from '../constants';
@@ -26,7 +26,7 @@ const FeedQuery = gql`
   }
 `;
 
-const EntryListContainer = (props) => {
+const FeedContainer = (props) => {
   let { feedName = 'top', page = '1' } = props.match.params;
   
   // GraphQL and other components expect page to be a number, router passes a string.
@@ -49,7 +49,7 @@ const EntryListContainer = (props) => {
           
           if (error) return <div>Something went wrong. Please try again/*TODO: Link/Button?*/</div>;
   
-          return <EntryList
+          return <Feed
             entries={data.feed.posts}
             entryCount={data.feed.postCount}
             page={page}
@@ -61,7 +61,7 @@ const EntryListContainer = (props) => {
   );
 };
 
-EntryListContainer.propTypes = {
+FeedContainer.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       page: PropTypes.string,
@@ -70,6 +70,6 @@ EntryListContainer.propTypes = {
   }).isRequired
 };
 
-export default EntryListContainer;
+export default FeedContainer;
 
 // TODO: Rename this to FeedContainer for fuck's sake

@@ -6,13 +6,13 @@ import { NextLink, PrevLink } from '../DirectionalNav';
 import { ENTRIES_PER_PAGE } from '../../constants';
 
 
-const EntryList = ({ entries, entryCount, feed, page }) => {
+const EntryList = ({ entries, entryCount, feedName, page }) => {
   const pageCount = Math.ceil(
     entryCount / ENTRIES_PER_PAGE
   );
   
   // Make sure top feed is just homepage: i.e. top -> "/", top page 2 -> "/2"
-  const baseUrl = feed !== 'top' ? `/${feed}` : '';
+  const baseUrl = feedName !== 'top' ? `/${feedName}` : '';
   
   // 1. Show "Previous" link starting from the second page
   // 2. Don't display "Next" link on the last page
@@ -23,7 +23,6 @@ const EntryList = ({ entries, entryCount, feed, page }) => {
     nextLinkShown: page < pageCount, // [2]
     prevUrl: (page === 2) ? baseUrl : `${baseUrl}/${page - 1}`, // [3]
     nextUrl: `${baseUrl}/${page + 1}`,
-    
   };
   
   return (
@@ -39,7 +38,7 @@ const EntryList = ({ entries, entryCount, feed, page }) => {
 
 EntryList.defaultProps = {
   page: '1',
-  feed: 'top',
+  feedName: 'top',
 };
 
 EntryList.propTypes = {

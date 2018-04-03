@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import EntryList from '../components/EntryList'
-import { ENTRIES_PER_PAGE } from '../constants';
 import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
 import Repeat from '../components/Repeat';
+import { ENTRIES_PER_PAGE } from '../constants';
 
 const FeedQuery = gql`
   query FeedQuery($feedName: String!, $page: Int!, $limit: Int!) {
@@ -27,7 +27,10 @@ const FeedQuery = gql`
 `;
 
 const EntryListContainer = (props) => {
-  const { feedName = 'top', page = 1 } = props.match.params;
+  let { feedName = 'top', page = '1' } = props.match.params;
+  
+  // GraphQL and other components expect page to be a number, router passes a string.
+  page = parseInt(page, 10);
   
   return (
     <Query
@@ -44,13 +47,13 @@ const EntryListContainer = (props) => {
             );
           }
           
-          if (error) return <div>Something went wrong. Please try again/*TODO: Link/Button?*/</div>
+          if (error) return <div>Something went wrong. Please try again/*TODO: Link/Button?*/</div>;
   
           return <EntryList
             entries={data.feed.posts}
             entryCount={data.feed.postCount}
             page={page}
-            feed={feedName}
+            feedName={feedName}
           />
         }
       }

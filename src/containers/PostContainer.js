@@ -17,6 +17,14 @@ const PostQuery = gql`
       score
       time
       commentCount
+      poll {
+        totalVotes
+        options {
+          text
+          voteCount
+          percentage
+        }
+      }
     }
   }
 `;

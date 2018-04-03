@@ -9,15 +9,14 @@ import EntryUserLink from '../Entry/EntryUserLink';
 import EntryLink from '../Entry/EntryLink';
 import EntryHostname from '../Entry/EntryHostname';
 import Time from '../Time';
-
 import PostHeader from './PostHeader';
 import PostTitle from './PostTitle';
 import PostBody from './PostBody';
 import CommentList from '../CommentList/CommentList';
 import CommentsEmptyState from '../CommentList/CommentsEmptyState';
-import PollContainer from '../../containers/PollContainer';
+import { Poll } from '../Poll';
 
-const Post = ({ id, type, url, title, text, score, author, time, parts, commentCount }) => {
+const Post = ({ id, type, url, title, text, score, author, time, poll, commentCount }) => {
   const isLink = (url !== null);
   
   return (
@@ -58,8 +57,8 @@ const Post = ({ id, type, url, title, text, score, author, time, parts, commentC
         <PostBody dangerouslySetInnerHTML={{ __html: text }} />
         }
 
-        {type === 'poll' && parts && parts.length > 0 &&
-        <PollContainer pollIDs={parts}/>
+        {type === 'poll' && poll &&
+        <Poll {...poll}/>
         }
       </article>
 

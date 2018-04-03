@@ -13,8 +13,12 @@ const EntryList = ({ entries, entryCount, feed, page }) => {
   
   // Make sure top feed is just homepage: i.e. top -> "/", top page 2 -> "/2"
   const baseUrl = feed !== 'top' ? `/${feed}` : '';
-  // Don't render add "/1" to the path
-  const prevUrl = (page === 2) ? baseUrl : `${baseUrl}/${page - 1}`;
+  
+  // Don't add "/1" to the path
+  const prevUrl = (page === 2)
+    ? baseUrl
+    : `${baseUrl}/${page - 1}`;
+  
   const nextUrl = `${baseUrl}/${page + 1}`;
   
   return (

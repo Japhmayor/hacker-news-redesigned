@@ -29,6 +29,7 @@ const PostContainer = (props) => {
       {
         ({ data, loading, error }) => {
           if (loading) return <PostPlaceholder />;
+          
           if (error) return 'Failed loading the post. Please try again';
           
           return <Post {...data.post} />;

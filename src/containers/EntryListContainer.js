@@ -30,7 +30,10 @@ const EntryListContainer = (props) => {
   const { feedName = 'top', page = 1 } = props.match.params;
   
   return (
-    <Query query={FeedQuery} variables={{ feedName, page }}>
+    <Query
+      query={FeedQuery}
+      variables={{ feedName, page }}
+    >
       {
         ({ data, loading, error }) => {
           if (loading) {

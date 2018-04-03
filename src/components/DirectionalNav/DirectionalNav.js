@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NextLink, PrevLink } from './DirectionalLink';
-import { ENTRIES_PER_PAGE } from '../../constants';
 import { spacing } from '../../styles/settings/spacing';
 
 const DirectionalNavWrapper = styled.div`

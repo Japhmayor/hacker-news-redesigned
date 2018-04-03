@@ -36,6 +36,7 @@ const FeedContainer = (props) => {
     <Query
       query={FeedQuery}
       variables={{ feedName, page, limit: ENTRIES_PER_PAGE }}
+      fetchPolicy="network-only"
     >
       {
         ({ data, loading, error }) => {

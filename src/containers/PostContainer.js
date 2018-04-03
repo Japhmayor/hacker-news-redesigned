@@ -25,7 +25,11 @@ const PostContainer = (props) => {
   const id = props.match.params.id;
   
   return (
-    <Query query={PostQuery} variables={{ id }}>
+    <Query
+      query={PostQuery}
+      variables={{ id }}
+      fetchPolicy="network-only"
+    >
       {
         ({ data, loading, error }) => {
           if (loading) return <PostPlaceholder />;

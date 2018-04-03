@@ -19,4 +19,6 @@ ReactDOM.render(
 //   module.hot.accept();
 // }
 
-/* TODO: Replace this piece of shit styled components with something sane */
+// TODO: Replace this piece of shit styled components with something sane
+
+// TODO: Caching should be handled throughout the app, all requests are network-only atm

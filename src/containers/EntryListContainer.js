@@ -8,8 +8,8 @@ import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
 import Repeat from '../components/Repeat';
 
 const FeedQuery = gql`
-  query FeedQuery($feedName: String!, $page: Int!) {
-    feed(feedName: $feedName, page: $page) {
+  query FeedQuery($feedName: String!, $page: Int!, $limit: Int!) {
+    feed(feedName: $feedName, page: $page, limit: $limit) {
       postCount
       posts {
         id
@@ -32,7 +32,7 @@ const EntryListContainer = (props) => {
   return (
     <Query
       query={FeedQuery}
-      variables={{ feedName, page }}
+      variables={{ feedName, page, limit: ENTRIES_PER_PAGE }}
     >
       {
         ({ data, loading, error }) => {

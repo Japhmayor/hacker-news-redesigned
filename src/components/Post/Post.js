@@ -71,17 +71,25 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
 };
 
 Post.propTypes = {
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  url: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string,
-  score: PropTypes.number.isRequired,
-  author: PropTypes.string,
-  time: PropTypes.number.isRequired,
-  parts: PropTypes.array,
+  id:           PropTypes.string.isRequired,
+  type:         PropTypes.string.isRequired,
+  url:          PropTypes.string,
+  title:        PropTypes.string.isRequired,
+  text:         PropTypes.string,
+  score:        PropTypes.number.isRequired,
+  author:       PropTypes.string,
+  time:         PropTypes.number.isRequired,
+  poll:         PropTypes.shape({
+    totalVotes: PropTypes.number.isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+        voteCount: PropTypes.number,
+        percentage: PropTypes.number,
+      }).isRequired
+    ).isRequired,
+  }),
   commentCount: PropTypes.number,
-  kids: PropTypes.array,
 };
 
 export default Post;

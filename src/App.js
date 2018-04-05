@@ -6,7 +6,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Main from './components/Main';
 import FeedContainer from './containers/FeedContainer';
 import PostContainer from './containers/PostContainer';
-import CommentPage from './components/CommentPage/CommentPage';
+import CommentPageContainer from './containers/CommentPageContainer';
 
 class App extends Component {
   render() {
@@ -18,7 +18,7 @@ class App extends Component {
             <Switch>
               <Route path="/:feedName(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={FeedContainer} exact/>
               <Route path="/post/:id(\d+)" component={PostContainer} />
-              <Route path="/comment/:id(\d+)" component={CommentPage} />
+              <Route path="/comment/:id(\d+)" component={CommentPageContainer} />
               <Route  render={() => <div>404 muthafucka</div>} />
             </Switch>
           </Main>
@@ -40,4 +40,3 @@ export default App;
 // http://almerosteyn.com/2017/03/accessible-react-navigation
 // https://simplyaccessible.com/article/react-a11y/
 
-// TODO: Shouldn't silently fail when API is not available

@@ -16,7 +16,7 @@ import CommentList from '../CommentList/CommentList';
 import CommentsEmptyState from '../CommentList/CommentsEmptyState';
 import { Poll } from '../Poll';
 
-const Post = ({ id, type, url, title, text, score, author, time, poll, commentCount }) => {
+const Post = ({ id, type, url, title, text, score, author, time, poll, commentCount, commentIDs }) => {
   const isLink = (url !== null);
   
   return (
@@ -62,10 +62,13 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
         }
       </article>
 
-      {/*{commentCount > 0*/}
-        {/*? <CommentList commentIDs={comments} commentCount={commentCount} />*/}
-        {/*: <CommentsEmptyState>No one commented yet</CommentsEmptyState>*/}
-      {/*}*/}
+      {commentCount > 0
+        ? <CommentList
+          commentIDs={commentIDs}
+          commentCount={commentCount}
+        />
+        : <CommentsEmptyState>No one commented yet</CommentsEmptyState>
+      }
     </Fragment>
   );
 };

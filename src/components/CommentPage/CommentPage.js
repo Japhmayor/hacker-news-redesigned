@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import { rgba } from 'polished';
+import { fontSizeSmall, fontWeightMedium, h3FontSize } from '../../styles/settings/typography';
+import { colors } from '../../styles/settings/colors';
+import { spacing } from '../../styles/settings/spacing';
 
-const CommentPage = ({ id, title, text, score, by: author, time, kids: commentIDs }) => {
+
+const CommentPageTitle = styled.h1`
+  padding-bottom: ${spacing(4)};
+  border-bottom: 1px solid ${colors.neutral['90']};
+  font-size: ${h3FontSize};
+  color: ${rgba(colors.neutral['10'], 0.8)};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  small {
+    font-size: ${fontSizeSmall};
+    font-weight: ${fontWeightMedium};
+    color: ${colors.neutral['40']};
+    margin-right: 1ch;
+  }
+`;
+
+
+
+const CommentPage = ({ id, type, text, time, author, deleted, parentPostID, parentPostTitle }) => {
+  console.log(parentPostTitle);
+  
   return (
-    <div>
-      I'm a comment page!
-    </div>
+    <Fragment>
+      <CommentPageTitle>
+        <small>Comment thread in:</small>
+        {parentPostTitle}
+      </CommentPageTitle>
+    </Fragment>
   );
 };
 
 export default CommentPage;
 
-// TODO: Compare (hostnames only or agains empty string for referrer) and conditionally show Back button
-//     console.log(document.referrer);
-//     console.log(window.location.href);
+

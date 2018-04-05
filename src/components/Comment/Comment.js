@@ -76,5 +76,6 @@ export default Comment;
 
 // TODO: Replace <i> with <em>
 
-// TODO: blockquotify
+// TODO: Move blockquotify to GraphQL
 
+// TODO: 16756114 -> `snippet` to <code> would be really nice

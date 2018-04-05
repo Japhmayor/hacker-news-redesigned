@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import Post from '../components/Post/Post';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 
+// TODO: Remove commentIDs when done with comments
 const PostQuery = gql`
   query PostQuery($id: ID!) {
     post(id: $id) {
@@ -17,6 +18,7 @@ const PostQuery = gql`
       score
       time
       commentCount
+      commentIDs
       poll {
         totalVotes
         options {

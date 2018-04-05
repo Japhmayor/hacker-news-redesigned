@@ -15,6 +15,7 @@ const CommentQuery = gql`
       time
       author
       deleted
+      commentIDs
       parentPostID
       parentPostTitle
     }

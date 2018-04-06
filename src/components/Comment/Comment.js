@@ -1,7 +1,6 @@
 import React from 'react';
 import { blockquotify } from '../../utils/utils.string';
 
-import CommentContainer from '../../containers/CommentContainer';
 import CommentWrapper from './CommentWrapper';
 import Meta from '../Meta/Meta';
 import EntryUserLink from '../Entry/EntryUserLink';
@@ -11,10 +10,9 @@ import CommentBody from './CommentBody';
 import Time from '../Time';
 
 
-const Comment = ({ by: author, id, parent, text, time, deleted, dead, kids: commentIDs }) => {
-  if (deleted || dead || !text) {
-    // Skipping deleted comments for now; not sure if replies to those are kept
-    // TODO: Rarely some comments come without text, these should be filtered in GraphQL
+const Comment = ({ id, text, time, author, deleted, comments }) => {
+  if (deleted) {
+    // TODO: handle deleted comment rendering
     return null;
   }
   
@@ -38,9 +36,9 @@ const Comment = ({ by: author, id, parent, text, time, deleted, dead, kids: comm
       </Meta>
       
       <CommentBody dangerouslySetInnerHTML={{ __html: text }} />
-      
-      {commentIDs && commentIDs.length > 0 &&
-        commentIDs.map(id => <CommentContainer key={id} commentID={id} />)
+  
+      {comments && comments.length > 0 &&
+        comments.map(comment => <Comment key={comment.id} {...comment} />)
       }
     </CommentWrapper>
   );

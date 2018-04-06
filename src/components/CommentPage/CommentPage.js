@@ -4,10 +4,10 @@ import { rgba } from 'polished';
 import { fontSizeSmall, fontWeightMedium, h3FontSize } from '../../styles/settings/typography';
 import { colors } from '../../styles/settings/colors';
 import { spacing } from '../../styles/settings/spacing';
-import CommentContainer from '../../containers/CommentContainer';
+import Comment from '../Comment/Comment';
 
 
-const CommentPageTitle = styled.h1`
+const CommentPageTitle = styled.h1` // TODO: Move
   margin-bottom: ${spacing(8)};
   padding-bottom: ${spacing(4)};
   font-size: ${h3FontSize};
@@ -25,30 +25,20 @@ const CommentPageTitle = styled.h1`
   }
 `;
 
-const CommentPage =
-  ({
-     id,
-     type,
-     text,
-     time,
-     author,
-     deleted,
-     parentPostID,
-     parentPostTitle,
-   }) => {
+const CommentPage = (props) => {
     
     return (
       <Fragment>
-        <CommentPageTitle>
+        <CommentPageTitle> {/* TODO: Should be a link to the post.*/}
           <small>Comment thread in:</small>
-          {parentPostTitle}
+          {props.parentPostTitle}
         </CommentPageTitle>
   
-        <CommentContainer key={id} commentID={id} />
+        <Comment {...props} />
       </Fragment>
     );
   };
 
 export default CommentPage;
 
-
+// TODO: PropTypes

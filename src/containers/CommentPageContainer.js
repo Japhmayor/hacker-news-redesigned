@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
-import CommentContainer from './CommentContainer';
 import CommentPage from '../components/CommentPage/CommentPage';
 
 const CommentQuery = gql`
-  query PostQuery($id: ID!) {
+  query CommentQuery($id: ID!) {
     comment(id: $id) {
       id
       type
@@ -15,7 +13,6 @@ const CommentQuery = gql`
       time
       author
       deleted
-      commentIDs
       parentPostID
       parentPostTitle
     }
@@ -49,3 +46,5 @@ export default CommentPageContainer;
 // TODO: Compare (hostnames only or against empty string for referrer) and conditionally show Back button
 //     console.log(document.referrer);
 //     console.log(window.location.href);
+
+// TODO: PropTypes

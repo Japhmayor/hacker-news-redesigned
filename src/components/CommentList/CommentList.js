@@ -1,14 +1,16 @@
 import React from 'react';
 import CommentsTitle from './CommentTitle';
-import CommentContainer from '../../containers/CommentContainer';
+import Comment from '../Comment/Comment';
 
-const CommentList = ({ commentIDs, commentCount }) => {
+const CommentList = ({ comments, commentCount }) => {
+  console.log(comments);
+  
   return (
     <div>
       <CommentsTitle>{commentCount} Comments</CommentsTitle>
       
-      {commentIDs.map(id =>
-        <CommentContainer key={id} commentID={id} />)
+      {comments.map(comment =>
+        <Comment key={comment.id} {...comment} />)
       }
     </div>
   );

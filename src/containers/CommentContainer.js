@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getEntry } from '../HNApi';
 import Comment from '../components/Comment/Comment';
 
 class CommentContainer extends React.Component {
@@ -11,24 +10,6 @@ class CommentContainer extends React.Component {
   state = {
     comment: {},
     loading: true
-  };
-  
-  componentDidMount() {
-    this.update();
-  }
-  
-  update = () => {
-    this.setState({
-      loading: true
-    });
-    
-    getEntry(this.props.commentID)
-      .then(comment => {
-        this.setState({
-          comment,
-          loading: false,
-        });
-      });
   };
 
   render() {

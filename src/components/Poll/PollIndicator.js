@@ -10,7 +10,7 @@ const PollIndicator = styled.div`
   &::after {
     display: block;
     height: 100%;
-    width: ${({percentage}) => percentage}%;
+    width: ${({ percentage }) => percentage}%;
     background-color: #3897da;
     content: '';
   }

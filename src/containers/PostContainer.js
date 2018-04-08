@@ -79,7 +79,7 @@ const PostQuery = gql`
 
 const PostContainer = (props) => {
   const id = props.match.params.id;
-  
+
   return (
     <Query
       query={PostQuery}
@@ -88,10 +88,14 @@ const PostContainer = (props) => {
     >
       {
         ({ data, loading, error }) => {
-          if (loading) return <PostPlaceholder />;
-          
-          if (error) return 'Failed loading the post. Please try again';
-          
+          if (loading) {
+            return <PostPlaceholder />;
+          }
+
+          if (error) {
+            return 'Failed loading the post. Please try again';
+          }
+
           return <Post {...data.post} />;
         }
       }
@@ -103,8 +107,8 @@ PostContainer.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
-    })
-  }).isRequired
+    }),
+  }).isRequired,
 };
 
 export default PostContainer;

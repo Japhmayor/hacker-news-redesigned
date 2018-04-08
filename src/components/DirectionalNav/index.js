@@ -1,2 +1,2 @@
-export * from './DirectionalNav'
-export * from './DirectionalLink'
+export * from './DirectionalNav';
+export * from './DirectionalLink';

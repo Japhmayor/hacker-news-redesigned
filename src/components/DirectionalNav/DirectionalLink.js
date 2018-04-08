@@ -1,12 +1,12 @@
 import { Link as RouterLink } from 'react-router-dom';
-import { colors } from '../../styles/settings/colors';
 import styled from 'styled-components';
+import { colors } from '../../styles/settings/colors';
 import arrowIcon from '../../images/icon-arrow.svg';
 import { spacing } from '../../styles/settings/spacing';
 
 const DirectionalLink = styled(RouterLink)`
   position: relative;
-  margin-left: ${(props) => props.next ? 'auto' : 0 };
+  margin-left: ${(props) => props.next ? 'auto' : 0};
   color: ${colors.neutral[20]};
   transition: opacity 0.1s ease-in-out;
   text-decoration: none;

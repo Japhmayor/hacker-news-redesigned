@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 
 const Repeat = ({ times, children }) => {
-  let items = [];
-  
+  const items = [];
+
   for (let i = 0; i < times; i++) {
-    items.push(children)
+    items.push(children);
   }
-  
+
   return items;
 };
 
 Repeat.propTypes = {
-  times: PropTypes.number.isRequired
+  times: PropTypes.number.isRequired,
 };
 
 export default Repeat;

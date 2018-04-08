@@ -6,9 +6,9 @@ import PollTotal from './PollTotal';
 
 const Poll = ({ totalVotes, options }) => (
   <PollWrapper>
-    {options.map(option => {
-      return <PollOption key={option.text} {...option} />
-    })}
+    {options.map((option) => (
+      <PollOption key={option.text} {...option} />)
+    )}
     <PollTotal>{totalVotes} votes</PollTotal>
   </PollWrapper>
 );
@@ -16,8 +16,8 @@ const Poll = ({ totalVotes, options }) => (
 Poll.propTypes = {
   totalVotes: PropTypes.number,
   options: PropTypes.arrayOf(
-    PropTypes.object
-  ).isRequired
+    PropTypes.object,
+  ).isRequired,
 };
 
 export default Poll;

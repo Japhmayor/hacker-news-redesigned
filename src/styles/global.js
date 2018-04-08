@@ -3,9 +3,10 @@
 * Global styles
 *
 */
-import 'modern-normalize/modern-normalize.css';
+// import 'modern-normalize/modern-normalize.css';
 
 import { injectGlobal } from 'styled-components';
+
 import {
   fontFamilyBase,
   fontSizeBase,
@@ -130,7 +131,6 @@ injectGlobal`
     color: ${colors.neutral[30]};
     border-left: 2px solid ${colors.neutral[60]};
   }
-  
 
   
   //

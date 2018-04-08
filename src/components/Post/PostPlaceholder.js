@@ -8,7 +8,10 @@ const PostPlaceholder = (props) => (
     <img
       src={postPlaceholderImage}
       alt="Loading"
-      style={{width: '100%', height: 78}}
+      style={{
+        width: '100%',
+        height: 78,
+      }}
     />
   </div>
 );

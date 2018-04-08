@@ -1,13 +1,13 @@
 import React from 'react';
 import { blockquotify } from '../../utils/utils.string';
 
-import CommentWrapper from './CommentWrapper';
 import Meta from '../Meta/Meta';
 import EntryUserLink from '../Entry/EntryUserLink';
 import { Author } from '../Meta/MetaItem';
 
-import CommentBody from './CommentBody';
 import Time from '../Time';
+import CommentBody from './CommentBody';
+import CommentWrapper from './CommentWrapper';
 
 
 const Comment = ({ id, text, time, author, deleted, comments }) => {
@@ -15,37 +15,36 @@ const Comment = ({ id, text, time, author, deleted, comments }) => {
     // TODO: handle deleted comment rendering
     return null;
   }
-  
+
   text = blockquotify(text); // TODO: Temporary. Serve text "blockquotified" from GraphQL
-  
+
   return (
     <CommentWrapper>
       <Meta>
         {author &&
         <Author>
-           <EntryUserLink href={`/user/${author}`} comment>
-             {author}
-           </EntryUserLink>
+          <EntryUserLink href={`/user/${author}`} comment>
+            {author}
+          </EntryUserLink>
         </Author>
         }
-  
+
         <Time
           to={`/comment/${id}`}
           time={time}
         />
       </Meta>
-      
+
       <CommentBody dangerouslySetInnerHTML={{ __html: text }} />
-  
+
       {comments && comments.length > 0 &&
-        comments.map(comment => <Comment key={comment.id} {...comment} />)
+        comments.map((comment) => <Comment key={comment.id} {...comment} />)
       }
     </CommentWrapper>
   );
 };
 
 export default Comment;
-
 
 
 // TODO: Some <pre> shit needs to be handled.
@@ -77,3 +76,5 @@ export default Comment;
 // TODO: Move blockquotify to GraphQL
 
 // TODO: 16756114 -> `snippet` to <code> would be really nice
+
+// TODO: PropTypes

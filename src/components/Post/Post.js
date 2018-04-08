@@ -9,16 +9,18 @@ import EntryUserLink from '../Entry/EntryUserLink';
 import EntryLink from '../Entry/EntryLink';
 import EntryHostname from '../Entry/EntryHostname';
 import Time from '../Time';
-import PostHeader from './PostHeader';
-import PostTitle from './PostTitle';
-import PostBody from './PostBody';
 import CommentList from '../CommentList/CommentList';
 import CommentsEmptyState from '../CommentList/CommentsEmptyState';
 import { Poll } from '../Poll';
+import PostHeader from './PostHeader';
+import PostTitle from './PostTitle';
+import PostBody from './PostBody';
 
-const Post = ({ id, type, url, title, text, score, author, time, poll, commentCount, comments }) => {
-  const isLink = (url !== null);
-  
+const Post = ({
+  id, type, url, title, text, score, author, time, poll, commentCount, comments,
+}) => {
+  const isLink = url !== null;
+
   return (
     <Fragment>
       <article>
@@ -26,11 +28,11 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
 
           <PostTitle>
             {isLink ? (
-                <Fragment>
-                  <EntryLink title={title} href={url} external={isLink} />
+              <Fragment>
+                <EntryLink title={title} href={url} external={isLink} />
 
-                  <EntryHostname>({getHostName(url)})</EntryHostname>
-                </Fragment>)
+                <EntryHostname>({getHostName(url)})</EntryHostname>
+              </Fragment>)
 
               : title}
           </PostTitle>
@@ -58,7 +60,7 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
         }
 
         {type === 'poll' && poll &&
-        <Poll {...poll}/>
+        <Poll {...poll} />
         }
       </article>
 

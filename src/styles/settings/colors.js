@@ -15,7 +15,7 @@ const paletteColors = {
     100: '#ebebeb',
     110: '#fafafa',
   },
-  
+
   orange: {
     10: 'hsl(22, 84%, 55%)',
     20: 'hsl(22, 84%, 55%)',
@@ -25,9 +25,9 @@ const paletteColors = {
     60: 'hsl(22, 82%, 58%)',
     70: 'hsl(22, 81%, 62%)',
     80: 'hsl(21, 78%, 72%)',
-    90: 'hsl(25, 74%, 84%)'
+    90: 'hsl(25, 74%, 84%)',
   },
-  
+
   blue: {
     10: 'hsl(201, 52%, 20%)',
     20: 'hsl(200, 44%, 26%)',
@@ -38,7 +38,7 @@ const paletteColors = {
     70: 'hsl(198, 37%, 67%)',
     80: 'hsl(196, 46%, 76%)',
     90: 'hsl(193, 66%, 85%)',
-  }
+  },
 };
 
 export const colors = {
@@ -46,5 +46,5 @@ export const colors = {
   accent: paletteColors.blue,
   neutral: paletteColors.gray,
   light: white,
-  dark: black
+  dark: black,
 };

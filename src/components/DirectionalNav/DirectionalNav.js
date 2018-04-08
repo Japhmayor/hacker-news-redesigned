@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NextLink, PrevLink } from './DirectionalLink';
 import { spacing } from '../../styles/settings/spacing';
+import { NextLink, PrevLink } from './DirectionalLink';
 
 const DirectionalNavWrapper = styled.div`
   display: flex;
@@ -13,8 +13,10 @@ const DirectionalNavWrapper = styled.div`
 
 
 export const DirectionalNav = ({ shown, prevLinkShown, nextLinkShown, prevUrl, nextUrl }) => {
-  if (!shown) return null;
-  
+  if (!shown) {
+    return null;
+  }
+
   return (
     <DirectionalNavWrapper>
       {prevLinkShown &&
@@ -23,7 +25,7 @@ export const DirectionalNav = ({ shown, prevLinkShown, nextLinkShown, prevUrl, n
           Previous
         </PrevLink>
       }
-      
+
       {nextLinkShown &&
         <NextLink
           to={nextUrl}>
@@ -31,6 +33,6 @@ export const DirectionalNav = ({ shown, prevLinkShown, nextLinkShown, prevUrl, n
         </NextLink>
       }
     </DirectionalNavWrapper>
-  )
+  );
 };
 

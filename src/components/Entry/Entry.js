@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Meta from '../Meta/Meta';
+import { Author, Score } from '../Meta/MetaItem';
+import Time from '../Time';
+import getHostName from '../../utils/getHostname';
 import EntryWrapper from './EntryWrapper';
 import EntryTitle from './EntryTitle';
 import EntryLink from './EntryLink';
 import EntryHostname from './EntryHostname';
-import Meta from '../Meta/Meta';
-import { Author, Score } from '../Meta/MetaItem';
 import EntryUserLink from './EntryUserLink';
 import EntryCommentLink from './EntryCommentLink';
-import Time from '../Time';
-import getHostName from '../../utils/getHostname';
 
-const Entry = ({ id, type, url, title, text, score, author, time, commentCount }) => {
-  const isJob = (type === 'job');
+const Entry = ({
+  id, type, url, title, score, author, time, commentCount,
+}) => {
+  const isJob = type === 'job';
   // Decide if external link
-  let isLink = (url !== null);
+  const isLink = url !== null;
   url = isLink ? url : `/post/${id}`;
-  
+
   return (
     <EntryWrapper>
       <EntryTitle>
@@ -25,28 +27,28 @@ const Entry = ({ id, type, url, title, text, score, author, time, commentCount }
           href={url}
           external={isLink}
         />
-        
+
         {isLink &&
           <EntryHostname>({getHostName(url)})</EntryHostname>
         }
       </EntryTitle>
-      
+
       <Meta small>
         {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
         <Score>+ {score}</Score>}
-        
+
         {!isJob && author &&
         <Author>
           by <EntryUserLink href={`/user/${author}`}>{author}</EntryUserLink>
         </Author>
         }
-        
+
         <Time
           to={`/post/${id}`}
           time={time}
         />
-        
-        {!!commentCount &&
+
+        {Boolean(commentCount) &&
         <EntryCommentLink
           to={`/post/${id}`}
           title={`${commentCount} comments`}

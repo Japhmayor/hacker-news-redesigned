@@ -19,12 +19,12 @@ const TimeLink = styled(Link)`
   }
 `;
 
-const Time = ({to, time}) => (
+const Time = ({ to, time }) => (
   <TimeStamp
     dateTime={timeUtils.getISOTime(time)}
     title={timeUtils.getExactTime(time)}
   >
-    
+
     <TimeLink
       to={to}
       title="Open the entry in a separate page"

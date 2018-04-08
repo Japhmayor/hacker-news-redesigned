@@ -123,6 +123,7 @@ module.exports = {
     contentBase: './public',
     hot: true,
     port: 3100,
+    historyApiFallback: true,
     clientLogLevel: 'error',
     compress: true,
     //noInfo: true,

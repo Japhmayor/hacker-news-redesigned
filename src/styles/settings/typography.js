@@ -1,3 +1,6 @@
+import { colors } from './colors';
+
+
 // ========================================================================
 //
 // Typography
@@ -9,7 +12,6 @@
 // Typefaces
 //
 
-import { colors } from './colors';
 
 const fontFamilyNative = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 const fontFamily = 'Fira Sans';

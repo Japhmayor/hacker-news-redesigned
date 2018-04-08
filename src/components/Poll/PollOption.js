@@ -6,10 +6,14 @@ import PollIndicator from './PollIndicator';
 
 const PollOption = ({ text, voteCount, percentage }) => (
   <PollItem>
-    <div style={{flex: '1 1 80%'}}>{text}</div>
-    <div style={{ marginLeft: spacing(3), flex: '1 0 auto', textAlign: 'right' }}>{voteCount}</div>
-    
-    <PollIndicator percentage={percentage}/>
+    <div style={{ flex: '1 1 80%' }}>{text}</div>
+    <div style={{
+      marginLeft: spacing(3),
+      flex: '1 0 auto',
+      textAlign: 'right',
+    }}>{voteCount}</div>
+
+    <PollIndicator percentage={percentage} />
   </PollItem>
 );
 

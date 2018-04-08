@@ -25,19 +25,16 @@ const CommentPageTitle = styled.h1` // TODO: Move
   }
 `;
 
-const CommentPage = (props) => {
-    
-    return (
-      <Fragment>
-        <CommentPageTitle> {/* TODO: Should be a link to the post.*/}
-          <small>Comment thread in:</small>
-          {props.parentPostTitle}
-        </CommentPageTitle>
-  
-        <Comment {...props} />
-      </Fragment>
-    );
-  };
+const CommentPage = (props) => (
+  <Fragment>
+    <CommentPageTitle> {/* TODO: Should be a link to the post.*/}
+      <small>Comment thread in:</small>
+      {props.parentPostTitle}
+    </CommentPageTitle>
+
+    <Comment {...props} />
+  </Fragment>
+);
 
 export default CommentPage;
 

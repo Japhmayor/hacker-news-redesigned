@@ -4,20 +4,20 @@ import Comment from '../components/Comment/Comment';
 
 class CommentContainer extends React.Component {
   static propTypes = {
-    commentID: PropTypes.number.isRequired
+    commentID: PropTypes.number.isRequired,
   };
-  
+
   state = {
     comment: {},
-    loading: true
+    loading: true,
   };
 
   render() {
     if (this.state.loading) {
       return 'Loading';
     }
-    
-    return <Comment {...this.state.comment}/>
+
+    return <Comment {...this.state.comment} />;
   }
 }
 

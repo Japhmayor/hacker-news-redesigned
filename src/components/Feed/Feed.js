@@ -9,27 +9,27 @@ const Feed = ({ entries, entryCount, feedName, page }) => {
   const pageCount = Math.ceil(
     entryCount / ENTRIES_PER_PAGE
   );
-  
+
   // Make sure top feed is just homepage: i.e. top -> "/", top page 2 -> "/2"
   const baseUrl = feedName !== 'top' ? `/${feedName}` : '';
-  
+
   // 1. Show "Previous" link starting from the second page
   // 2. Don't display "Next" link on the last page
   // 3. Display `:feedName/` instead of `:feedName/1` when on first page.
   const dirNavProps = {
     shown: entryCount > ENTRIES_PER_PAGE,
-    prevLinkShown: page > 1, //[1]
+    prevLinkShown: page > 1, // [1]
     nextLinkShown: page < pageCount, // [2]
-    prevUrl: (page === 2) ? baseUrl : `${baseUrl}/${page - 1}`, // [3]
+    prevUrl: page === 2 ? baseUrl : `${baseUrl}/${page - 1}`, // [3]
     nextUrl: `${baseUrl}/${page + 1}`,
   };
-  
+
   return (
     <Fragment>
-      {entries.map(entry => (
+      {entries.map((entry) => (
         <Entry key={entry.id} {...entry} />
       ))}
-      
+
       <DirectionalNav {...dirNavProps} />
     </Fragment>
   );
@@ -43,6 +43,7 @@ Feed.defaultProps = {
 Feed.propTypes = {
   entries: PropTypes.array.isRequired,
   entryCount: PropTypes.number.isRequired,
+  feedName: PropTypes.string.isRequired,
   page: PropTypes.number.isRequired,
 };
 

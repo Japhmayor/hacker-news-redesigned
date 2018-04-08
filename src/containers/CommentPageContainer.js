@@ -21,7 +21,7 @@ const CommentQuery = gql`
 
 const CommentPageContainer = (props) => {
   const id = props.match.params.id;
-  
+
   return (
     <Query
       query={CommentQuery}
@@ -30,11 +30,15 @@ const CommentPageContainer = (props) => {
     >
       {
         ({ data, loading, error }) => {
-          if (loading) return <PostPlaceholder />; // TODO: Make a comment page placholder?
-          
-          if (error) return 'Failed loading the comment. Please try again';
-          
-          return <CommentPage {...data.comment}/>
+          if (loading) {
+            return <PostPlaceholder />;
+          } // TODO: Make a comment page placholder?
+
+          if (error) {
+            return 'Failed loading the comment. Please try again';
+          }
+
+          return <CommentPage {...data.comment} />;
         }
       }
     </Query>

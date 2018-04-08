@@ -122,7 +122,7 @@ module.exports = {
   devServer: {
     contentBase: './public',
     hot: true,
-    port: 3100,
+    port: 3050,
     historyApiFallback: true,
     clientLogLevel: 'error',
     compress: true,
@@ -146,6 +146,7 @@ module.exports = {
       publicPath: false,
       errors: true,
       errorDetails: false,
+      moduleTrace: false
     }
   },
 };

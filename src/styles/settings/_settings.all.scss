@@ -1,0 +1,24 @@
+// ========================================================================
+//
+// Settings
+//
+// ========================================================================
+
+// Naming Convention
+//
+// Private variables that are meant to be used only internally by mixins,
+// functions or other variables should start with `$_`.
+// $_palette-colors: (...)
+//
+// Generic variables – property-modifier:
+// $font-size-base
+// $line-height-loose
+//
+// Component variables - component-property-modifier
+// $h1-font-size
+
+@import "settings.colors";
+@import "settings.typography";
+@import "settings.breakpoints";
+@import "settings.z-index";
+@import "settings.spacing";

@@ -1,0 +1,46 @@
+// @private
+// Get colors from $_palette-colors map by specifying base color and variant: `_palette-color(gray, 400)`;
+//
+// @param {String} $base    - Name of the base color
+// @param {Number} $variant - Index of the color variation
+//
+// @return {Color} - Color
+
+@function _palette-color($base, $variant) {
+  $base_color: map_get($_palette-colors, $base);
+
+  @if map_has_key($_palette-colors, $base) != true {
+    @error "Specified base color '#{$base}' doesn't exist";
+  }
+
+  @if map_has_key($base_color, $variant) != true {
+    @error "Specified variant '#{$variant} for the base color doesn't exist";
+  }
+
+  @return map_get($base_color, $variant);
+}
+
+
+// @public
+// Get brand or contextual color by specifying the base and variant: `color: color(gray, 400)`;
+//
+// @param {String} $base    - Name of the base color
+// @param {Number} $variant - Index of the color variation
+//
+// @return {Color} - Color
+
+@function color($name, $variant: 50) {
+  @if map_has_key($_global-colors, $name) != true {
+    @error "Specified theme color doesn't exist";
+  }
+
+  $reference: map_get($_global-colors, $name);
+
+  @if (type-of($reference) == color) {
+    @return $reference;
+  }
+
+  @else {
+    @return _palette-color($reference, $variant);
+  }
+}

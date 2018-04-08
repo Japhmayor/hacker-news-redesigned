@@ -1,0 +1,14 @@
+@mixin container() {
+  padding-right: $container_gutter_small;
+  padding-left: $container_gutter_small;
+
+  @include mq-up("sm") {
+    padding-right: $container_gutter_large;
+    padding-left: $container_gutter_large;
+  }
+
+  @media (min-width: $container_width + $container_gutter_large * 2) {
+    padding-right: calc((100vw - #{$container_width}) / 2);
+    padding-left: calc((100vw - #{$container_width}) / 2);
+  }
+}

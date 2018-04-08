@@ -440,6 +440,7 @@
         "rendering"
       ]
     }],
+    "react/jsx-boolean-value": ["warn", "never"],
     "react/jsx-equals-spacing": ["warn", "never"],
     "react/jsx-first-prop-new-line": ["warn", "multiline-multiprop"],
     "react/jsx-indent": ["warn", 2],

@@ -1,13 +1,10 @@
 import React from 'react';
 import { blockquotify } from '../../utils/utils.string';
-
 import Meta from '../Meta/Meta';
 import EntryUserLink from '../Entry/EntryUserLink';
 import { Author } from '../Meta/MetaItem';
-
 import Time from '../Time';
-import CommentBody from './CommentBody';
-import CommentWrapper from './CommentWrapper';
+import * as styles from './Comment.scss';
 
 
 const Comment = ({ id, text, time, author, deleted, comments }) => {
@@ -19,7 +16,7 @@ const Comment = ({ id, text, time, author, deleted, comments }) => {
   text = blockquotify(text); // TODO: Temporary. Serve text "blockquotified" from GraphQL
 
   return (
-    <CommentWrapper>
+    <div className={styles.Comment}>
       <Meta>
         {author &&
         <Author>
@@ -35,17 +32,21 @@ const Comment = ({ id, text, time, author, deleted, comments }) => {
         />
       </Meta>
 
-      <CommentBody dangerouslySetInnerHTML={{ __html: text }} />
+      <div
+        className={styles.CommentBody}
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
 
       {comments && comments.length > 0 &&
         comments.map((comment) => <Comment key={comment.id} {...comment} />)
       }
-    </CommentWrapper>
+    </div>
   );
 };
 
 export default Comment;
 
+// TODO: PropTypes
 
 // TODO: Some <pre> shit needs to be handled.
 //       See an example here https://news.ycombinator.com/item?id=16667036
@@ -76,5 +77,3 @@ export default Comment;
 // TODO: Move blockquotify to GraphQL
 
 // TODO: 16756114 -> `snippet` to <code> would be really nice
-
-// TODO: PropTypes

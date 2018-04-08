@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { colors, white } from '../../styles/settings/colors';
-import container from '../../styles/mixins/container';
-import { headingFont } from '../../styles/settings/typography';
+import { colors, white } from '../../styles-old/settings/colors';
+import container from '../../styles-old/mixins/container';
+import { headingFont } from '../../styles-old/settings/typography';
 
 const HeaderWrap = styled.header`
   ${container};

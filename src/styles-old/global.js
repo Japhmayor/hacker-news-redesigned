@@ -1,6 +1,6 @@
 /*
 *
-* Global styles
+* Global styles-old
 *
 */
 // import 'modern-normalize/modern-normalize.css';

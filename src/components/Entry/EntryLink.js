@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { colors } from '../../styles/settings/colors';
+import { colors } from '../../styles-old/settings/colors';
 
 const EntryLink = styled(Link)`
   color: ${colors.neutral['10']};

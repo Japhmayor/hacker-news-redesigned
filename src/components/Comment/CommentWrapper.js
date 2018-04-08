@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { spacing } from '../../styles/settings/spacing';
-import { fontSizeSmall } from '../../styles/settings/typography';
+import { spacing } from '../../styles-old/settings/spacing';
+import { fontSizeSmall } from '../../styles-old/settings/typography';
 
 const CommentWrapper = styled.div`
   font-size: ${fontSizeSmall};

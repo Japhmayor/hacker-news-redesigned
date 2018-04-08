@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing } from '../../styles/settings/spacing';
+import { spacing } from '../../styles-old/settings/spacing';
 
 const Logo = styled.div`
   align-self: center;

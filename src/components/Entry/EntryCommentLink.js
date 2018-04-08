@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import commentIcon from '../../images/icon-comment.svg'
-import { colors } from '../../styles/settings/colors';
+import { colors } from '../../styles-old/settings/colors';
 import { Link as RouterLink } from 'react-router-dom';
 
 // 1. The recommended size for tap targets is about 44x44px.

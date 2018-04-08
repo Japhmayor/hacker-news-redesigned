@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { colors } from '../../styles/settings/colors';
-import { fontWeightMedium, fontWeightNormal } from '../../styles/settings/typography';
+import { colors } from '../../styles-old/settings/colors';
+import { fontWeightMedium, fontWeightNormal } from '../../styles-old/settings/typography';
 
 // 1. FML
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import container from '../styles/mixins/container';
-import { breakpoints } from '../styles/settings/breakpoints';
-import { spacing } from '../styles/settings/spacing';
+import container from '../styles-old/mixins/container';
+import { breakpoints } from '../styles-old/settings/breakpoints';
+import { spacing } from '../styles-old/settings/spacing';
 
 const Main = styled.main`
   ${container};

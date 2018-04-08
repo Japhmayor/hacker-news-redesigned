@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { colors } from '../../styles/settings/colors';
-import { spacing } from '../../styles/settings/spacing';
+import { colors } from '../../styles-old/settings/colors';
+import { spacing } from '../../styles-old/settings/spacing';
 
 const CommentsEmptyState = styled.h2`
   text-align: center;

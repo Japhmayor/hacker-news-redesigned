@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing } from '../../styles/settings/spacing';
+import { spacing } from '../../styles-old/settings/spacing';
 
 const EntryHostname = styled.small`
   font-weight: 400;

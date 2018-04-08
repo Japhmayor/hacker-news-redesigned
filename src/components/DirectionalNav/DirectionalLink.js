@@ -1,8 +1,8 @@
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { colors } from '../../styles/settings/colors';
+import { colors } from '../../styles-old/settings/colors';
 import arrowIcon from '../../images/icon-arrow.svg';
-import { spacing } from '../../styles/settings/spacing';
+import { spacing } from '../../styles-old/settings/spacing';
 
 const DirectionalLink = styled(RouterLink)`
   position: relative;

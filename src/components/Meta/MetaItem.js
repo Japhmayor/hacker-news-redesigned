@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { spacing } from '../../styles/settings/spacing';
-import { colors } from '../../styles/settings/colors';
-import { fontWeightSemibold } from '../../styles/settings/typography';
+import { spacing } from '../../styles-old/settings/spacing';
+import { colors } from '../../styles-old/settings/colors';
+import { fontWeightSemibold } from '../../styles-old/settings/typography';
 
 export const MetaItem = styled.span`
   white-space: nowrap;

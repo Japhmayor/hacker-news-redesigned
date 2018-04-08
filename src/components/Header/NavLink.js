@@ -1,7 +1,7 @@
 import { NavLink as RouterNavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { spacing } from '../../styles/settings/spacing';
-import { white } from '../../styles/settings/colors';
+import { spacing } from '../../styles-old/settings/spacing';
+import { white } from '../../styles-old/settings/colors';
 
 const NavLink = styled(RouterNavLink)`
   padding: ${spacing(5)} ${spacing(5)};

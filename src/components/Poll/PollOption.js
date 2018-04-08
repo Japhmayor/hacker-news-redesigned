@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { spacing } from '../../styles/settings/spacing';
+import { spacing } from '../../styles-old/settings/spacing';
 import PollItem from './PollItem';
 import PollIndicator from './PollIndicator';
 

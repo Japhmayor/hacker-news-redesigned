@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { spacing } from '../../styles/settings/spacing';
-import { colors } from '../../styles/settings/colors';
+import { spacing } from '../../styles-old/settings/spacing';
+import { colors } from '../../styles-old/settings/colors';
 
 const EntryWrapper = styled.div`
   margin-bottom: ${spacing(5)};

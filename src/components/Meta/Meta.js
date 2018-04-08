@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { fontSizeExtraSmall, fontSizeSmall } from '../../styles/settings/typography';
-import { spacing } from '../../styles/settings/spacing';
-import { colors } from '../../styles/settings/colors';
+import { fontSizeExtraSmall, fontSizeSmall } from '../../styles-old/settings/typography';
+import { spacing } from '../../styles-old/settings/spacing';
+import { colors } from '../../styles-old/settings/colors';
 
 const Meta = styled.div`
   display: flex;

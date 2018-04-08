@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { fontSizeLarge, fontWeightMedium } from '../../styles/settings/typography';
-import { colors } from '../../styles/settings/colors';
-import { spacing } from '../../styles/settings/spacing';
-import { breakpoints } from '../../styles/settings/breakpoints';
+import { fontSizeLarge, fontWeightMedium } from '../../styles-old/settings/typography';
+import { colors } from '../../styles-old/settings/colors';
+import { spacing } from '../../styles-old/settings/spacing';
+import { breakpoints } from '../../styles-old/settings/breakpoints';
 
 const EntryTitle = styled.header`
   line-height: 1.4;

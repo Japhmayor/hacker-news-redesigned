@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/main.scss';
 import Header from './components/Header/';
 import ScrollToTop from './components/ScrollToTop';
-import Main from './components/Main';
+import Main from './components/Main/';
 import FeedContainer from './containers/FeedContainer';
 import PostContainer from './containers/PostContainer';
 import CommentPageContainer from './containers/CommentPageContainer';

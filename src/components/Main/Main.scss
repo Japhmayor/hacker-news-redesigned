@@ -1,0 +1,9 @@
+.main {
+  @include container;
+  padding-top: spacing(8);
+  padding-bottom: spacing(18);
+
+  @include mq-up("md") {
+    padding-top: spacing(10);
+  }
+}

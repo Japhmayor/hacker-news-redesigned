@@ -26,12 +26,13 @@ $_spacing-directions: (
   (-top, -bottom): y
 );
 
+// TODO: Rewrite with a for loop
 @each $bp in map_keys($global-breakpoints) {
   $suffix: mq-suffix($bp);
 
   @include mq-up($bp) {
     @each $direction, $abbr in $_spacing-directions {
-      @each $key, $size in map_merge($spacing, (auto: auto)) {
+      @each $key, $size in map_merge($_spacing, (auto: auto)) {
         .u#{$suffix}-m#{$abbr}-#{$key} {
           @each $prop in $direction {
             margin#{$prop}: $size !important;
@@ -39,7 +40,7 @@ $_spacing-directions: (
         }
       }
 
-      @each $key, $size in $spacing {
+      @each $key, $size in $_spacing {
         .u#{$suffix}-p#{$abbr}-#{$key} {
           @each $prop in $direction {
             padding#{$prop}: $size !important;

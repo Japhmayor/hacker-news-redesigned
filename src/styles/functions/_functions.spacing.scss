@@ -1,0 +1,19 @@
+// @public
+// Get increments of $spacing_unit:
+//
+// Usage example:
+// `width: spacing(4)` -> `width: 16px`
+//
+// @param {Number} $index   - Integer from 0 to 20
+//
+// @return {Number} - Spacing value with a unit, e.g. "16px"
+
+@function spacing($index) {
+  @if (is-integer($index) and $index > 0 and $index < 20) {
+    @return round($_spacing-unit * $index);
+  }
+
+  @else {
+    @error "Invalid index '#{$index}' for spacing. Expecting a number from 0 to 20";
+  }
+}

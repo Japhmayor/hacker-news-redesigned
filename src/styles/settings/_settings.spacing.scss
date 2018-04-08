@@ -2,18 +2,20 @@
 // Spacing Units
 //
 
-$spacing-unit: 16px !default;
+$_spacing-unit: 4px !default;
 
-$spacing: (
+// TODO: Deprecate those after converting spacing utilities to use _function.spacing.scss instead.
+$_spacing: (
   0: 0,
-  1: round($spacing-unit * 0.25),
-  2: round($spacing-unit * 0.5),
-  3: round($spacing-unit * 0.75),
-  4: $spacing-unit,
-  5: round($spacing-unit * 1.25),
-  6: round($spacing-unit * 1.5),
-  7: round($spacing-unit * 1.75),
-  8: round($spacing-unit * 2),
-  9: round($spacing-unit * 2.25),
-  10: round($spacing-unit * 2.5),
+  1: round($_spacing-unit * 0.25),
+  2: round($_spacing-unit * 0.5),
+  3: round($_spacing-unit * 0.75),
+  4: $_spacing-unit,
+  5: round($_spacing-unit * 1.25),
+  6: round($_spacing-unit * 1.5),
+  7: round($_spacing-unit * 1.75),
+  8: round($_spacing-unit * 2),
+  9: round($_spacing-unit * 2.25),
+  10: round($_spacing-unit * 2.5),
 ) !default;
+

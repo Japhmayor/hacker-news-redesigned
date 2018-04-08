@@ -1,30 +1,15 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import React from 'react';
-import { colors } from '../../styles-old/settings/colors';
+import { Link } from 'react-router-dom';
+import * as styles from './Entry.scss';
 
-const EntryLink = styled(Link)`
-  color: ${colors.neutral['10']};
-  text-decoration: none;
-  transition: all 0.1s ease-in-out;
-
-  &:hover {
-    opacity: 0.85;
-  }
-
-  &:active {
-    opacity: 0.7;
-  }
-`;
-
-const EntryLinkExternal = EntryLink.withComponent('a');
-
-export default ({ href, title, external }) => (
+const EntryLink =  ({ href, title, external }) => (
   external ? (
-    <EntryLinkExternal href={href}>{title}</EntryLinkExternal>
+    <a className={styles.EntryLink} href={href}>{title}</a>
   ) : (
-    <EntryLink to={href}>{title}</EntryLink>
+    <Link className={styles.EntryLink} to={href}>{title}</Link>
   )
 );
+
+export default EntryLink;
 
 // TODO: Proptypes

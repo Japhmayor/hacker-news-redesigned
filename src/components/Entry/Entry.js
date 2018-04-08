@@ -1,27 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Meta from '../Meta/Meta';
 import { Author, Score } from '../Meta/MetaItem';
 import Time from '../Time';
 import getHostName from '../../utils/getHostname';
-import EntryWrapper from './EntryWrapper';
-import EntryTitle from './EntryTitle';
 import EntryLink from './EntryLink';
-import EntryHostname from './EntryHostname';
 import EntryUserLink from './EntryUserLink';
-import EntryCommentLink from './EntryCommentLink';
+import * as styles from './Entry.scss';
 
-const Entry = ({
-  id, type, url, title, score, author, time, commentCount,
-}) => {
+const Entry = ({ id, type, url, title, score, author, time, commentCount }) => {
   const isJob = type === 'job';
   // Decide if external link
   const isLink = url !== null;
   url = isLink ? url : `/post/${id}`;
 
   return (
-    <EntryWrapper>
-      <EntryTitle>
+    <div className={styles.Entry}>
+      <header className={styles.EntryTitle}>
         <EntryLink
           title={title}
           href={url}
@@ -29,9 +25,9 @@ const Entry = ({
         />
 
         {isLink &&
-          <EntryHostname>({getHostName(url)})</EntryHostname>
+          <small className={styles.EntryHostname}>({getHostName(url)})</small>
         }
-      </EntryTitle>
+      </header>
 
       <Meta small>
         {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
@@ -49,15 +45,16 @@ const Entry = ({
         />
 
         {Boolean(commentCount) &&
-        <EntryCommentLink
+        <Link
+          className={styles.EntryCommentLink}
           to={`/post/${id}`}
           title={`${commentCount} comments`}
         >
           {commentCount}
-        </EntryCommentLink>
+        </Link>
         }
       </Meta>
-    </EntryWrapper>
+    </div>
   );
 };
 

@@ -48,5 +48,3 @@ Feed.propTypes = {
 };
 
 export default Feed;
-
-// TODO: Consider renaming Feed -> Feed, Entry -> FeedItem

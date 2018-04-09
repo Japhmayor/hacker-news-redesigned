@@ -72,4 +72,4 @@ Entry.propTypes = {
 
 export default Entry;
 
-
+// TODO: Consider renaming Entry -> FeedItem

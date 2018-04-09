@@ -1,24 +1,22 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from '../../images/hn-logo.svg';
-import Nav from './Nav';
-import NavLink from './NavLink';
-import Logo from './Logo';
-import HeaderWrap from './HeaderWrap';
+import * as styles from './Header.scss';
 
 const Header = (props) => (
-  <HeaderWrap>
-    <Logo>
+  <header className={styles.Header}>
+    <div className={styles.Logo}>
       <img src={logo} alt="Hacker News" />
-    </Logo>
+    </div>
 
-    <Nav>
-      <NavLink activeClassName="is-active" to="/" exact>Top</NavLink>
-      <NavLink activeClassName="is-active" to="/new">New</NavLink>
-      <NavLink activeClassName="is-active" to="/show">Show</NavLink>
-      <NavLink activeClassName="is-active" to="/ask">Ask</NavLink>
-      <NavLink activeClassName="is-active" to="/jobs">Jobs</NavLink>
-    </Nav>
-  </HeaderWrap>
+    <nav className={styles.Nav}>
+      <NavLink className={styles.NavLink} activeClassName="is-active" to="/" exact>Top</NavLink>
+      <NavLink className={styles.NavLink} activeClassName="is-active" to="/new">New</NavLink>
+      <NavLink className={styles.NavLink} activeClassName="is-active" to="/show">Show</NavLink>
+      <NavLink className={styles.NavLink} activeClassName="is-active" to="/ask">Ask</NavLink>
+      <NavLink className={styles.NavLink} activeClassName="is-active" to="/jobs">Jobs</NavLink>
+    </nav>
+  </header>
 );
 
 export default Header;

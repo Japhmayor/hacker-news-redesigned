@@ -1,38 +1,37 @@
 import React from 'react';
-import styled from 'styled-components';
-import { spacing } from '../../styles-old/settings/spacing';
-import { NextLink, PrevLink } from './DirectionalLink';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import * as styles from './DirectionalNav.scss';
 
-const DirectionalNavWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: ${spacing(8)} 0 -${spacing(10)}; // [1]
-`;
-
-// 1. Pull the <Main> padding up to make the bottom nav appear centered.
-
-
-export const DirectionalNav = ({ shown, prevLinkShown, nextLinkShown, prevUrl, nextUrl }) => {
+const DirectionalNav = ({ shown, prevLinkShown, nextLinkShown, prevUrl, nextUrl }) => {
   if (!shown) {
     return null;
   }
 
+  const prevClass = classNames(styles.DirectionaLink, styles.prev);
+  const nextClass = classNames(styles.DirectionaLink, styles.next);
+
   return (
-    <DirectionalNavWrapper>
+    <nav className={styles.DirectionalNav}>
       {prevLinkShown &&
-        <PrevLink
+        <Link
+          className={prevClass}
           to={prevUrl}>
           Previous
-        </PrevLink>
+        </Link>
       }
 
       {nextLinkShown &&
-        <NextLink
+        <Link
+          className={nextClass}
           to={nextUrl}>
           Next
-        </NextLink>
+        </Link>
       }
-    </DirectionalNavWrapper>
+    </nav>
   );
 };
 
+export default DirectionalNav;
+
+// TODO: PropTypes

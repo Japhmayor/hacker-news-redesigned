@@ -1,2 +1,1 @@
-export * from './DirectionalNav';
-export * from './DirectionalLink';
+export { default } from './DirectionalNav';

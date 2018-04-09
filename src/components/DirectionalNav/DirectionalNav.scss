@@ -1,0 +1,50 @@
+.DirectionalNav {
+  display: flex;
+  justify-content: space-between;
+  margin: spacing(8) 0 (-1 * spacing(10)); // [1]
+}
+
+// 1. Pull the <Main> padding up to make the bottom nav appear centered.
+
+.DirectionaLink {
+  position: relative;
+  //margin-left: ${(props) => props.next ? 'auto' : 0};
+  color: color("neutral", 20);
+  transition: opacity 0.1s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+
+  &::before,
+  &::after {
+    display: inline-block;
+    width: 7px;
+    height: 12px;
+    content: '';
+  }
+
+  &.prev {
+    &::before {
+      background-image: url("../../images/icon-arrow.svg");
+      margin-right: spacing(2);
+    }
+  }
+
+  &.next {
+    margin-left: auto;
+
+    &::after {
+      background-image: url("../../images/icon-arrow.svg");
+      transform: rotate(180deg);
+      margin-left: spacing(2);
+    }
+  }
+}
+
+

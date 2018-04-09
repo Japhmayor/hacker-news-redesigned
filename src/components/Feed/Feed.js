@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Entry from '../Entry';
-import { DirectionalNav } from '../DirectionalNav/';
+import DirectionalNav from '../DirectionalNav/';
 import { ENTRIES_PER_PAGE } from '../../constants';
 
 

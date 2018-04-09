@@ -2,8 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
-// This is the only sane way to lint Sass through webpack. `stylelint-loader`
-// and `stylelint` via `postcss-loader` don't work.
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
@@ -41,15 +40,21 @@ module.exports = {
       // See options in `.babelrc`
       {
         test: /\.js$/,
+        include: path.resolve(__dirname, "src"),
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        // This is a feature of `babel-loader` for webpack (not Babel itself).
-        // It enables caching results in ./node_modules/.cache/babel-loader/
-        // directory for faster rebuilds.
-        options: {
-          cacheDirectory: true,
-          highlightCode: true,
-        }
+        use: [
+          'thread-loader',
+          {
+            loader: 'babel-loader',
+            // This is a feature of `babel-loader` for webpack (not Babel itself).
+            // It enables caching results in ./node_modules/.cache/babel-loader/
+            // directory for faster rebuilds.
+            options: {
+              cacheDirectory: true,
+              highlightCode: true,
+            }
+          }
+        ],
       },
 
       // SCSS Modules
@@ -59,6 +64,8 @@ module.exports = {
       // `style-loader`: Injects <style> tags in development mode
       {
         test: /\.scss$/,
+        include: path.resolve(__dirname, "src"),
+        exclude: /(node_modules)/,
         use: [
           {
             loader: 'style-loader'
@@ -99,7 +106,8 @@ module.exports = {
         // Exclude everything that's being handled by the loaders above.
         // Also exclude `html` and `json` extensions so they get processed
         // by webpacks internal loaders.
-        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.(css|scss)$/],
+        include: path.resolve(__dirname, "src"),
+        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.(css|scss)$/, /(node_modules)/],
         loader: 'file-loader',
         options: {
           name: 'static/media/[name].[hash:8].[ext]',
@@ -115,6 +123,7 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new ErrorOverlayPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new StyleLintPlugin(),
   ],
@@ -129,7 +138,6 @@ module.exports = {
     //noInfo: true,
     //quiet: true,
     progress: true,
-    open: 'Google Chrome',
     // Disable everything but errors in webpack's extremely verbose logs.
     stats: {
       colors: true,

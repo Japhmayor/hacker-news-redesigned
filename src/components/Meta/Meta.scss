@@ -1,0 +1,11 @@
+.Meta {
+  display: flex;
+  align-items: flex-start;
+  font-size: $font-size-small;
+  line-height: spacing(5);
+  color: color("neutral", 40);
+
+  &.small {
+    font-size: $font-size-extra-small;
+  }
+}

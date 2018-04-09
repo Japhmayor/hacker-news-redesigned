@@ -1,14 +1,26 @@
-import styled from 'styled-components';
-import { fontSizeExtraSmall, fontSizeSmall } from '../../styles-old/settings/typography';
-import { spacing } from '../../styles-old/settings/spacing';
-import { colors } from '../../styles-old/settings/colors';
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import * as styles from './Meta.scss';
 
-const Meta = styled.div`
-  display: flex;
-  align-items: flex-start;
-  font-size: ${(props) => props.small ? fontSizeExtraSmall : fontSizeSmall};
-  line-height: ${spacing(5)};
-  color: ${colors.neutral['40']};
-`;
+
+const Meta = (props) => {
+  const className = classNames(
+    styles.Meta,
+    props.size,
+  );
+
+  return (
+    <div className={className}>
+      {props.children}
+    </div>
+  );
+};
+
+Meta.propTypes = {
+  children: PropTypes.node.isRequired,
+  size: PropTypes.string,
+};
+
 
 export default Meta;

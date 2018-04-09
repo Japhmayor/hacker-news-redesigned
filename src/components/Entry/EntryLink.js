@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as styles from './Entry.scss';
 
-const EntryLink =  ({ href, title, external }) => (
+const EntryLink = ({ href, title, external }) => (
   external ? (
     <a className={styles.EntryLink} href={href}>{title}</a>
   ) : (

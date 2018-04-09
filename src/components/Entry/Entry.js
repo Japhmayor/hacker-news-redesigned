@@ -29,14 +29,15 @@ const Entry = ({ id, type, url, title, score, author, time, commentCount }) => {
         }
       </header>
 
-      <Meta small>
+      <Meta size="small">
         {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
-        <Score>+ {score}</Score>}
+          <Score>+ {score}</Score>
+        }
 
         {!isJob && author &&
-        <Author>
-          by <EntryUserLink href={`/user/${author}`}>{author}</EntryUserLink>
-        </Author>
+          <Author>
+            by <EntryUserLink href={`/user/${author}`}>{author}</EntryUserLink>
+          </Author>
         }
 
         <Time
@@ -45,13 +46,13 @@ const Entry = ({ id, type, url, title, score, author, time, commentCount }) => {
         />
 
         {Boolean(commentCount) &&
-        <Link
-          className={styles.EntryCommentLink}
-          to={`/post/${id}`}
-          title={`${commentCount} comments`}
-        >
-          {commentCount}
-        </Link>
+          <Link
+            className={styles.EntryCommentLink}
+            to={`/post/${id}`}
+            title={`${commentCount} comments`}
+          >
+            {commentCount}
+          </Link>
         }
       </Meta>
     </div>

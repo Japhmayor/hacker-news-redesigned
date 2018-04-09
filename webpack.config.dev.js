@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
+//const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
@@ -22,19 +22,20 @@ module.exports = {
 
   module: {
     strictExportPresence: true,
+
     rules: [
 
       // ESLint
       // Runs before Babel regardless of the order
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          formatter: eslintFormatter,
-        },
-      },
+      // {
+      //   test: /\.js$/,
+      //   exclude: /(node_modules)/,
+      //   enforce: 'pre',
+      //   loader: 'eslint-loader',
+      //   options: {
+      //     formatter: eslintFormatter,
+      //   },
+      // },
 
       // Babel transpilation.
       // See options in `.babelrc`
@@ -123,7 +124,7 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new ErrorOverlayPlugin(),
+    //new ErrorOverlayPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new StyleLintPlugin(),
   ],
@@ -135,15 +136,12 @@ module.exports = {
     historyApiFallback: true,
     clientLogLevel: 'error',
     compress: true,
-    //noInfo: true,
-    //quiet: true,
-    progress: true,
     // Disable everything but errors in webpack's extremely verbose logs.
     stats: {
       colors: true,
       hash: false,
       version: false,
-      timings: false,
+      timings: true,
       assets: false,
       chunks: false,
       modules: false,

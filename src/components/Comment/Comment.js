@@ -1,7 +1,7 @@
 import React from 'react';
 import { blockquotify } from '../../utils/utils.string';
 import Meta from '../Meta/Meta';
-import EntryUserLink from '../Entry/EntryUserLink';
+import UserLink from '../UserLink/';
 import { Author } from '../Meta/MetaItem';
 import Time from '../Time';
 import * as styles from './Comment.scss';
@@ -20,9 +20,7 @@ const Comment = ({ id, text, time, author, deleted, comments }) => {
       <Meta>
         {author &&
         <Author>
-          <EntryUserLink href={`/user/${author}`} comment>
-            {author}
-          </EntryUserLink>
+          <UserLink to={`/user/${author}`} text={author} comment />
         </Author>
         }
 

@@ -1,27 +1,12 @@
-import styled from 'styled-components';
+import React from 'react';
+import * as styles from './Meta.scss';
 
-import { spacing } from '../../styles-old/settings/spacing';
-import { colors } from '../../styles-old/settings/colors';
-import { fontWeightSemibold } from '../../styles-old/settings/typography';
+export const Score = (props) => (
+  <span className={styles.Score}>{props.children}</span>
+);
 
-export const MetaItem = styled.span`
-  white-space: nowrap;
+export const Author = (props) => (
+  <span className={styles.Author}>{props.children}</span>
+);
 
-  &:not(:first-child) {
-    margin-left: ${spacing(2)};
-    padding-left: ${spacing(2)};
-    border-left: 1px solid ${colors.neutral['50']};
-  }
-`;
-
-export const Score = styled(MetaItem)`
-  font-weight: ${fontWeightSemibold};
-`;
-
-// Truncate the username when there's no enough space
-export const Author = styled(MetaItem)`
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-
+// TODO: PropTypes

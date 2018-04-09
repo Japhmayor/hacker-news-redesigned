@@ -5,7 +5,7 @@ import getHostName from '../../utils/getHostname';
 
 import Meta from '../Meta/Meta';
 import { Author, Score } from '../Meta/MetaItem';
-import EntryUserLink from '../Entry/EntryUserLink';
+import UserLink from '../UserLink/';
 import EntryLink from '../Entry/EntryLink';
 import EntryHostname from '../Entry/EntryHostname';
 import Time from '../Time';
@@ -43,7 +43,7 @@ const Post = ({
 
             {author &&
             <Author>
-              by <EntryUserLink href={`/user/${author}`}>{author}</EntryUserLink>
+              by <UserLink to={`/user/${author}`} text={author} />
             </Author>
             }
 
@@ -95,6 +95,7 @@ Post.propTypes = {
     ).isRequired,
   }),
   commentCount: PropTypes.number,
+  comments: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Post;

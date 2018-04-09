@@ -2,19 +2,15 @@ import React from 'react';
 import Comment from '../Comment/Comment';
 import CommentsTitle from './CommentTitle';
 
-const CommentList = ({ comments, commentCount }) => {
-  console.log(comments);
+const CommentList = ({ comments, commentCount }) => (
+  <div>
+    <CommentsTitle>{commentCount} Comments</CommentsTitle>
 
-  return (
-    <div>
-      <CommentsTitle>{commentCount} Comments</CommentsTitle>
-
-      {comments.map((comment) =>
-        <Comment key={comment.id} {...comment} />)
-      }
-    </div>
-  );
-};
+    {comments.map((comment) =>
+      <Comment key={comment.id} {...comment} />)
+    }
+  </div>
+);
 
 export default CommentList;
 

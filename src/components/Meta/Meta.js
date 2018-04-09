@@ -7,7 +7,7 @@ import * as styles from './Meta.scss';
 const Meta = (props) => {
   const className = classNames(
     styles.Meta,
-    props.size,
+    styles[props.size],
   );
 
   return (

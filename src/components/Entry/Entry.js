@@ -5,8 +5,8 @@ import Meta from '../Meta/Meta';
 import { Author, Score } from '../Meta/MetaItem';
 import Time from '../Time';
 import getHostName from '../../utils/getHostname';
+import UserLink from '../UserLink/';
 import EntryLink from './EntryLink';
-import EntryUserLink from './EntryUserLink';
 import * as styles from './Entry.scss';
 
 const Entry = ({ id, type, url, title, score, author, time, commentCount }) => {
@@ -36,7 +36,7 @@ const Entry = ({ id, type, url, title, score, author, time, commentCount }) => {
 
         {!isJob && author &&
           <Author>
-            by <EntryUserLink href={`/user/${author}`}>{author}</EntryUserLink>
+            by <UserLink to={`/user/${author}`} text={author} />
           </Author>
         }
 

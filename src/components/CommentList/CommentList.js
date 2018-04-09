@@ -1,10 +1,10 @@
 import React from 'react';
 import Comment from '../Comment/Comment';
-import CommentsTitle from './CommentTitle';
+import * as styles from './CommentList.scss';
 
 const CommentList = ({ comments, commentCount }) => (
   <div>
-    <CommentsTitle>{commentCount} Comments</CommentsTitle>
+    <h2 className={styles.CommentsTitle}>{commentCount} Comments</h2>
 
     {comments.map((comment) =>
       <Comment key={comment.id} {...comment} />)
@@ -15,5 +15,4 @@ const CommentList = ({ comments, commentCount }) => (
 export default CommentList;
 
 // TODO: Sorting dropdown (Top/Recent). See the sketch file
-// TODO: Need an empty state for when there's no comments. "No one commented yet"
 // TODO: PropTypes

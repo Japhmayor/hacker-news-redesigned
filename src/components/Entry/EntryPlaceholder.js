@@ -8,7 +8,10 @@ const EntryPlaceholder = (props) => (
     <img
       src={entryPlaceholderImage}
       alt="Loading"
-      style={{ width: '100%', height: 78 }}
+      style={{
+        width: '100%',
+        height: 78,
+      }}
     />
   </div>
 );

@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 //const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
@@ -67,39 +68,39 @@ module.exports = {
         test: /\.scss$/,
         include: path.resolve(__dirname, "src"),
         exclude: /(node_modules)/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            query: {
-              sourceMap: true,
-              modules: true,
-              importLoaders: 2,
-              localIdentName: '[local]_[hash:base64:5]', //[name]-[local]_[hash:base64:5]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              query: {
+                sourceMap: true,
+                modules: true,
+                importLoaders: 2,
+                localIdentName: '[local]_[hash:base64:5]', //[name]-[local]_[hash:base64:5]
+              },
             },
-          },
-          {
-            loader: 'postcss-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              includePaths: ['node_modules']
+            {
+              loader: 'postcss-loader'
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                includePaths: ['node_modules']
+              }
+            },
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: [
+                  './src/styles/functions/_functions.all.scss',
+                  './src/styles/settings/_settings.all.scss',
+                  './src/styles/mixins/_mixins.all.scss'
+                ]
+              }
             }
-          },
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: [
-                './src/styles/functions/_functions.all.scss',
-                './src/styles/settings/_settings.all.scss',
-                './src/styles/mixins/_mixins.all.scss'
-              ]
-            }
-          }
-        ]
+          ]
+        })
       },
 
       // Everything else gets processed by `file-loader`.
@@ -126,6 +127,10 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     //new ErrorOverlayPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      allChunks: true
+    }),
     new StyleLintPlugin(),
   ],
 

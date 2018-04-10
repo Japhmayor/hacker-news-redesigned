@@ -12,9 +12,7 @@ import Time from '../Time';
 import CommentList from '../CommentList/CommentList';
 import CommentsEmptyState from '../CommentList/CommentsEmptyState';
 import { Poll } from '../Poll';
-import PostHeader from './PostHeader';
-import PostTitle from './PostTitle';
-import PostBody from './PostBody';
+import * as styles from './Post.scss';
 
 const Post = ({
   id, type, url, title, text, score, author, time, poll, commentCount, comments,
@@ -24,27 +22,26 @@ const Post = ({
   return (
     <Fragment>
       <article>
-        <PostHeader>
-
-          <PostTitle>
+        <header className={styles.PostHeader}>
+          <h1 className={styles.PostTitle}>
             {isLink ? (
               <Fragment>
                 <EntryLink title={title} href={url} external={isLink} />
 
                 <EntryHostname>({getHostName(url)})</EntryHostname>
               </Fragment>)
-
               : title}
-          </PostTitle>
+          </h1>
 
           <Meta>
             {score &&
-            <Score>+ {score}</Score>}
+              <Score>+ {score}</Score>
+            }
 
             {author &&
-            <Author>
-              by <UserLink to={`/user/${author}`} text={author} />
-            </Author>
+              <Author>
+                by <UserLink to={`/user/${author}`} text={author} />
+              </Author>
             }
 
             <Time
@@ -52,15 +49,17 @@ const Post = ({
               time={time}
             />
           </Meta>
-
-        </PostHeader>
+        </header>
 
         {text &&
-        <PostBody dangerouslySetInnerHTML={{ __html: text }} />
+          <div
+            className={styles.PostBody}
+            dangerouslySetInnerHTML={{ __html: text }}
+          />
         }
 
         {type === 'poll' && poll &&
-        <Poll {...poll} />
+          <Poll {...poll} />
         }
       </article>
 

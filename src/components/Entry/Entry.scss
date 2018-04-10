@@ -27,12 +27,14 @@
   &:active {
     opacity: 0.7;
   }
+
+  // Sorry.
+  + small {
+    margin-left: spacing(1);
+    font-weight: 400;
+  }
 }
 
-.EntryHostname {
-  margin-left: spacing(1);
-  font-weight: 400;
-}
 
 // 1. The recommended size for tap targets is about 44x44px.
 // Adding a faux padding around the small elements makes it

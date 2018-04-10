@@ -7,7 +7,6 @@ import Meta from '../Meta/Meta';
 import { Author, Score } from '../Meta/MetaItem';
 import UserLink from '../UserLink/';
 import EntryLink from '../Entry/EntryLink';
-import EntryHostname from '../Entry/EntryHostname';
 import Time from '../Time';
 import CommentList from '../CommentList/CommentList';
 import { Poll } from '../Poll';
@@ -27,7 +26,7 @@ const Post = ({
               <Fragment>
                 <EntryLink title={title} href={url} external={isLink} />
 
-                <EntryHostname>({getHostName(url)})</EntryHostname>
+                <small>({getHostName(url)})</small>
               </Fragment>)
               : title}
           </h1>

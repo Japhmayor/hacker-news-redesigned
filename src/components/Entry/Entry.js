@@ -25,7 +25,7 @@ const Entry = ({ id, type, url, title, score, author, time, commentCount }) => {
         />
 
         {isLink &&
-          <small className={styles.EntryHostname}>({getHostName(url)})</small>
+          <small>({getHostName(url)})</small>
         }
       </header>
 

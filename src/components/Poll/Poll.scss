@@ -1,0 +1,43 @@
+.Poll {
+  max-width: 750px;
+}
+
+.PollTotal {
+  text-align: right;
+  margin-top: spacing(3);
+}
+
+.PollChoice {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  & + & {
+    margin-top: spacing(4);
+  }
+}
+
+.PollChoiceText {
+  flex: 1 1 80%;
+}
+
+.PollChoiceCount {
+  margin-left: spacing(3);
+  flex: 1 0 auto;
+  text-align: right;
+}
+
+.PollIndicator {
+  flex: 1 0 100%;
+  height: 12px;
+  margin-top: spacing(1);
+  background-color: #d7e5ee; // TODO: Move colors to colors.js
+
+  > div {
+    display: block;
+    height: 100%;
+    background-color: #3897da;
+    content: '';
+  }
+}

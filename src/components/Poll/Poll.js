@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PollOption from './PollOption';
-import PollWrapper from './PollWrapper';
-import PollTotal from './PollTotal';
+import PollChoice from './PollChoice';
+import * as styles from './Poll.scss';
 
 const Poll = ({ totalVotes, options }) => (
-  <PollWrapper>
+  <div className={styles.Poll}>
     {options.map((option) => (
-      <PollOption key={option.text} {...option} />)
+      <PollChoice key={option.text} {...option} />)
     )}
-    <PollTotal>{totalVotes} votes</PollTotal>
-  </PollWrapper>
+
+    <div className={styles.PollTotal}>{totalVotes} votes</div>
+  </div>
 );
 
 Poll.propTypes = {

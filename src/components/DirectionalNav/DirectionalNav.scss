@@ -10,8 +10,8 @@
   position: relative;
   //margin-left: ${(props) => props.next ? 'auto' : 0};
   color: color("neutral", 20);
-  transition: opacity 0.1s ease-in-out;
   text-decoration: none;
+  transition: opacity 0.1s ease-in-out;
 
   &:hover {
     opacity: 0.8;
@@ -26,13 +26,13 @@
     display: inline-block;
     width: 7px;
     height: 12px;
-    content: '';
+    content: "";
   }
 
   &.prev {
     &::before {
-      background-image: url("../../images/icon-arrow.svg");
       margin-right: spacing(2);
+      background-image: url("../../images/icon-arrow.svg");
     }
   }
 
@@ -40,9 +40,9 @@
     margin-left: auto;
 
     &::after {
+      margin-left: spacing(2);
       background-image: url("../../images/icon-arrow.svg");
       transform: rotate(180deg);
-      margin-left: spacing(2);
     }
   }
 }

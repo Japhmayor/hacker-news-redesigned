@@ -3,15 +3,15 @@
 }
 
 .PollTotal {
-  text-align: right;
   margin-top: spacing(3);
+  text-align: right;
 }
 
 .PollChoice {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   & + & {
     margin-top: spacing(4);
@@ -23,8 +23,8 @@
 }
 
 .PollChoiceCount {
-  margin-left: spacing(3);
   flex: 1 0 auto;
+  margin-left: spacing(3);
   text-align: right;
 }
 
@@ -38,6 +38,6 @@
     display: block;
     height: 100%;
     background-color: #3897da;
-    content: '';
+    content: "";
   }
 }

@@ -218,9 +218,6 @@
       "text-justify",
       "text-outline",
       "-ms-text-overflow",
-      "text-overflow",
-      "text-overflow-ellipsis",
-      "text-overflow-mode",
       "text-shadow",
       "text-transform",
       "text-wrap",
@@ -235,6 +232,9 @@
       "overflow-wrap",
       "tab-size",
       "white-space",
+      "text-overflow",
+      "text-overflow-ellipsis",
+      "text-overflow-mode",
       "vertical-align",
       "list-style",
       "list-style-position",
@@ -251,7 +251,6 @@
       "caption-side",
       "border-spacing",
       "border-collapse",
-      "content",
       "quotes",
       "counter-reset",
       "counter-increment",
@@ -327,7 +326,8 @@
       "animation-timing-function",
       "animation-delay",
       "animation-iteration-count",
-      "animation-direction"
-    ],
+      "animation-direction",
+      "content"
+    ]
   }
 }

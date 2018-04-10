@@ -10,7 +10,6 @@ import EntryLink from '../Entry/EntryLink';
 import EntryHostname from '../Entry/EntryHostname';
 import Time from '../Time';
 import CommentList from '../CommentList/CommentList';
-import CommentsEmptyState from '../CommentList/CommentsEmptyState';
 import { Poll } from '../Poll';
 import * as styles from './Post.scss';
 
@@ -68,7 +67,7 @@ const Post = ({
           comments={comments}
           commentCount={commentCount}
         />
-        : <CommentsEmptyState>No one commented yet</CommentsEmptyState>
+        : <h2 className={styles.CommentsEmptyState}>No one commented yet</h2>
       }
     </Fragment>
   );

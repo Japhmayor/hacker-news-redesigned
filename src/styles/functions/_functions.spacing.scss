@@ -9,7 +9,7 @@
 // @return {Number} - Spacing value with a unit, e.g. "16px"
 
 @function spacing($index) {
-  @if (is-integer($index) and $index > 0 and $index < 20) {
+  @if (is-integer($index) and $index >= 0 and $index <= 20) {
     @return round($_spacing-unit * $index);
   }
 

@@ -16,3 +16,10 @@
     margin-bottom: 0;
   }
 }
+
+.CommentsEmptyState {
+  text-align: center;
+  margin-top: spacing(20);
+  padding-top: spacing(10);
+  border-top: 1px solid color("neutral", 80);
+}

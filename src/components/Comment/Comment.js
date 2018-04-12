@@ -13,8 +13,7 @@ import * as styles from './Comment.scss';
 const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commentIDs, comments, level, showParent }) => {
 
   if (deleted) {
-    // TODO: handle deleted comment rendering
-    return null;
+    text = '[Deleted]';
   }
 
   const parentURL = (parent === parentPostID)
@@ -38,7 +37,7 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
         />
 
         {showParent &&
-        <Link to={parentURL}>parent</Link>
+          <Link to={parentURL}>parent</Link>
         }
       </Meta>
 

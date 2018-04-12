@@ -13,9 +13,40 @@ const CommentQuery = gql`
       time
       author
       deleted
+      commentIDs
+      comments {
+        ...CommentFields
+        comments { # 1
+          ...CommentFields
+          comments { # 2
+            ...CommentFields
+            comments { # 3
+              ...CommentFields
+              comments { # 4
+                ...CommentFields
+                comments { # 5
+                  ...CommentFields
+                  comments { #6
+                    ...CommentFields
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       parentPostID
       parentPostTitle
     }
+  }
+  
+  fragment CommentFields on Comment {
+    id
+    text
+    time
+    author
+    deleted
+    commentIDs
   }
 `;
 

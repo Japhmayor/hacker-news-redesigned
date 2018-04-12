@@ -11,26 +11,14 @@ import * as styles from './Comment.scss';
 
 
 const Comment = ({ id, text, time, author, deleted, commentIDs, comments, level }) => {
+  console.log(level)
+
   if (deleted) {
     // TODO: handle deleted comment rendering
     return null;
   }
 
   text = blockquotify(text); // TODO: Temporary. Serve text "blockquotified" from GraphQL
-
-  // Render replies to each comment if they exist.
-  // Upon reaching maximum depth, render a link to the rest of the thread.
-  const CommentChildren = () => {
-    if (!commentIDs || commentIDs.length === 0) {
-      return null;
-    }
-
-    return (
-      (level < COMMENT_DEPTH)
-        ? comments.map((comment) => <Comment key={comment.id} {...comment} level={level + 1} />)
-        : (<Link className={styles.CommentContinueThread} to={`/comment/${id}`}>Continue the thread</Link>)
-    );
-  };
 
   return (
     <div className={styles.Comment}>
@@ -45,8 +33,6 @@ const Comment = ({ id, text, time, author, deleted, commentIDs, comments, level 
           to={`/comment/${id}`}
           time={time}
         />
-
-        <span>{level}</span>
       </Meta>
 
       <div
@@ -54,7 +40,14 @@ const Comment = ({ id, text, time, author, deleted, commentIDs, comments, level 
         dangerouslySetInnerHTML={{ __html: text }}
       />
 
-      <CommentChildren />
+      {commentIDs && commentIDs.length > 0 &&
+        (
+          // When maximum depth reached, render a link to the rest of the thread.
+          level < COMMENT_DEPTH
+          ? comments.map((comment) => <Comment key={comment.id} {...comment} level={level + 1} />)
+          : <Link className={styles.CommentContinueThread} to={`/comment/${id}`}>Continue the thread</Link>
+        )
+      }
     </div>
   );
 };

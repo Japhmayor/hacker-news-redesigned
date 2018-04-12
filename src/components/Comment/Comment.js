@@ -10,13 +10,16 @@ import * as styles from './Comment.scss';
 
 
 
-const Comment = ({ id, text, time, author, deleted, commentIDs, comments, level }) => {
-  console.log(level)
+const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commentIDs, comments, level, showParent }) => {
 
   if (deleted) {
     // TODO: handle deleted comment rendering
     return null;
   }
+
+  const parentURL = (parent === parentPostID)
+    ? `/post/${parent}`
+    : `/comment/${parent}`;
 
   text = blockquotify(text); // TODO: Temporary. Serve text "blockquotified" from GraphQL
 
@@ -33,6 +36,10 @@ const Comment = ({ id, text, time, author, deleted, commentIDs, comments, level 
           to={`/comment/${id}`}
           time={time}
         />
+
+        {showParent &&
+        <Link to={parentURL}>parent</Link>
+        }
       </Meta>
 
       <div

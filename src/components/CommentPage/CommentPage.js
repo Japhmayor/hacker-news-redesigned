@@ -9,7 +9,7 @@ const CommentPage = (props) => (
       {props.parentPostTitle}
     </h1>
 
-    <Comment {...props} level={0}/>
+    <Comment {...props} level={0} showParent/>
   </Fragment>
 );
 

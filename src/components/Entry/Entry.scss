@@ -43,12 +43,13 @@
 .EntryCommentLink {
   position: relative;
   display: block;
-  margin: -8px 0 -8px auto; // [1]
+  margin: -8px 0 -8px auto !important; // [1]
   padding: 8px 0; // [1]
   color: color("neutral", 40);
   text-decoration: none;
   white-space: nowrap;
   transition: 0.2s ease-in-out;
+  border-left: 0 !important;
 
   &::after {
     display: inline-block;

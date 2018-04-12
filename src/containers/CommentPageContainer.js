@@ -13,6 +13,9 @@ const CommentQuery = gql`
       time
       author
       deleted
+      parent
+      parentPostID
+      parentPostTitle
       commentIDs
       comments {
         ...CommentFields
@@ -35,8 +38,6 @@ const CommentQuery = gql`
           }
         }
       }
-      parentPostID
-      parentPostTitle
     }
   }
   

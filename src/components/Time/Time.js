@@ -9,7 +9,6 @@ const Time = ({ to, time }) => (
   >
 
     <Link
-      style={{ textDecoration: 'none' }}
       to={to}
       title="Open the entry in a separate page"
     >

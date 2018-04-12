@@ -11,7 +11,7 @@
 
   // Anything that's not a direct child and a link gets a left border and spacing.
   // Basically I'm excluding the comment link here. I know; I'm sorry.
-  > :not(:first-child):not(a) {
+  > :not(:first-child) {
     margin-left: spacing(2);
     padding-left: spacing(2);
     border-left: 1px solid color("neutral", 50);
@@ -21,6 +21,7 @@
 .Meta a {
   color: inherit;
   transition: opacity 0.1s ease-in-out;
+  text-decoration: none;
 
   &:hover {
     opacity: 0.8;
@@ -43,4 +44,8 @@
 .Author {
   overflow: hidden;
   text-overflow: ellipsis;
+
+  a {
+    text-decoration: underline;
+  }
 }

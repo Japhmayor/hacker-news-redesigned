@@ -30,7 +30,7 @@ const Entry = ({ id, type, url, title, score, author, time, commentCount }) => {
       </header>
 
       <Meta size="small">
-        {score !== undefined && // Not sure if 0 or negative score is a thing. Never seen anything with score < 1
+        {score && type !== 'job' &&
           <Score>+ {score}</Score>
         }
 

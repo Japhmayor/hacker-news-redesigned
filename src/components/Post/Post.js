@@ -11,10 +11,9 @@ import Time from '../Time';
 import CommentList from '../CommentList/CommentList';
 import { Poll } from '../Poll';
 import * as styles from './Post.scss';
+import CommentListContainer from '../../containers/CommentListContainer';
 
-const Post = ({
-  id, type, url, title, text, score, author, time, poll, commentCount, comments,
-}) => {
+const Post = ({ id, type, url, title, text, score, author, time, poll, commentCount, commentIDs }) => {
   const isLink = url !== null;
 
   return (
@@ -62,11 +61,16 @@ const Post = ({
       </article>
 
       {commentCount > 0
-        ? <CommentList
-          comments={comments}
-          commentCount={commentCount}
-        />
-        : <h2 className={styles.CommentsEmptyState}>No one commented yet</h2>
+        ?
+        <Fragment>
+          <h2 className={styles.PostCommentsTitle}>{commentCount} Comments</h2>
+
+          <CommentListContainer
+            commentIDs={commentIDs}
+          />
+        </Fragment>
+        :
+        <h2 className={styles.PostCommentsEmptyState}>No one commented yet</h2>
       }
     </Fragment>
   );
@@ -96,3 +100,5 @@ Post.propTypes = {
 };
 
 export default Post;
+
+// TODO: Don't show empty state if type==='job'

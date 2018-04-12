@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { COMMENT_DEPTH } from '../../constants';
 import { blockquotify } from '../../utils/utils.string';
 import Meta from '../Meta/Meta';
 import UserLink from '../UserLink/';
@@ -7,7 +9,8 @@ import Time from '../Time';
 import * as styles from './Comment.scss';
 
 
-const Comment = ({ id, text, time, author, deleted, comments }) => {
+
+const Comment = ({ id, text, time, author, deleted, commentIDs, comments, level }) => {
   if (deleted) {
     // TODO: handle deleted comment rendering
     return null;
@@ -15,19 +18,35 @@ const Comment = ({ id, text, time, author, deleted, comments }) => {
 
   text = blockquotify(text); // TODO: Temporary. Serve text "blockquotified" from GraphQL
 
+  // Render replies to each comment if they exist.
+  // Upon reaching maximum depth, render a link to the rest of the thread.
+  const CommentChildren = () => {
+    if (!commentIDs || commentIDs.length === 0) {
+      return null;
+    }
+
+    return (
+      (level < COMMENT_DEPTH)
+        ? comments.map((comment) => <Comment key={comment.id} {...comment} level={level + 1} />)
+        : (<Link className={styles.CommentContinueThread} to={`/comment/${id}`}>Continue the thread</Link>)
+    );
+  };
+
   return (
     <div className={styles.Comment}>
       <Meta>
         {author &&
-        <Author>
-          <UserLink to={`/user/${author}`} text={author} comment />
-        </Author>
+          <Author>
+            <UserLink to={`/user/${author}`} text={author} comment/>
+          </Author>
         }
 
         <Time
           to={`/comment/${id}`}
           time={time}
         />
+
+        <span>{level}</span>
       </Meta>
 
       <div
@@ -35,14 +54,16 @@ const Comment = ({ id, text, time, author, deleted, comments }) => {
         dangerouslySetInnerHTML={{ __html: text }}
       />
 
-      {comments && comments.length > 0 &&
-        comments.map((comment) => <Comment key={comment.id} {...comment} />)
-      }
+      <CommentChildren />
     </div>
   );
 };
 
 export default Comment;
+
+
+
+
 
 // TODO: PropTypes
 

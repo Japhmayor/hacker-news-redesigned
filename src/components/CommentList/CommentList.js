@@ -1,16 +1,17 @@
 import React from 'react';
 import Comment from '../Comment/Comment';
-import * as styles from './CommentList.scss';
 
-const CommentList = ({ comments, commentCount }) => (
-  <div>
-    <h2 className={styles.CommentsTitle}>{commentCount} Comments</h2>
+const CommentList = ({ comments, onLoadMore }) => {
+  //onLoadMore();
 
-    {comments.map((comment) =>
-      <Comment key={comment.id} {...comment} />)
-    }
-  </div>
-);
+  return (
+    <div>
+      {comments.map((comment) =>
+        <Comment key={comment.id} {...comment} level={0}/>,
+      )}
+    </div>
+  );
+};
 
 export default CommentList;
 

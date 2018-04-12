@@ -1,5 +1,3 @@
-export const ENTRIES_PER_PAGE = 30;
-
 export const FEED_ENDPOINTS = {
   top:  'topstories',
   new:  'newstories',
@@ -9,3 +7,6 @@ export const FEED_ENDPOINTS = {
   best: 'beststories',
 };
 
+export const ENTRIES_PER_PAGE = 30;
+
+export const COMMENT_DEPTH = 6;

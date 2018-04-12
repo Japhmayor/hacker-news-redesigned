@@ -68,39 +68,39 @@ module.exports = {
         test: /\.scss$/,
         include: path.resolve(__dirname, "src"),
         exclude: /(node_modules)/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              query: {
-                sourceMap: true,
-                modules: true,
-                importLoaders: 2,
-                localIdentName: '[local]_[hash:base64:5]', //[name]-[local]_[hash:base64:5]
-              },
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            query: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: '[local]_[hash:base64:5]', //[name]-[local]_[hash:base64:5]
             },
-            {
-              loader: 'postcss-loader'
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                includePaths: ['node_modules']
-              }
-            },
-            {
-              loader: 'sass-resources-loader',
-              options: {
-                resources: [
-                  './src/styles/functions/_functions.all.scss',
-                  './src/styles/settings/_settings.all.scss',
-                  './src/styles/mixins/_mixins.all.scss'
-                ]
-              }
+          },
+          {
+            loader: 'postcss-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: ['node_modules']
             }
-          ]
-        })
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                './src/styles/functions/_functions.all.scss',
+                './src/styles/settings/_settings.all.scss',
+                './src/styles/mixins/_mixins.all.scss'
+              ]
+            }
+          }
+        ]
       },
 
       // Everything else gets processed by `file-loader`.
@@ -127,11 +127,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     //new ErrorOverlayPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new ExtractTextPlugin({
-      filename: 'styles.css',
-      allChunks: true
-    }),
-    new StyleLintPlugin(),
+    // new ExtractTextPlugin({
+    //   filename: 'styles.css',
+    //   allChunks: true
+    // }),
+    //new StyleLintPlugin(),
   ],
 
   devServer: {

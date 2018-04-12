@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import Comment from '../Comment/Comment';
 import * as styles from './CommentPage.scss';
 
 const CommentPage = (props) => (
   <Fragment>
-    <h1 className={styles.CommentPageTitle}> {/* TODO: Should be a link to the post.*/}
+    <h1 className={styles.CommentPageTitle}>
       <small>Comment thread in:</small>
-      {props.parentPostTitle}
+      <Link to={`/post/${props.parentPostID}`}>{props.parentPostTitle}</Link>
     </h1>
 
     <Comment {...props} level={0} showParent/>

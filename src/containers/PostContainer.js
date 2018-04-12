@@ -17,46 +17,8 @@ const PostQuery = gql`
       text
       score
       time
-      comments {
-        ...CommentFields
-        comments {
-          ...CommentFields
-          comments {
-            ...CommentFields
-            comments {
-              ...CommentFields
-              comments {
-                ...CommentFields
-                comments {
-                  ...CommentFields
-                  comments {
-                    ...CommentFields
-                    comments {
-                      ...CommentFields
-                      comments {
-                        ...CommentFields
-                        comments {
-                          ...CommentFields
-                          comments {
-                            ...CommentFields
-                            comments {
-                              ...CommentFields
-                              comments {
-                                ...CommentFields
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
       commentCount
+      commentIDs
       poll {
         totalVotes
         options {
@@ -66,14 +28,6 @@ const PostQuery = gql`
         }
       }
     }
-  }
-  
-  fragment CommentFields on Comment {
-    id
-    text
-    time
-    author
-    deleted
   }
 `;
 

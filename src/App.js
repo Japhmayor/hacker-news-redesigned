@@ -42,3 +42,5 @@ export default hot(module)(App)
 // https://simplyaccessible.com/article/react-a11y/
 
 // TODO: Title and other <head> stuff
+
+// TODO: Figure out what are Apollo extra queries about :\

@@ -46,7 +46,7 @@ const CommentListContainer = ({ commentIDs }) => {
       variables={{
         commentIDs,
         skip: 0,
-        limit: 5,
+        //limit: 5,
       }}
       fetchPolicy="network-only"
     >

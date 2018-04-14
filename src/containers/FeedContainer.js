@@ -80,4 +80,4 @@ FeedContainer.propTypes = {
 
 export default FeedContainer;
 
-// TODO: Rename this to FeedContainer for fuck's sake
+// TODO: Consider prefetching https://www.apollographql.com/docs/react/features/performance.html#prefetching

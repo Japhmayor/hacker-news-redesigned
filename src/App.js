@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { hot } from 'react-hot-loader'
 
 import './styles/main.scss';
 import Header from './components/Header/';
@@ -28,7 +29,7 @@ const App = () => (
   </Router>
 );
 
-export default App;
+export default hot(module)(App)
 
 
 // TODO: Need a way to notify screen readers about navigating between pages.

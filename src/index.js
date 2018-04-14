@@ -15,8 +15,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-if (module.hot) {
-  module.hot.accept();
-}
-
 // TODO: Caching should be handled throughout the app, all requests are network-only atm

@@ -7,7 +7,7 @@
     "@babel/preset-stage-2"
   ],
   "plugins": [
+    "react-hot-loader/babel",
     "@babel/plugin-proposal-object-rest-spread",
-    "react-hot-loader/babel"
   ]
 }

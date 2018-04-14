@@ -139,7 +139,7 @@ module.exports = {
     hot: true,
     port: 3050,
     historyApiFallback: true,
-    clientLogLevel: 'error',
+    //clientLogLevel: 'error',
     compress: true,
     // Disable everything but errors in webpack's extremely verbose logs.
     stats: {

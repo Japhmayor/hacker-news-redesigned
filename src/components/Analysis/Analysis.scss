@@ -1,0 +1,16 @@
+.Analysis {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 720px;
+
+  th {
+    text-align: inherit;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  td, th {
+    padding: spacing(3) spacing(5);
+    border: 1px solid color("neutral", 80);
+  }
+}

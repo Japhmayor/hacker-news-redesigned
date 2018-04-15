@@ -66,6 +66,7 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
           <h2 className={styles.PostCommentsTitle}>{commentCount} Comments</h2>
 
           <CommentListContainer
+            commentCount={commentCount}
             commentIDs={commentIDs}
           />
         </Fragment>

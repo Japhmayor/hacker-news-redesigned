@@ -10,7 +10,7 @@ const Time = ({ to, time }) => (
 
     <Link
       to={to}
-      title="Open the entry in a separate page"
+      aria-label={`Posted ${timeUtils.getTimePassed(time)}. Go to the entry page`}
     >
       {timeUtils.getTimePassed(time)}
     </Link>

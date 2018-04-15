@@ -34,4 +34,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// TODO: Caching should be handled throughout the app, all requests are network-only atm.

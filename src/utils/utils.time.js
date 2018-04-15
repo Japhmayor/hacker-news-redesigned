@@ -63,16 +63,9 @@ export function getTimePassed(seconds) {
  * */
 export function getExactTime(seconds) {
   return new Date(seconds * 1000)
-    .toLocaleDateString(
-      navigator.language || 'en-US',
-      {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-      },
-    );
+    .toString();
+    // toLocaleString is extremely slow, momentjs is not an option
+    // TODO: Figure out how to format better without involving anyone of those.
 }
 
 

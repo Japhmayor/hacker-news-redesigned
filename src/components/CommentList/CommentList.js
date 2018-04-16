@@ -2,8 +2,6 @@ import React from 'react';
 import Comment from '../Comment/Comment';
 
 const CommentList = ({ comments, onLoadMore }) => {
-  //onLoadMore();
-
   return (
     <div>
       {comments.map((comment) =>

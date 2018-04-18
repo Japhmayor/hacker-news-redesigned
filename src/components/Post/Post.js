@@ -50,7 +50,7 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
 
         {text &&
           <div
-            className={styles.PostBody}
+            className={styles.PostBody + ' text'}
             dangerouslySetInnerHTML={{ __html: text }}
           />
         }

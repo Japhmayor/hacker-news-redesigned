@@ -45,40 +45,69 @@
     font-size: $h5-font-size;
     font-weight: $h5-font-weight;
   }
-}
 
 
-//
-// Paragraphs
-//
+  //
+  // Paragraphs
+  //
 
-p {
-  margin-bottom: 1rem;
-}
+  p {
+    margin-bottom: 1rem;
+  }
 
-blockquote {
-  margin-left: 0;
-  padding-left: spacing(2);
-  font-style: italic;
-  color: color("neutral", 30);
-  border-left: 2px solid color("neutral", 60);
-}
-
-
-//
-// Lists
-//
-
-ul, ol {
-  margin-left: 2rem;
-  padding: 0;
-}
+  blockquote {
+    margin-left: 0;
+    padding-left: spacing(2);
+    font-style: italic;
+    color: color("neutral", 30);
+    border-left: 2px solid color("neutral", 60);
+  }
 
 
-//
-// Horizontal rule
-//
+  //
+  // Lists
+  //
 
-hr {
-  margin: 0 1rem;
+  ul, ol {
+    margin-left: 2rem;
+    padding: 0;
+  }
+
+
+  //
+  // Horizontal rule
+  //
+
+  hr {
+    margin: 0 1rem;
+  }
+
+
+  //
+  // Opt-in typography, used for components like Comment, Post, UserPage body text.
+  //
+  // Body text from API comes as rather incosistenc HTML.
+  // This aims to normalize spacing to ensure consistency.
+
+  .text {
+    p,
+    blockquote,
+    pre {
+      margin-top: 0.75em;
+      margin-bottom: 0;
+    }
+
+    a {
+      color: color("neutral", 20);
+      transition: opacity 0.1s ease-in-out;
+
+      &:hover { // TODO: Occureneces of this are all over the place and need to be refactored.
+        opacity: 0.85;
+      }
+
+      &:active {
+        opacity: 0.7;
+      }
+    }
+  }
 }

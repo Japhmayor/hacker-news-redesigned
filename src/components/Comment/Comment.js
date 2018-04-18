@@ -42,7 +42,7 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
       </Meta>
 
       <div
-        className={styles.CommentBody}
+        className={[styles.CommentBody + ' text']}
         dangerouslySetInnerHTML={{ __html: text }}
       />
 
@@ -75,16 +75,7 @@ export default Comment;
 // TODO: Comments should be collapsible. Collapsed comments are saved in localStorage.
 //       Older than X days comments should be removed from localStorage for performance reasons.
 
-// TODO: Comments have their own page (similar to post)
-
-// TODO: Don't load collapsed comments
-
-// TODO: Collapse ridiculous amount of threads, perhaps those that are way below the fold.
-
-// TODO: Avoid rendering more than 5-7 replies per thread, instead link to the comment (now that comments have pages;)
-
 // TODO: Would be kinda nice to parse links into titles or something, but not sure how and how costly it is.
-
 
 // Below actions should ideally be performed on server as a single step, so the client gets clean parsed markup
 

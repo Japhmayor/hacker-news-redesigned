@@ -5,7 +5,7 @@ import * as timeUtils from '../../utils/utils.time';
 const Time = ({ to, time }) => (
   <time
     dateTime={timeUtils.getISOTime(time)}
-    title={timeUtils.getExactTime(time)}
+    title={timeUtils.getExactDateTime(time)}
   >
 
     <Link

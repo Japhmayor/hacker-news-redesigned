@@ -1,0 +1,33 @@
+.User {
+  max-width: 600px;
+  font-size: $font-size-small;
+}
+
+.UserHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: spacing(4);
+  padding-bottom: spacing(4);
+  border-bottom: 1px solid color("neutral", 90);
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+
+.UserScore {
+  display: inline-block;
+  padding: spacing(2) spacing(3);
+  background-color: #4b93b0;
+  border-radius: spacing(1);
+  color: $white;
+}
+
+.UserDate {
+  margin-top: spacing(2);
+  flex: 1 0 100%;
+}
+

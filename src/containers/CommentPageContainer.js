@@ -79,8 +79,4 @@ const CommentPageContainer = (props) => {
 
 export default CommentPageContainer;
 
-// TODO: Compare (hostnames only or against empty string for referrer) and conditionally show Back button
-//     console.log(document.referrer);
-//     console.log(window.location.href);
-
 // TODO: PropTypes

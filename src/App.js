@@ -8,6 +8,7 @@ import Main from './components/Main/';
 import FeedContainer from './containers/FeedContainer';
 import PostContainer from './containers/PostContainer';
 import CommentPageContainer from './containers/CommentPageContainer';
+import UserPageContainer from './containers/UserPageContainer';
 
 const App = () => (
   <Router>
@@ -18,6 +19,7 @@ const App = () => (
           <Route path="/:feedName(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={FeedContainer} exact />
           <Route path="/post/:id(\d+)" component={PostContainer} />
           <Route path="/comment/:id(\d+)" component={CommentPageContainer} />
+          <Route path="/user/:username" component={UserPageContainer} />
           <Route  render={() => <div>404 muthafucka</div>} />
         </Switch>
       </Main>

@@ -21,3 +21,5 @@ Poll.propTypes = {
 };
 
 export default Poll;
+
+// TODO: Decrease font-size, increase spacing between choices. This example with long choice text show why it's ugly: http://localhost:3050/post/126809

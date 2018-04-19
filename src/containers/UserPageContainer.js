@@ -36,11 +36,11 @@ const UserPageContainer = (props) => {
           }
 
           if (error) {
-            return 'Failed loading the user\'s page. Please try again';
+            return 'Failed loading the user’s page. Please try again';
           }
 
           if (!data.user) {
-            return <NotFound text={`The user with that name doesn't exist.`} />;
+            return <NotFound text={`The user with that name doesn’t exist.`} />;
           }
 
           return <User {...data.user}/>;

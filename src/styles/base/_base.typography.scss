@@ -60,7 +60,7 @@
     padding-left: spacing(2);
     font-style: italic;
     color: color("neutral", 30);
-    border-left: 2px solid color("neutral", 60);
+    border-left: 2px solid color("neutral", 80);
   }
 
 
@@ -94,7 +94,18 @@
     blockquote,
     pre {
       margin-top: 0.75em;
-      margin-bottom: 0;
+      margin-bottom: 0.75em;
+    }
+
+    // Code block styling
+    pre {
+      margin: 1em 0 1em;
+      padding: spacing(5) 0;
+      background-color: color('neutral', 100);
+      font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: $font-size-extra-small;
+      border-radius: 4px;
+      overflow-x: scroll;
     }
 
     a {

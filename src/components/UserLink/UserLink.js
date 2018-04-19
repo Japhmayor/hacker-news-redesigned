@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import * as styles from './UserLink.scss';
 
 const UserLink = (props) => {
-  const styles = props.comment ?
-    {
-      textDecoration: 'none',
-      color: '#2675a7',
-      fontWeight: 500,
-    }
-    : null;
+  const className = classNames(
+      [styles.UserLink],
+      { [styles.onComment]: props.comment }
+    );
 
   return (
     <Link
-      style={styles}
+      className={className}
       to={props.to}
     >
       {props.text}

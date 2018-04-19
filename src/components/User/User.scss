@@ -21,7 +21,7 @@
 .UserScore {
   display: inline-block;
   padding: spacing(2) spacing(3);
-  background-color: #3897da;
+  background-color: color('accent', 30);
   border-radius: spacing(1);
   color: $white;
 }

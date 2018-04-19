@@ -2,8 +2,8 @@
  * Wrap occurences starting with "&gt;" (>) into a <blockquote>
  * It expects non-enclosed <p> and <pre> tags within the text, as that's how HN Api delivers comment texts.
  *
- * @param {String} text - `text` value from HNApi
- *
+ * @param {String}
+ * @return {String}
  * */
 
 export function blockquotify(text) {
@@ -11,5 +11,16 @@ export function blockquotify(text) {
   return text.replace(pattern, '<blockquote>$3</blockquote>$4');
 }
 
+/**
+ * Replace occurences wrapped with `backticks` into a <code>
+ * It expects non-enclosed <p> and <pre> tags within the text, as that's how HN Api delivers comment texts.
+ *
+ * @param {String}
+ * @return {String}
+ * */
+export function backticksToText(text) {
+  const pattern = /(`)(\S+?)(`)/g;
+  return text.replace(pattern, '<code>$2</code>');
+}
 
 // TODO: Move this functionality to the server when implementing GraphQL; might be too costly.

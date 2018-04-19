@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { COMMENT_DEPTH } from '../../constants';
-import { blockquotify } from '../../utils/utils.string';
 import Meta from '../Meta/Meta';
 import UserLink from '../UserLink/';
 import { Author } from '../Meta/MetaItem';
 import Time from '../Time';
 import * as styles from './Comment.scss';
+import parseText from '../../utils/parseText';
 
 
 
@@ -20,7 +20,7 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
     ? `/post/${parent}`
     : `/comment/${parent}`;
 
-  text = blockquotify(text); // TODO: Temporary. Serve text "blockquotified" from GraphQL
+  text = parseText(text); // TODO: Consider serving parsed from API
 
   return (
     <div className={styles.Comment}>
@@ -66,10 +66,6 @@ export default Comment;
 
 // TODO: PropTypes
 
-// TODO: Some <pre> shit needs to be handled.
-//       See an example here https://news.ycombinator.com/item?id=16667036
-//       Limit width, overflow-x: auto
-
 // TODO: Placeholders
 
 // TODO: Comments should be collapsible. Collapsed comments are saved in localStorage.
@@ -83,6 +79,3 @@ export default Comment;
 
 // TODO: Replace <i> with <em>
 
-// TODO: Move blockquotify to GraphQL
-
-// TODO: 16756114 -> `snippet` to <code> would be really nice

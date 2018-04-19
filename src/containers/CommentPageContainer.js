@@ -4,60 +4,14 @@ import gql from 'graphql-tag';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import CommentPage from '../components/CommentPage/CommentPage';
 import NotFound from '../components/NotFound/NotFound';
-
-const CommentQuery = gql`
-  query CommentQuery($id: ID!) {
-    comment(id: $id) {
-      id
-      type
-      text
-      time
-      author
-      deleted
-      parent
-      parentPostID
-      parentPostTitle
-      commentIDs
-      comments {
-        ...CommentFields
-        comments { # 1
-          ...CommentFields
-          comments { # 2
-            ...CommentFields
-            comments { # 3
-              ...CommentFields
-              comments { # 4
-                ...CommentFields
-                comments { # 5
-                  ...CommentFields
-                  comments { #6
-                    ...CommentFields
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  fragment CommentFields on Comment {
-    id
-    text
-    time
-    author
-    deleted
-    commentIDs
-  }
-`;
+import COMMENT_QUERY from '../queries/Comment.graphql';
 
 const CommentPageContainer = (props) => {
   const id = props.match.params.id;
 
   return (
     <Query
-      query={CommentQuery}
+      query={COMMENT_QUERY}
       variables={{ id }}
       fetchPolicy="network-only"
     >

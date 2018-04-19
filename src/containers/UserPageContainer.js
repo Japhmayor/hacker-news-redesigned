@@ -6,26 +6,14 @@ import Post from '../components/Post/Post';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import User from '../components/User/User';
 import NotFound from '../components/NotFound/NotFound';
-
-// TODO: Remove commentIDs when done with comments
-const UserQuery = gql`
-  query UserQuery($username: String!) {
-    user(username: $username) {
-      username
-      createdAt
-      karma
-      about
-      submissions
-    }
-  }
-`;
+import USER_QUERY from '../queries/User.graphql'
 
 const UserPageContainer = (props) => {
   const username = props.match.params.username;
 
   return (
     <Query
-      query={UserQuery}
+      query={USER_QUERY}
       variables={{ username }}
       fetchPolicy="network-only"
     >

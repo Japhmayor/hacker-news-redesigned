@@ -3,46 +3,12 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import CommentList from '../components/CommentList/CommentList';
-
-const CommentListQuery = gql`
-  query CommentListQuery($commentIDs: [ID!], $skip: Int, $limit: Int) {
-    comments(commentIDs: $commentIDs, skip: $skip, limit: $limit) { # 0
-      ...CommentFields
-      comments { # 1
-        ...CommentFields
-        comments { # 2
-          ...CommentFields
-          comments { # 3
-            ...CommentFields
-            comments { # 4
-              ...CommentFields
-              comments { # 5
-                ...CommentFields
-                comments { #6
-                  ...CommentFields
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  fragment CommentFields on Comment {
-    id
-    text
-    time
-    author
-    deleted
-    commentIDs
-  }
-`;
+import COMMENT_LIST_QUERY from '../queries/CommentList.graphql';
 
 const CommentListContainer = ({ commentIDs }) => {
   return (
     <Query
-      query={CommentListQuery}
+      query={COMMENT_LIST_QUERY}
       variables={{
         commentIDs,
         skip: 0,

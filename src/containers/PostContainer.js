@@ -5,39 +5,14 @@ import gql from 'graphql-tag';
 import Post from '../components/Post/Post';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import NotFound from '../components/NotFound/NotFound';
-
-// TODO: Remove commentIDs when done with comments
-const PostQuery = gql`
-  query PostQuery($id: ID!) {
-    post(id: $id) {
-      id
-      title
-      author
-      type
-      url
-      text
-      score
-      time
-      commentCount
-      commentIDs
-      poll {
-        totalVotes
-        options {
-          text
-          voteCount
-          percentage
-        }
-      }
-    }
-  }
-`;
+import POST_QUERY from '../queries/Post.graphql'
 
 const PostContainer = (props) => {
   const id = props.match.params.id;
 
   return (
     <Query
-      query={PostQuery}
+      query={POST_QUERY}
       variables={{ id }}
       fetchPolicy="network-only"
     >
@@ -48,7 +23,6 @@ const PostContainer = (props) => {
           }
 
           if (error) {
-            console.log(data);
             return 'Failed loading the post. Please try again';
           }
 

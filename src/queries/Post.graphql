@@ -1,0 +1,22 @@
+query PostQuery($id: ID!) {
+  post(id: $id) {
+    id
+    title
+    author
+    type
+    url
+    text
+    score
+    time
+    commentCount
+    commentIDs
+    poll {
+      totalVotes
+      options {
+        text
+        voteCount
+        percentage
+      }
+    }
+  }
+}

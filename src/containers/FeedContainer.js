@@ -6,25 +6,7 @@ import Feed from '../components/Feed';
 import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
 import Repeat from '../components/Repeat';
 import { ENTRIES_PER_PAGE } from '../constants';
-
-const FeedQuery = gql`
-  query FeedQuery($feedName: String!, $page: Int!, $limit: Int!) {
-    feed(feedName: $feedName, page: $page, limit: $limit) {
-      postCount
-      posts {
-        id
-        type
-        title
-        url
-        text
-        score
-        time
-        author
-        commentCount
-      }
-    }
-  }
-`;
+import FEED_QUERY from '../queries/Feed.graphql'
 
 const FeedContainer = (props) => {
   const { feedName = 'top' } = props.match.params;
@@ -35,7 +17,7 @@ const FeedContainer = (props) => {
 
   return (
     <Query
-      query={FeedQuery}
+      query={FEED_QUERY}
       variables={{
         feedName,
         page,

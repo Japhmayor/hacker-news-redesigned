@@ -1,0 +1,16 @@
+query FeedQuery($feedName: String!, $page: Int!, $limit: Int!) {
+  feed(feedName: $feedName, page: $page, limit: $limit) {
+    postCount
+    posts {
+      id
+      type
+      title
+      url
+      text
+      score
+      time
+      author
+      commentCount
+    }
+  }
+}

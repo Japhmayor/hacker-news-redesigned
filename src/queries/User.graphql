@@ -1,0 +1,9 @@
+query UserQuery($username: String!) {
+  user(username: $username) {
+    username
+    createdAt
+    karma
+    about
+    submissions
+  }
+}

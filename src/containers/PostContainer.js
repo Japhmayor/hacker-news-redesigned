@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Post from '../components/Post/Post';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
+import NotFound from '../components/NotFound/NotFound';
 
 // TODO: Remove commentIDs when done with comments
 const PostQuery = gql`
@@ -47,7 +48,12 @@ const PostContainer = (props) => {
           }
 
           if (error) {
+            console.log(data);
             return 'Failed loading the post. Please try again';
+          }
+
+          if (!data.post) {
+            return <NotFound text="The post you’re looking for doesn’t exist."/>;
           }
 
           return <Post {...data.post} />;

@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import Post from '../components/Post/Post';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import User from '../components/User/User';
+import NotFound from '../components/NotFound/NotFound';
 
 // TODO: Remove commentIDs when done with comments
 const UserQuery = gql`
@@ -29,7 +30,7 @@ const UserPageContainer = (props) => {
       fetchPolicy="network-only"
     >
       {
-        ({ data: { user } , loading, error }) => {
+        ({ data , loading, error }) => {
           if (loading) {
             return 'Loading';
           }
@@ -38,7 +39,11 @@ const UserPageContainer = (props) => {
             return 'Failed loading the user\'s page. Please try again';
           }
 
-          return <User {...user}/>;
+          if (!data.user) {
+            return <NotFound text={`The user with that name doesn't exist.`} />;
+          }
+
+          return <User {...data.user}/>;
         }
       }
     </Query>

@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import CommentPage from '../components/CommentPage/CommentPage';
+import NotFound from '../components/NotFound/NotFound';
 
 const CommentQuery = gql`
   query CommentQuery($id: ID!) {
@@ -68,6 +69,11 @@ const CommentPageContainer = (props) => {
 
           if (error) {
             return 'Failed loading the comment. Please try again';
+          }
+
+
+          if (!data.comment) {
+            return <NotFound text="The comment you’re looking for doesn’t exist."/>;
           }
 
           return <CommentPage {...data.comment} />;

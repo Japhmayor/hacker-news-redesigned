@@ -1,0 +1,14 @@
+.NotFound {
+  height: calc(100vh - 64px);
+  margin: -32px 0 -72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.NotFoundTitle {
+  font-size: calc(16vw + 16px);
+  font-weight: $font-weight-base;
+  text-align: center;
+}

@@ -17,7 +17,7 @@
   position: relative;
   display: block;
   margin-top: spacing(2);
-  color: color('accent', 10);
+  color: color("accent", 10);
   text-decoration: none;
   transition: opacity 0.1s ease-in-out;
 
@@ -35,6 +35,6 @@
     height: 10px;
     margin-left: spacing(2);
     background-image: url("../../images/link-arrow.svg");
-    content: '';
+    content: "";
   }
 }

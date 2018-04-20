@@ -83,7 +83,6 @@
   }
 
 
-
   //
   // Opt-in typography, used for components like Comment, Post, UserPage body text.
   //
@@ -102,11 +101,11 @@
     pre {
       margin: 1em 0 1em;
       padding: spacing(4) spacing(2);
-      background-color: color('neutral', 100);
+      overflow-x: scroll;
       font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: $font-size-extra-small;
+      background-color: color("neutral", 100);
       border-radius: 4px;
-      overflow-x: scroll;
     }
 
 
@@ -129,8 +128,8 @@
     padding: 1px 6px;
     font-size: $font-size-extra-small;
     color: color("neutral", 10);
-    background-color: color('neutral', 100);
-    border: 1px solid color('neutral', 90);
+    background-color: color("neutral", 100);
+    border: 1px solid color("neutral", 90);
     border-radius: 2px;
   }
 }

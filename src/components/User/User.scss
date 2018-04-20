@@ -21,13 +21,13 @@
 .UserScore {
   display: inline-block;
   padding: spacing(2) spacing(3);
-  background-color: color('accent', 30);
-  border-radius: spacing(1);
   color: $white;
+  background-color: color("accent", 30);
+  border-radius: spacing(1);
 }
 
 .UserDate {
-  margin-top: spacing(2);
   flex: 1 0 100%;
+  margin-top: spacing(2);
 }
 

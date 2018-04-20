@@ -48,8 +48,8 @@
   color: color("neutral", 40);
   text-decoration: none;
   white-space: nowrap;
-  transition: 0.2s ease-in-out;
   border-left: 0 !important;
+  transition: 0.2s ease-in-out;
 
   &::after {
     display: inline-block;

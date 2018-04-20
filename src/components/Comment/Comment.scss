@@ -1,14 +1,16 @@
 .Comment {
   margin-bottom: spacing(8);
   font-size: $font-size-small;
-
-  & > & {
-    margin: spacing(5) 0 0 spacing(6);
-  }
 }
 
 .CommentBody {
   margin-top: 6px;
+}
+
+.CommentReplies {
+  margin-top: spacing(5);
+  padding-left: spacing(5);
+  border-left: 1px solid color("neutral", 90);
 }
 
 .CommentContinueThread {

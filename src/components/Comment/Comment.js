@@ -50,7 +50,7 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
         (
           // When maximum depth reached, render a link to the rest of the thread.
           level < COMMENT_DEPTH
-          ? comments.map((comment) => <Comment key={comment.id} {...comment} level={level + 1} />)
+          ? <div className={styles.CommentReplies}>{comments.map((comment) => <Comment key={comment.id} {...comment} level={level + 1} />)}</div>
           : <Link className={styles.CommentContinueThread} to={`/comment/${id}`}>Continue the thread</Link>
         )
       }

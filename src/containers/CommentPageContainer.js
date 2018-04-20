@@ -1,5 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import CommentPage from '../components/CommentPage/CommentPage';
 import NotFound from '../components/NotFound/NotFound';
@@ -34,6 +35,14 @@ const CommentPageContainer = (props) => {
       }
     </Query>
   );
+};
+
+CommentPageContainer.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };
 
 export default CommentPageContainer;

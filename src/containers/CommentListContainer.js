@@ -1,5 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
 import CommentList from '../components/CommentList/CommentList';
 import COMMENT_LIST_QUERY from '../queries/CommentList.graphql';
 
@@ -47,6 +48,10 @@ const CommentListContainer = ({ commentIDs }) => (
     }
   </Query>
 );
+
+CommentListContainer.propTypes = {
+  commentIDs: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default CommentListContainer;
 

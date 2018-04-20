@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as timeUtils from '../../utils/utils.time';
 
@@ -16,6 +17,12 @@ const Time = ({ to, time }) => (
     </Link>
   </time>
 );
+
+Time.propTypes = {
+  to: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+};
+
 
 export default Time;
 

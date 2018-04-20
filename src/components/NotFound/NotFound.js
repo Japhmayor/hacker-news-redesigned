@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as styles from './NotFound.scss';
 
 const NotFound = (props) => (
@@ -7,5 +8,13 @@ const NotFound = (props) => (
     <p>{props.text}</p>
   </div>
 );
+
+NotFound.defaultProps = {
+  text: 'The page doesn\'t exist',
+};
+
+NotFound.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 
 export default NotFound;

@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
-//const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
@@ -131,12 +130,7 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    //new ErrorOverlayPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    // new ExtractTextPlugin({
-    //   filename: 'styles.css',
-    //   allChunks: true
-    // }),
     //new StyleLintPlugin(),
   ],
 

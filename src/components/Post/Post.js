@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
 import getHostName from '../../utils/getHostname';
-
 import Meta from '../Meta/Meta';
 import { Author, Score } from '../Meta/MetaItem';
 import UserLink from '../UserLink/';
 import EntryLink from '../Entry/EntryLink';
 import Time from '../Time';
-import { Poll } from '../Poll';
+import Poll from '../Poll';
 import CommentListContainer from '../../containers/CommentListContainer';
 import * as styles from './Post.scss';
 
@@ -94,7 +92,7 @@ Post.propTypes = {
     ).isRequired,
   }),
   commentCount: PropTypes.number,
-  commentIDs: PropTypes.arrayOf(PropTypes.number),
+  commentIDs: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Post;

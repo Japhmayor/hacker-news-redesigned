@@ -1,23 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import * as styles from './UserLink.scss';
 
-const UserLink = (props) => {
+const UserLink = ({ comment, text, to }) => {
   const className = classNames(
     [styles.UserLink],
-    { [styles.onComment]: props.comment }
+    { [styles.onComment]: comment },
   );
 
   return (
     <Link
       className={className}
-      to={props.to}
+      to={to}
     >
-      {props.text}
+      {text}
     </Link>
   );
 };
+
+UserLink.propTypes = {
+  comment: PropTypes.bool,
+  text: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+};
+
 
 export default UserLink;
 

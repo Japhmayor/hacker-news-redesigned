@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import * as styles from './DirectionalNav.scss';
 
 const DirectionalNav = ({ shown, prevLinkShown, nextLinkShown, prevUrl, nextUrl }) => {
@@ -30,6 +31,14 @@ const DirectionalNav = ({ shown, prevLinkShown, nextLinkShown, prevUrl, nextUrl 
       }
     </nav>
   );
+};
+
+DirectionalNav.propTypes = {
+  shown: PropTypes.bool,
+  prevLinkShown: PropTypes.bool,
+  nextLinkShown: PropTypes.bool,
+  prevUrl: PropTypes.string.isRequired,
+  nextUrl: PropTypes.string.isRequired,
 };
 
 export default DirectionalNav;

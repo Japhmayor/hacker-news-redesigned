@@ -8,10 +8,9 @@ import { Author, Score } from '../Meta/MetaItem';
 import UserLink from '../UserLink/';
 import EntryLink from '../Entry/EntryLink';
 import Time from '../Time';
-import CommentList from '../CommentList/CommentList';
 import { Poll } from '../Poll';
-import * as styles from './Post.scss';
 import CommentListContainer from '../../containers/CommentListContainer';
+import * as styles from './Post.scss';
 
 const Post = ({ id, type, url, title, text, score, author, time, poll, commentCount, commentIDs }) => {
   const isLink = url !== null;
@@ -32,13 +31,13 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
 
           <Meta>
             {score &&
-              <Score>+ {score}</Score>
+            <Score>+ {score}</Score>
             }
 
             {author &&
-              <Author>
-                by <UserLink to={`/user/${author}`} text={author} />
-              </Author>
+            <Author>
+              by <UserLink to={`/user/${author}`} text={author} />
+            </Author>
             }
 
             <Time
@@ -49,20 +48,19 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
         </header>
 
         {text &&
-          <div
-            className={styles.PostBody + ' text'}
-            dangerouslySetInnerHTML={{ __html: text }}
-          />
+        <div
+          className={`${styles.PostBody} text`}
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
         }
 
         {type === 'poll' && poll &&
-          <Poll {...poll} />
+        <Poll {...poll} />
         }
       </article>
 
       {commentCount > 0
-        ?
-        <Fragment>
+        ? <Fragment>
           <h2 className={styles.PostCommentsTitle}>{commentCount} Comments</h2>
 
           <CommentListContainer
@@ -70,36 +68,36 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
             commentIDs={commentIDs}
           />
         </Fragment>
-        :
-        <h2 className={styles.PostCommentsEmptyState}>No one commented yet</h2>
+        : <h2 className={styles.PostCommentsEmptyState}>No one commented yet</h2>
       }
     </Fragment>
   );
 };
 
 Post.propTypes = {
-  id:           PropTypes.string.isRequired,
-  type:         PropTypes.string.isRequired,
-  url:          PropTypes.string,
-  title:        PropTypes.string.isRequired,
-  text:         PropTypes.string,
-  score:        PropTypes.number.isRequired,
-  author:       PropTypes.string,
-  time:         PropTypes.number.isRequired,
-  poll:         PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  score: PropTypes.number.isRequired,
+  author: PropTypes.string,
+  time: PropTypes.number.isRequired,
+  poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,
     options: PropTypes.arrayOf(
       PropTypes.shape({
         text: PropTypes.string,
         voteCount: PropTypes.number,
         percentage: PropTypes.number,
-      }).isRequired
+      }).isRequired,
     ).isRequired,
   }),
   commentCount: PropTypes.number,
-  comments: PropTypes.arrayOf(PropTypes.object),
+  commentIDs: PropTypes.arrayOf(PropTypes.number),
 };
 
 export default Post;
+
 
 // TODO: Don't show empty state if type==='job'

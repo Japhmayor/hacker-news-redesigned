@@ -5,9 +5,9 @@ import * as styles from './UserLink.scss';
 
 const UserLink = (props) => {
   const className = classNames(
-      [styles.UserLink],
-      { [styles.onComment]: props.comment }
-    );
+    [styles.UserLink],
+    { [styles.onComment]: props.comment }
+  );
 
   return (
     <Link

@@ -10,7 +10,7 @@ const CommentPage = (props) => (
       <Link to={`/post/${props.parentPostID}`}>{props.parentPostTitle}</Link>
     </h1>
 
-    <Comment {...props} level={0} showParent/>
+    <Comment {...props} level={0} showParent />
   </Fragment>
 );
 

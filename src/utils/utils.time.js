@@ -61,17 +61,17 @@ export function getTimePassed(seconds) {
  * @param {Number} seconds – UNIX Time
  * @return {String|undefined} – Timestamp in following format: March 13, 2018, at 12:45 PM
  * */
-export function getExactDateTime(seconds, withTime = false) {
+export function getExactDateTime(seconds) {
   return new Date(seconds * 1000)
     .toString();
-    // toLocaleString is extremely slow, momentjs is not an option
+  // toLocaleString is extremely slow, momentjs is not an option
 }
 
 export function getDate(seconds) {
   const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const date = new Date(seconds * 1000);
 
-  return`${monthList[date.getMonth() - 1]} ${date.getDate()}, ${date.getFullYear()}`;
+  return `${monthList[date.getMonth() - 1]} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
 

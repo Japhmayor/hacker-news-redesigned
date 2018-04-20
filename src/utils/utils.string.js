@@ -2,8 +2,8 @@
  * Wrap occurences starting with "&gt;" (>) into a <blockquote>
  * It expects non-enclosed <p> and <pre> tags within the text, as that's how HN Api delivers comment texts.
  *
- * @param {String}
- * @return {String}
+ * @param {String} text – HTML string from API
+ * @return {String} text with added <blockquote> tags
  * */
 
 export function blockquotify(text) {
@@ -15,8 +15,8 @@ export function blockquotify(text) {
  * Replace occurences wrapped with `backticks` into a <code>
  * It expects non-enclosed <p> and <pre> tags within the text, as that's how HN Api delivers comment texts.
  *
- * @param {String}
- * @return {String}
+ * @param {String} text – HTML string from API
+ * @return {String} text wrapped in <code> tag
  * */
 export function backticksToText(text) {
   const pattern = /(`)(\S+?)(`)/g;

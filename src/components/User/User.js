@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { getDate } from '../../utils/utils.time';
 import * as styles from './User.scss';
 
-const User = ({ username, karma, createdAt, about }) => {
-  return (
+const User = ({ username, karma, createdAt, about }) =>
+  (
     <div className={styles.User}>
       <header className={styles.UserHeader}>
         <h2>{username}</h2>
@@ -14,14 +14,13 @@ const User = ({ username, karma, createdAt, about }) => {
       </header>
 
       {about &&
-        <div
-          className='text'
-          dangerouslySetInnerHTML={{ __html: about }}
-        />
+      <div
+        className="text"
+        dangerouslySetInnerHTML={{ __html: about }}
+      />
       }
     </div>
   );
-};
 
 export default User;
 

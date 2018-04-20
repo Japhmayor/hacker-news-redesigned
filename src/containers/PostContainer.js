@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import Post from '../components/Post/Post';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import NotFound from '../components/NotFound/NotFound';
-import POST_QUERY from '../queries/Post.graphql'
+import POST_QUERY from '../queries/Post.graphql';
 
 const PostContainer = (props) => {
   const id = props.match.params.id;
@@ -27,7 +26,7 @@ const PostContainer = (props) => {
           }
 
           if (!data.post) {
-            return <NotFound text="The post you’re looking for doesn’t exist."/>;
+            return <NotFound text="The post you’re looking for doesn’t exist." />;
           }
 
           return <Post {...data.post} />;

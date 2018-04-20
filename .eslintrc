@@ -95,19 +95,19 @@
     "no-invalid-this": "off",
     "no-iterator": "warn",
     "no-labels": "warn",
-    "no-magic-numbers": [
-      "warn",
-      {
-        "ignore": [
-          -1,
-          0,
-          1,
-          60,
-          1000
-        ],
-        "ignoreArrayIndexes": true
-      }
-    ],
+//    "no-magic-numbers": [
+//      "warn",
+//      {
+//        "ignore": [
+//          -1,
+//          0,
+//          1,
+//          60,
+//          1000
+//        ],
+//        "ignoreArrayIndexes": true
+//      }
+//    ],
     "no-multi-str": "warn",
     "no-new": "warn",
     "no-new-func": "warn",
@@ -275,7 +275,7 @@
     "no-whitespace-before-property": "warn",
     "object-curly-newline": ["warn", {
       "ObjectExpression": { "minProperties": 4, "multiline": true, "consistent": true },
-      "ObjectPattern": { "minProperties": 10, "multiline": true, "consistent": true},
+      "ObjectPattern": { "minProperties": 12, "multiline": true, "consistent": true},
       "ImportDeclaration": { "minProperties": 4, "multiline": true, "consistent": true},
       "ExportDeclaration": { "minProperties": 4, "multiline": true, "consistent": true }
     }],

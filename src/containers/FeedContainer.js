@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import Feed from '../components/Feed';
 import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
 import Repeat from '../components/Repeat';
 import { ENTRIES_PER_PAGE } from '../constants';
-import FEED_QUERY from '../queries/Feed.graphql'
+import FEED_QUERY from '../queries/Feed.graphql';
 
 const FeedContainer = (props) => {
   const { feedName = 'top' } = props.match.params;

@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import Post from '../components/Post/Post';
-import PostPlaceholder from '../components/Post/PostPlaceholder';
 import User from '../components/User/User';
 import NotFound from '../components/NotFound/NotFound';
-import USER_QUERY from '../queries/User.graphql'
+import USER_QUERY from '../queries/User.graphql';
 
 const UserPageContainer = (props) => {
   const username = props.match.params.username;
@@ -18,7 +15,7 @@ const UserPageContainer = (props) => {
       fetchPolicy="network-only"
     >
       {
-        ({ data , loading, error }) => {
+        ({ data, loading, error }) => {
           if (loading) {
             return 'Loading';
           }
@@ -31,7 +28,7 @@ const UserPageContainer = (props) => {
             return <NotFound text={`The user with that name doesn’t exist.`} />;
           }
 
-          return <User {...data.user}/>;
+          return <User {...data.user} />;
         }
       }
     </Query>

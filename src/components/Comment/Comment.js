@@ -8,15 +8,13 @@ import Time from '../Time';
 import * as styles from './Comment.scss';
 import parseText from '../../utils/parseText';
 
-
-
 const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commentIDs, comments, level, showParent }) => {
 
   if (deleted) {
     text = '[Deleted]';
   }
 
-  const parentURL = (parent === parentPostID)
+  const parentURL = parent === parentPostID
     ? `/post/${parent}`
     : `/comment/${parent}`;
 
@@ -26,9 +24,9 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
     <div className={styles.Comment}>
       <Meta>
         {author &&
-          <Author>
-            <UserLink to={`/user/${author}`} text={author} comment/>
-          </Author>
+        <Author>
+          <UserLink to={`/user/${author}`} text={author} comment/>
+        </Author>
         }
 
         <Time
@@ -37,7 +35,7 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
         />
 
         {showParent &&
-          <Link to={parentURL}>parent</Link>
+        <Link to={parentURL}>parent</Link>
         }
       </Meta>
 
@@ -47,21 +45,26 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
       />
 
       {commentIDs && commentIDs.length > 0 &&
-        (
-          // When maximum depth reached, render a link to the rest of the thread.
-          level < COMMENT_DEPTH
-          ? <div className={styles.CommentReplies}>{comments.map((comment) => <Comment key={comment.id} {...comment} level={level + 1} />)}</div>
+      (
+        // When maximum depth reached, render a link to the rest of the thread.
+        level < COMMENT_DEPTH
+          ? <div className={styles.CommentReplies}>
+              {comments.map((comment) =>
+                <Comment
+                  key={comment.id}
+                  {...comment}
+                  level={level + 1}
+                />)
+              }
+            </div>
           : <Link className={styles.CommentContinueThread} to={`/comment/${id}`}>Continue the thread</Link>
-        )
+      )
       }
     </div>
   );
 };
 
 export default Comment;
-
-
-
 
 
 // TODO: PropTypes

@@ -7,7 +7,20 @@
     "@babel/preset-stage-2"
   ],
   "plugins": [
-    "react-hot-loader/babel",
-    "@babel/plugin-proposal-object-rest-spread",
-  ]
+    "@babel/plugin-proposal-object-rest-spread"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "@babel/plugin-transform-react-constant-elements",
+        "@babel/plugin-transform-react-inline-elements"
+      ]
+    }
+  }
 }

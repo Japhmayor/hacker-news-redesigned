@@ -26,7 +26,7 @@ module.exports = {
     rules: [
 
       // ESLint
-      // Runs before Babel regardless of the order
+      // Runs before anything else, to avoid linting transpiled code.
       // {
       //   test: /\.js$/,
       //   exclude: /(node_modules)/,
@@ -37,8 +37,7 @@ module.exports = {
       //   },
       // },
 
-      // Babel transpilation.
-      // See options in `.babelrc`
+      // Transipile JS with Babel
       {
         test: /\.js$/,
         include: path.resolve(__dirname, "src"),

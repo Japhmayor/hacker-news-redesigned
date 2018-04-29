@@ -13,7 +13,6 @@ const CommentPageContainer = (props) => {
     <Query
       query={COMMENT_QUERY}
       variables={{ id }}
-      fetchPolicy="network-only"
     >
       {
         ({ data, loading, error }) => {

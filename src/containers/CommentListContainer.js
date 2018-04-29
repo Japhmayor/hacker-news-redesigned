@@ -12,7 +12,6 @@ const CommentListContainer = ({ commentIDs }) => (
       skip: 0,
       // limit: 5,
     }}
-    fetchPolicy="network-only"
   >
     {
       ({ data, loading, error, fetchMore }) => {

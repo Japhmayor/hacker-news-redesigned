@@ -28,6 +28,19 @@ const client = new ApolloClient({ // TODO: Move this to a separate file.
     }),
   ]),
   cache: new InMemoryCache(),
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-and-network',
+      errorPolicy: 'ignore',
+    },
+    query: {
+      fetchPolicy: 'cache-and-network',
+      errorPolicy: 'all',
+    },
+    mutate: {
+      errorPolicy: 'all'
+    }
+  }
 });
 
 ReactDOM.render(

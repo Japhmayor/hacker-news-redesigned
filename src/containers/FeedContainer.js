@@ -22,7 +22,6 @@ const FeedContainer = (props) => {
         page,
         limit: ENTRIES_PER_PAGE,
       }}
-      fetchPolicy="network-only"
     >
       {
         ({ data, loading, error }) => {

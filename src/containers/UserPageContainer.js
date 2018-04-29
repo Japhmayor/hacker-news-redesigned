@@ -12,7 +12,6 @@ const UserPageContainer = (props) => {
     <Query
       query={USER_QUERY}
       variables={{ username }}
-      fetchPolicy="network-only"
     >
       {
         ({ data, loading, error }) => {

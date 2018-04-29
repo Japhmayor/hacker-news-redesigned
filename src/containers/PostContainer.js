@@ -13,7 +13,6 @@ const PostContainer = (props) => {
     <Query
       query={POST_QUERY}
       variables={{ id }}
-      fetchPolicy="network-only"
     >
       {
         ({ data, loading, error }) => {

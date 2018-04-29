@@ -5,12 +5,21 @@ query FeedQuery($feedName: String!, $page: Int!, $limit: Int!) {
       id
       type
       title
+      author
       url
       text
       score
       time
-      author
       commentCount
+      commentIDs
+      poll {
+        totalVotes
+        options {
+          text
+          voteCount
+          percentage
+        }
+      }
     }
   }
 }

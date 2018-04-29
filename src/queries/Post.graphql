@@ -1,9 +1,9 @@
 query PostQuery($id: ID!) {
   post(id: $id) {
     id
+    type
     title
     author
-    type
     url
     text
     score

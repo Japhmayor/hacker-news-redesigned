@@ -27,20 +27,21 @@ const client = new ApolloClient({ // TODO: Move this to a separate file.
       credentials: 'same-origin',
     }),
   ]),
-  cache: new InMemoryCache(),
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'cache-and-network',
-      errorPolicy: 'ignore',
+
+  cache: new InMemoryCache({
+    cacheRedirects: {
+      Query: {
+        post: (_, args, { getCacheKey }) => {
+          console.log(args);
+
+          return getCacheKey({
+            __typename: 'Post',
+            id: args.id,
+          });
+        },
+      },
     },
-    query: {
-      fetchPolicy: 'cache-and-network',
-      errorPolicy: 'all',
-    },
-    mutate: {
-      errorPolicy: 'all'
-    }
-  }
+  }),
 });
 
 ReactDOM.render(

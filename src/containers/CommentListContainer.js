@@ -25,23 +25,6 @@ const CommentListContainer = ({ commentIDs }) => (
 
         return <CommentList
           comments={data.comments}
-          onLoadMore={() => {
-            fetchMore({
-              variables: {
-                skip: data.comments.length,
-                limit: undefined,
-              },
-              updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) {
-                  return prev;
-                }
-                return {
-                  ...prev,
-                  comments: [...prev.comments, ...fetchMoreResult.comments],
-                };
-              },
-            });
-          }}
         />;
       }
     }

@@ -32,8 +32,6 @@ const client = new ApolloClient({ // TODO: Move this to a separate file.
     cacheRedirects: {
       Query: {
         post: (_, args, { getCacheKey }) => {
-          console.log(args);
-
           return getCacheKey({
             __typename: 'Post',
             id: args.id,

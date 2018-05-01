@@ -44,4 +44,3 @@ export default hot(module)(App);
 
 // TODO: Caching should be handled throughout the app, all requests are network-only atm.
 
-// TODO: Figure out what are Apollo extra queries about :\

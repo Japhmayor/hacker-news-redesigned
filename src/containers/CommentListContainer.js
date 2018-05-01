@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 import CommentList from '../components/CommentList/CommentList';
 import COMMENT_LIST_QUERY from '../queries/CommentList.graphql';
+import CommentListPlaceholder from '../components/CommentList/CommentListPlaceholder';
 
 const CommentListContainer = ({ commentIDs }) => (
   <Query
@@ -16,7 +17,7 @@ const CommentListContainer = ({ commentIDs }) => (
     {
       ({ data, loading, error, fetchMore }) => {
         if (loading) {
-          return 'Loading';
+          return <CommentListPlaceholder />;
         }
 
         if (error) {

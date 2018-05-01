@@ -18,7 +18,7 @@ const CommentPageContainer = (props) => {
         ({ data, loading, error }) => {
           if (loading) {
             return <PostPlaceholder />;
-          } // TODO: Make a comment page placholder?
+          }
 
           if (error) {
             return 'Failed loading the comment. Please try again';

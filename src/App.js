@@ -24,7 +24,6 @@ const App = () => (
           <Route component={NotFound} />
         </Switch>
       </Main>
-
       <ScrollToTop />
     </Fragment>
   </Router>

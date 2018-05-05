@@ -63,6 +63,7 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
 
           <CommentListContainer
             commentCount={commentCount}
+            score={score}
             commentIDs={commentIDs}
           />
         </Fragment>

@@ -7,16 +7,19 @@ import Time from '../Time';
 import getHostName from '../../utils/getHostname';
 import UserLink from '../UserLink/';
 import EntryLink from './EntryLink';
+import COMMENT_LIST_QUERY from '../../queries/CommentList.graphql';
 import * as styles from './Entry.scss';
 
-const Entry = ({ id, type, url, title, score, author, time, commentCount }) => {
+const Entry = ({ id, type, url, title, score, author, time, commentCount, commentIDs, client, onPrefetch }) => {
   const isJob = type === 'job';
   // Decide if external link
   const isLink = url !== null;
   url = isLink ? url : `/post/${id}`;
 
+
+
   return (
-    <div className={styles.Entry}>
+    <div className={styles.Entry} onMouseOver={() => onPrefetch(commentIDs, COMMENT_LIST_QUERY)}>
       <header className={styles.EntryTitle}>
         <EntryLink
           title={title}

@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { withApollo } from 'react-apollo';
+import debounce from 'lodash/debounce'
 import Entry from '../Entry';
 import DirectionalNav from '../DirectionalNav/';
 import { ENTRIES_PER_PAGE } from '../../constants';
 
-
-const Feed = ({ entries, entryCount, feedName, page }) => {
+const Feed = ({ entries, entryCount, feedName, page, client }) => {
   const pageCount = Math.ceil(
     entryCount / ENTRIES_PER_PAGE
   );
@@ -24,10 +25,32 @@ const Feed = ({ entries, entryCount, feedName, page }) => {
     nextUrl: `${baseUrl}/${page + 1}`,
   };
 
+  // Prefetch comments on Entry mouse over.
+  // Debouncing is used to avoid unnecessary prefetching when cursor just travels over entries.
+  // A single function is shared across all rendered entries to make debounce possible.
+  const preFetch = debounce(
+    (commentIDs, query) => {
+      commentIDs &&
+      client.query({
+        query,
+        variables: {
+          commentIDs,
+          skip: 0,
+          limit: 5,
+        }
+      })
+    },
+    300,
+    {
+      leading: false,
+      trailing: true,
+    }
+  );
+
   return (
     <Fragment>
       {entries.map((entry) => (
-        <Entry key={entry.id} {...entry} />
+        <Entry key={entry.id} {...entry} onPrefetch={preFetch}/>
       ))}
 
       <DirectionalNav {...dirNavProps} />
@@ -47,4 +70,4 @@ Feed.propTypes = {
   page: PropTypes.number.isRequired,
 };
 
-export default Feed;
+export default withApollo(Feed);

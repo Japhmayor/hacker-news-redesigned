@@ -11,7 +11,7 @@ const CommentListContainer = ({ commentIDs }) => (
     variables={{
       commentIDs,
       skip: 0,
-      // limit: 5,
+      limit: 5,
     }}
   >
     {
@@ -24,9 +24,21 @@ const CommentListContainer = ({ commentIDs }) => (
           return 'Failed loading the post. Please try again';
         }
 
-        return <CommentList
-          comments={data.comments}
-        />;
+        return (
+          <CommentList
+            comments={data.comments}
+            onLoadMore={() => fetchMore({
+              variables: {
+                commentIDs,
+                skip: 0,
+                limit: undefined,
+              },
+              updateQuery: (prev, {fetchMoreResult}) => {
+                if (!fetchMoreResult) return prev;
+                return fetchMoreResult;
+              }
+            })}
+          />);
       }
     }
   </Query>

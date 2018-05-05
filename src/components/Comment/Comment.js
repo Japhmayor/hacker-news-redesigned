@@ -18,8 +18,6 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
     ? `/post/${parent}`
     : `/comment/${parent}`;
 
-  text = parseText(text); // TODO: Consider serving parsed from API
-
   return (
     <div className={styles.Comment}>
       <Meta>
@@ -39,10 +37,12 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
         }
       </Meta>
 
-      <div
-        className={[`${styles.CommentBody} text`]}
-        dangerouslySetInnerHTML={{ __html: text }}
-      />
+      { text &&
+        <div
+          className={[`${styles.CommentBody} text`]}
+          dangerouslySetInnerHTML={{ __html: parseText(text) }} // TODO: Consider serving parsed from API
+        />
+      }
 
       {commentIDs && commentIDs.length > 0 &&
       (

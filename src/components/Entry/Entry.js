@@ -16,10 +16,11 @@ const Entry = ({ id, type, url, title, score, author, time, commentCount, commen
   const isLink = url !== null;
   url = isLink ? url : `/post/${id}`;
 
-
-
   return (
-    <div className={styles.Entry} onMouseOver={() => onPrefetch(commentIDs, COMMENT_LIST_QUERY)}>
+    <div
+      className={styles.Entry}
+      onMouseOver={() => onPrefetch(commentIDs, COMMENT_LIST_QUERY)}
+    >
       <header className={styles.EntryTitle}>
         <EntryLink
           title={title}

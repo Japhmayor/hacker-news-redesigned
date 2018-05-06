@@ -21,6 +21,7 @@ class CommentList extends React.Component {
 
 CommentList.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.object),
+  onLoadMore: PropTypes.func,
 };
 
 export default CommentList;

@@ -6,19 +6,11 @@ import COMMENT_LIST_QUERY from '../queries/CommentList.graphql';
 import CommentListPlaceholder from '../components/CommentList/CommentListPlaceholder';
 
 const CommentListContainer = ({ commentCount, score, commentIDs }) => {
-  // Super scientific way of deciding the prefetch limit:
-  // On popular posts the top most comments gets a lot of replies, enough to fill
-  // the page on initial render. Remaining comment loading is deferred.
-  // Basically, the larger is comment count and score, the fewer top level comments are loaded initially.
-  const limit = Math.ceil(1000 / (commentCount + score));
-
   return (
     <Query
       query={COMMENT_LIST_QUERY}
       variables={{
         commentIDs,
-        skip: 0,
-        limit,
       }}
     >
       {
@@ -34,21 +26,6 @@ const CommentListContainer = ({ commentCount, score, commentIDs }) => {
           return (
             <CommentList
               comments={data.comments}
-              onLoadMore={() => fetchMore({
-                variables: {
-                  commentIDs,
-                  skip: limit,
-                  limit: undefined,
-                },
-                updateQuery: (prev, { fetchMoreResult }) => {
-                  if (!fetchMoreResult) {
-                    return prev;
-                  }
-                  return Object.assign({}, prev, {
-                    comments: [...prev.comments, ...fetchMoreResult.comments],
-                  });
-                },
-              })}
             />);
         }
       }

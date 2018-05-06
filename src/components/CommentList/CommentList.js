@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import Comment from '../Comment/Comment';
 
 class CommentList extends React.Component {
-  componentDidMount() {
-    setTimeout(this.props.onLoadMore, 100);
-  }
-
   render() {
     return (
       <div>

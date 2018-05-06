@@ -35,14 +35,12 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
         query,
         variables: {
           commentIDs,
-          skip: 0,
-          limit: 5,
         }
       })
     },
     300,
     {
-      leading: false,
+      leading: true,
       trailing: true,
     }
   );

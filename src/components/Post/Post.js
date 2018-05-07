@@ -10,97 +10,70 @@ import Poll from '../Poll';
 import CommentListContainer from '../../containers/CommentListContainer';
 import * as styles from './Post.scss';
 
+const Post = ({ id, type, url, title, text, score, author, time, poll, commentCount, commentIDs }) => {
+  const isLink = url !== null;
 
-class Post extends React.Component {
-  state = {
-    shouldRenderComments: this.props.commentCount < 300,
-  };
+  return (
+    <Fragment>
+      <article>
+        <header className={styles.PostHeader}>
+          <h1 className={styles.PostTitle}>
+            {isLink ? (
+                <Fragment>
+                  <EntryLink title={title} href={url} external={isLink} />
 
-  // Defer rendering comments.
-  // When visiting from feed, React delays the page switch until CommentList is mounted.
-  // With large amount of comments, the delay is very noticable. Deferring comment rendering helps showing post body immediately,
-  // while waiting for comments to mount.
-  componentDidMount() {
-    if (!this.state.shouldRenderComments) {
-      this.raf = window.requestAnimationFrame(() => {
-        this.recursiveRaf = window.requestAnimationFrame(() => this.setState({ shouldRenderComments: true }));
-      });
-    }
-  }
+                  <small>({getHostName(url)})</small>
+                </Fragment>)
+              : title}
+          </h1>
 
-  componentWillUnmount() {
-    if (this.raf) {
-      window.cancelAnimationFrame(this.raf);
-      window.cancelAnimationFrame(this.recursiveRaf);
-    }
-  }
+          <Meta>
+            {score &&
+            <Score>+ {score}</Score>
+            }
 
-  render() {
-    const { id, type, url, title, text, score, author, time, poll, commentCount, commentIDs } = this.props;
-    const isLink = url !== null;
+            {author &&
+            <Author>
+              by <UserLink to={`/user/${author}`} text={author} />
+            </Author>
+            }
 
-    return (
-      <Fragment>
-        <article>
-          <header className={styles.PostHeader}>
-            <h1 className={styles.PostTitle}>
-              {isLink ? (
-                  <Fragment>
-                    <EntryLink title={title} href={url} external={isLink} />
+            <Time
+              to={`/post/${id}`}
+              time={time}
+            />
+          </Meta>
+        </header>
 
-                    <small>({getHostName(url)})</small>
-                  </Fragment>)
-                : title}
-            </h1>
-
-            <Meta>
-              {score &&
-              <Score>+ {score}</Score>
-              }
-
-              {author &&
-              <Author>
-                by <UserLink to={`/user/${author}`} text={author} />
-              </Author>
-              }
-
-              <Time
-                to={`/post/${id}`}
-                time={time}
-              />
-            </Meta>
-          </header>
-
-          {text &&
-          <div
-            className={`${styles.PostBody} text`}
-            dangerouslySetInnerHTML={{ __html: text }}
-          />
-          }
-
-          {type === 'poll' && poll &&
-          <Poll {...poll} />
-          }
-        </article>
-
-        {commentCount > 0
-          ? <Fragment>
-            <h2 className={styles.PostCommentsTitle}>{commentCount} Comments</h2>
-
-          </Fragment>
-          : <h2 className={styles.PostCommentsEmptyState}>No one commented yet</h2>
+        {text &&
+        <div
+          className={`${styles.PostBody} text`}
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
         }
 
-        {commentCount > 0 && this.state.shouldRenderComments &&
-          <CommentListContainer
-            commentCount={commentCount}
-            commentIDs={commentIDs}
-          />
+        {type === 'poll' && poll &&
+        <Poll {...poll} />
         }
-      </Fragment>
-    )
-  }
-}
+      </article>
+
+      {commentCount > 0
+        ? <Fragment>
+          <h2 className={styles.PostCommentsTitle}>{commentCount} Comments</h2>
+
+        </Fragment>
+        : <h2 className={styles.PostCommentsEmptyState}>No one commented yet</h2>
+      }
+
+      {commentCount > 0 &&
+      <CommentListContainer
+        commentCount={commentCount}
+        commentIDs={commentIDs}
+      />
+      }
+    </Fragment>
+  );
+};
 
 Post.propTypes = {
   id: PropTypes.string.isRequired,

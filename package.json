@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "precommit": "lint-staged",
     "prebuild": "npm run build:clean",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.js --progress",
     "build:clean": "rimraf ./build",
@@ -76,6 +77,8 @@
   },
   "devDependencies": {
     "error-overlay-webpack-plugin": "^0.1.4",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.0",
     "webpack-dev-server": "^3.1.0"
   }
 }

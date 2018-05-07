@@ -107,13 +107,24 @@ module.exports = {
         loader: 'graphql-tag/loader',
       },
 
+      // Inline small SVGs
+      {
+        test: [/\.svg$/],
+        include: path.resolve(__dirname, "src"),
+        loader: 'url-loader',
+        options: {
+          limit: 2000,
+          name: 'static/media/[name].[hash:8].[ext]',
+        },
+      },
+
       // Everything else gets processed by `file-loader`.
       {
         // Exclude everything that's being handled by the loaders above.
         // Also exclude `html` and `json` extensions so they get processed
         // by webpacks internal loaders.
         include: path.resolve(__dirname, "src"),
-        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.graphql$/, /\.json$/, /\.(css|scss)$/, /(node_modules)/],
+        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.graphql$/, /\.json$/, /\.svg/, /\.(css|scss)$/, /(node_modules)/],
         loader: 'file-loader',
         options: {
           name: 'static/media/[name].[hash:8].[ext]',

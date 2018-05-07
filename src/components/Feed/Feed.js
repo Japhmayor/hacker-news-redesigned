@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withApollo } from 'react-apollo';
-import debounce from 'lodash/debounce'
+import debounce from 'lodash/debounce';
 import Entry from '../Entry';
 import DirectionalNav from '../DirectionalNav/';
 import { ENTRIES_PER_PAGE } from '../../constants';
 
 const Feed = ({ entries, entryCount, feedName, page, client }) => {
   const pageCount = Math.ceil(
-    entryCount / ENTRIES_PER_PAGE
+    entryCount / ENTRIES_PER_PAGE,
   );
 
   // Make sure top feed is just homepage: i.e. top -> "/", top page 2 -> "/2"
@@ -30,25 +30,26 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
   // A single function is shared across all rendered entries to make debounce possible.
   const preFetch = debounce(
     (commentIDs, query) => {
-      commentIDs &&
-      client.query({
-        query,
-        variables: {
-          commentIDs,
-        }
-      })
+      if (commentIDs && commentIDs.length > 0) {
+        client.query({
+          query,
+          variables: {
+            commentIDs,
+          },
+        });
+      }
     },
     300,
     {
       leading: true,
       trailing: true,
-    }
+    },
   );
 
   return (
     <Fragment>
       {entries.map((entry) => (
-        <Entry key={entry.id} {...entry} onPrefetch={preFetch}/>
+        <Entry key={entry.id} {...entry} onPrefetch={preFetch} />
       ))}
 
       <DirectionalNav {...dirNavProps} />
@@ -66,6 +67,7 @@ Feed.propTypes = {
   entryCount: PropTypes.number.isRequired,
   feedName: PropTypes.string.isRequired,
   page: PropTypes.number.isRequired,
+  client: PropTypes.object,
 };
 
 export default withApollo(Feed);

@@ -19,11 +19,11 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
         <header className={styles.PostHeader}>
           <h1 className={styles.PostTitle}>
             {isLink ? (
-                <Fragment>
-                  <EntryLink title={title} href={url} external={isLink} />
+              <Fragment>
+                <EntryLink title={title} href={url} external={isLink} />
 
-                  <small>({getHostName(url)})</small>
-                </Fragment>)
+                <small>({getHostName(url)})</small>
+              </Fragment>)
               : title}
           </h1>
 

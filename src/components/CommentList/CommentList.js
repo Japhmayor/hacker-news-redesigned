@@ -22,7 +22,7 @@ class CommentList extends React.Component {
     this.raf = window.requestAnimationFrame(() => { // [2]
       this.recursiveRaf = window.requestAnimationFrame(() =>
         this.setState({
-          comments
+          comments,
         }));
     });
   }
@@ -31,10 +31,10 @@ class CommentList extends React.Component {
     return (
       <div>
         {this.state.comments.map((comment) =>
-          <Comment key={comment.id} {...comment} level={0}/>,
+          <Comment key={comment.id} {...comment} level={0} />,
         )}
       </div>
-    )
+    );
   }
 }
 

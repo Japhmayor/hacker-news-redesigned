@@ -27,12 +27,10 @@ const client = new ApolloClient({ // TODO: Move this to a separate file.
   cache: new InMemoryCache({
     cacheRedirects: {
       Query: {
-        post: (_, args, { getCacheKey }) => {
-          return getCacheKey({
-            __typename: 'Post',
-            id: args.id,
-          });
-        },
+        post: (_, args, { getCacheKey }) => getCacheKey({
+          __typename: 'Post',
+          id: args.id,
+        }),
       },
     },
   }),

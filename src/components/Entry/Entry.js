@@ -6,11 +6,11 @@ import { Author, Score } from '../Meta/MetaItem';
 import Time from '../Time';
 import getHostName from '../../utils/getHostname';
 import UserLink from '../UserLink/';
-import EntryLink from './EntryLink';
 import COMMENT_LIST_QUERY from '../../queries/CommentList.graphql';
+import EntryLink from './EntryLink';
 import * as styles from './Entry.scss';
 
-const Entry = ({ id, type, url, title, score, author, time, commentCount, commentIDs, client, onPrefetch }) => {
+const Entry = ({ id, type, url, title, score, author, time, commentCount, commentIDs, onPrefetch }) => {
   const isJob = type === 'job';
   // Decide if external link
   const isLink = url !== null;
@@ -72,6 +72,8 @@ Entry.propTypes = {
   author: PropTypes.string,
   time: PropTypes.number.isRequired,
   commentCount: PropTypes.number,
+  commentIDs: PropTypes.array,
+  onPrefetch: PropTypes.func,
 };
 
 export default Entry;

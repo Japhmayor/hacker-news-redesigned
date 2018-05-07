@@ -5,10 +5,12 @@ function deepSlice(list, limit) {
   let count = 0;
 
   function clone(list) {
-    let output = [];
+    const output = [];
 
-    for (let comment of list) {
-      if (count === limit) break;
+    for (const comment of list) {
+      if (count === limit) {
+        break;
+      }
 
       count++;
       if (!comment.comments) {
@@ -19,7 +21,7 @@ function deepSlice(list, limit) {
         output.push({
           ...comment,
           comments: clone(comment.comments),
-        })
+        });
       }
     }
     return output;

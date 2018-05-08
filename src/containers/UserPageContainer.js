@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import User from '../components/User/User';
-import NotFound from '../components/NotFound/NotFound';
+import Error from '../components/Error';
 import USER_QUERY from '../queries/User.graphql';
 
 const UserPageContainer = (props) => {
@@ -20,11 +20,17 @@ const UserPageContainer = (props) => {
           }
 
           if (error) {
-            return 'Failed loading the user’s page. Please try again';
+            return <Error
+              type="error"
+              text={`Could not load the user profile.`}
+            />;
           }
 
           if (!data.user) {
-            return <NotFound text={`The user with that name doesn’t exist.`} />;
+            return <Error
+              type="notfound"
+              text={`The user with that name doesn’t exist.`}
+            />;
           }
 
           return <User {...data.user} />;

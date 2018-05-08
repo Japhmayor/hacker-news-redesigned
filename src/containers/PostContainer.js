@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import Post from '../components/Post/Post';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
-import NotFound from '../components/NotFound/NotFound';
+import Error from '../components/Error';
 import POST_QUERY from '../queries/Post.graphql';
 
 const PostContainer = (props) => {
@@ -21,11 +21,17 @@ const PostContainer = (props) => {
           }
 
           if (error) {
-            return 'Failed loading the post. Please try again';
+            return <Error
+              type="error"
+              text={`Could not load the user post.`}
+            />;
           }
 
           if (!data.post) {
-            return <NotFound text="The post you’re looking for doesn’t exist." />;
+            return <Error
+              type="notfound"
+              text="The post you’re looking for doesn’t exist."
+            />;
           }
 
           return <Post {...data.post} />;

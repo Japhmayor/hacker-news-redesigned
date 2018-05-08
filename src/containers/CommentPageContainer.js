@@ -3,7 +3,7 @@ import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import CommentPage from '../components/CommentPage/CommentPage';
-import NotFound from '../components/NotFound/NotFound';
+import Error from '../components/Error';
 import COMMENT_QUERY from '../queries/Comment.graphql';
 
 const CommentPageContainer = (props) => {
@@ -21,12 +21,15 @@ const CommentPageContainer = (props) => {
           }
 
           if (error) {
-            return 'Failed loading the comment. Please try again';
+            return <Error
+              type="error"
+              text={`Could not load comments.`}
+            />;
           }
 
 
           if (!data.comment) {
-            return <NotFound text="The comment you’re looking for doesn’t exist." />;
+            return <Error text="The comment you’re looking for doesn’t exist." />;
           }
 
           return <CommentPage {...data.comment} />;

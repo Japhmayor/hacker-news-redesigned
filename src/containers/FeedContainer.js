@@ -6,6 +6,7 @@ import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
 import Repeat from '../components/Repeat';
 import { ENTRIES_PER_PAGE } from '../constants';
 import FEED_QUERY from '../queries/Feed.graphql';
+import Error from '../components/Error/Error';
 
 const FeedContainer = (props) => {
   const { feedName = 'top' } = props.match.params;
@@ -34,7 +35,10 @@ const FeedContainer = (props) => {
           }
 
           if (error) {
-            return <div>Something went wrong. Please try again/*TODO: Link/Button?*/</div>;
+            return <Error
+              type="error"
+              text={`Could not load the feed.`}
+            />;
           }
 
           return <Feed

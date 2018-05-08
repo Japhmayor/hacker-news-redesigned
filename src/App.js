@@ -9,7 +9,7 @@ import FeedContainer from './containers/FeedContainer';
 import PostContainer from './containers/PostContainer';
 import CommentPageContainer from './containers/CommentPageContainer';
 import UserPageContainer from './containers/UserPageContainer';
-import NotFound from './components/NotFound/NotFound';
+import Error from './components/Error/Error';
 
 const App = () => (
   <Router>
@@ -21,7 +21,7 @@ const App = () => (
           <Route path="/post/:id(\d+)" component={PostContainer} />
           <Route path="/comment/:id(\d+)" component={CommentPageContainer} />
           <Route path="/user/:username" component={UserPageContainer} />
-          <Route component={NotFound} />
+          <Route render={() => <Error type="notfound" />} />
         </Switch>
       </Main>
       <ScrollToTop />

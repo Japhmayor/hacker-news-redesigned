@@ -9,6 +9,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  @media (min-height: 700px) {
+    margin-top: -22vh;
+  }
 }
 
 .NotFoundTitle {

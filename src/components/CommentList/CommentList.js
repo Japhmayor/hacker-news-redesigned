@@ -19,6 +19,7 @@ class CommentList extends React.Component {
   componentDidMount() {
     const comments = this.props.comments;
 
+    // TODO: Doesn't work on server probably use https://www.npmjs.com/package/raf
     this.raf = window.requestAnimationFrame(() => { // [2]
       this.recursiveRaf = window.requestAnimationFrame(() =>
         this.setState({

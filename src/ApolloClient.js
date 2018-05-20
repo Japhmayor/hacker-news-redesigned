@@ -33,7 +33,7 @@ const client = new ApolloClient({ // TODO: Move this to a separate file.
         }),
       },
     },
-  }),
+  }).restore(window.__APOLLO_STATE__),
 });
 
 export default client;

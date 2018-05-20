@@ -1,32 +1,23 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import './styles/main.scss';
-import Header from './components/Header/';
+import { renderRoutes } from 'react-router-config';
 import ScrollToTop from './components/ScrollToTop';
+import Header from './components/Header/';
 import Main from './components/Main/';
-import FeedContainer from './containers/FeedContainer';
-import PostContainer from './containers/PostContainer';
-import CommentPageContainer from './containers/CommentPageContainer';
-import UserPageContainer from './containers/UserPageContainer';
-import Error from './components/Error/Error';
+import routes from './routes';
 
 const App = () => (
-  <Router>
-    <Fragment>
-      <Header />
-      <Main role="main">
-        <Switch>
-          <Route path="/:feedName(top|new|ask|show|jobs|best)?/:page([1-9][0-9]?)?" component={FeedContainer} exact />
-          <Route path="/post/:id(\d+)" component={PostContainer} />
-          <Route path="/comment/:id(\d+)" component={CommentPageContainer} />
-          <Route path="/user/:username" component={UserPageContainer} />
-          <Route render={() => <Error type="notfound" />} />
-        </Switch>
-      </Main>
-      <ScrollToTop />
-    </Fragment>
-  </Router>
+  <Fragment>
+    <Header />
+    <Main role="main">
+      <Switch>
+        {renderRoutes(routes)}
+      </Switch>
+    </Main>
+    <ScrollToTop />
+  </Fragment>
 );
 
 export default hot(module)(App);

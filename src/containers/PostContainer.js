@@ -5,6 +5,7 @@ import Post from '../components/Post/Post';
 import PostPlaceholder from '../components/Post/PostPlaceholder';
 import Error from '../components/Error';
 import POST_QUERY from '../queries/Post.graphql';
+import NotFound from '../components/HelperComponents/NotFound';
 
 const PostContainer = (props) => {
   const id = props.match.params.id;
@@ -28,8 +29,7 @@ const PostContainer = (props) => {
           }
 
           if (!data.post) {
-            return <Error
-              type="notfound"
+            return <NotFound
               text="The post you’re looking for doesn’t exist."
             />;
           }

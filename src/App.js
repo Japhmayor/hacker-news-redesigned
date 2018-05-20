@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
-import { Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import './styles/main.scss';
 import { renderRoutes } from 'react-router-config';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './components/HelperComponents/ScrollToTop';
 import Header from './components/Header/';
 import Main from './components/Main/';
 import routes from './routes';
@@ -12,9 +11,7 @@ const App = () => (
   <Fragment>
     <Header />
     <Main role="main">
-      <Switch>
-        {renderRoutes(routes)}
-      </Switch>
+      {renderRoutes(routes)}
     </Main>
     <ScrollToTop />
   </Fragment>

@@ -2,6 +2,7 @@ import FeedContainer from './containers/FeedContainer';
 import PostContainer from './containers/PostContainer';
 import CommentPageContainer from './containers/CommentPageContainer';
 import UserPageContainer from './containers/UserPageContainer';
+import NotFound from './components/HelperComponents/NotFound';
 
 const routes = [
   {
@@ -20,6 +21,9 @@ const routes = [
   {
     path: '/user/:username',
     component: UserPageContainer,
+  },
+  {
+    component: NotFound,
   },
 
   // TODO: Figure out and add 404

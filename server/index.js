@@ -48,13 +48,20 @@ const render = ({ clientStats }) => (req, res) => {
     </ApolloProvider>
   );
 
-  if (context.url) {
-    return res.redirect(301, context.url);
-  }
-
   renderToStringWithData(jsx)
     .then((content) => {
       const initialState = client.extract();
+
+
+      if (context.status) {
+        console.log(context)
+        res.status(404)
+      }
+
+      if (context.url) {
+        return res.redirect(301, context.url);
+      }
+
 
       res.send(`
       <!DOCTYPE html>

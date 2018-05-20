@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import Feed from '../components/Feed';
 import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
-import Repeat from '../components/Repeat';
+import Repeat from '../components/HelperComponents/Repeat';
 import { ENTRIES_PER_PAGE } from '../constants';
 import FEED_QUERY from '../queries/Feed.graphql';
 import Error from '../components/Error/Error';

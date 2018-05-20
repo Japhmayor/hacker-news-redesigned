@@ -40,18 +40,23 @@ const render = ({ clientStats }) => (req, res) => {
     splitPoints: [],
   };
 
-  // TODO: Figure out how redirects work
-
-  renderToStringWithData(
+  const jsx = (
     <ApolloProvider client={client}>
       <StaticRouter location={req.url} context={context}>
         <App/>
       </StaticRouter>
     </ApolloProvider>
-  ).then((content) => {
-    const initialState = client.extract();
+  );
 
-    res.send(`
+  if (context.url) {
+    return res.redirect(301, context.url);
+  }
+
+  renderToStringWithData(jsx)
+    .then((content) => {
+      const initialState = client.extract();
+
+      res.send(`
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -71,13 +76,14 @@ const render = ({ clientStats }) => (req, res) => {
           
         <script>
           window.splitPoints = ${JSON.stringify(context.splitPoints)};
-          window.__APOLLO_STATE__ = ${JSON.stringify(initialState).replace(/</g, '\\u003c')};
+          window.__APOLLO_STATE__ = ${JSON.stringify(initialState)
+        .replace(/</g, '\\u003c')};
         </script>
         <script src="/main.js"></script>
         </body>
       </html>
   `);
-  });
+    });
 };
 
 export default render;

@@ -1,71 +1,58 @@
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const paths = require('../config/paths');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const paths = require('./paths');
+
+if (process.env.NODE_ENV !== 'production') {
+  throw new Error('Production builds must have NODE_ENV=production.');
+}
 
 module.exports = {
+  name: 'client',
   mode: 'production',
-  devtool: 'source-map',
+  target: 'web',
+  devtool: false,
   bail: true,
 
-  entry: [
-    paths.entryPath
-  ],
+  entry: [paths.srcPath],
 
   output: {
     path: paths.buildPath,
-    publicPath: paths.ASSET_PATH,
-    filename: 'assets/js/[name].[chunkhash].js',
-    chunkFilename: 'assets/js/[name].[chunkhash].chunk.js',
+    filename: 'assets/js/[name].[chunkhash:8].js',
+    publicPath: paths.publicPath,
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: paths.htmlPath,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-      inject: true,
-    }),
-    new ExtractTextPlugin({
-      filename: 'assets/css/[name].[hash:8].css',
-      allChunks: true
-    }),
-  ],
+  performance: {
+    maxEntrypointSize: 400000,
+    maxAssetSize: 400000,
+  },
+
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ],
+    splitChunks: {
+      chunks: 'all',
+      name: 'vendors',
+    },
+    runtimeChunk: true,
+  },
 
   module: {
     strictExportPresence: true,
 
     rules: [
-
-      // ESLint
-      // Runs before anything else, to avoid linting transpiled code.
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          formatter: eslintFormatter,
-        },
-      },
-
-
       {
         oneOf: [
-          // Transipile JS with Babel
+
+          // Transiplie JavaScript with Babel
           {
             test: /\.js$/,
             include: paths.srcPath,
@@ -74,88 +61,114 @@ module.exports = {
               'thread-loader',
               {
                 loader: 'babel-loader',
-                // This is a feature of `babel-loader` for webpack (not Babel itself).
-                // It enables caching results in ./node_modules/.cache/babel-loader/
-                // directory for faster rebuilds.
                 options: {
-                  compact: true,
+                  cacheDirectory: true,
                   highlightCode: true,
-                }
-              }
+                },
+              },
             ],
           },
 
-
-          //  SCSS Modules
-          // `style-loader`: Injects <style> tags in development mode
-          // `css-loader`: Takes care of the modules, compression, and source maps
-          // `sass-loader`: Loads and compiles SCSS files
-          // `sass-resources-loader`: Loads ITCSS-like dependencies to be used in components
+          // Process SCSS
+          // 1. `sass-resources-loader` – Makes global dependencies (variables/mixins)
+          // available to modules without @import
+          // 2. `sass-loader` – Compiles Sass
+          // 3. `postcss-loader` – Adds PostCSS plugins (e.g. autoprefixer)
+          // 4. `css-loader` –Inteprets imports and adds CSS modules functionality
+          // 5. `MiniCSSExtractPlugin` – Extracts generated CSS into a file
           {
             test: /\.scss$/,
             include: paths.srcPath,
             exclude: /(node_modules)/,
-            loader: ExtractTextPlugin.extract({
-              use: [
-                {
-                  loader: 'css-loader',
-                  options: {
-                    modules: true,
-                    sourceMap: true,
-                    minimize: true,
-                    importLoaders: 2,
-                    localIdentName: '[local]_[hash:base64:5]', //[name]-[local]_[hash:base64:5] // TODO: Revisit name
-                  },
+            use: [
+              MiniCSSExtractPlugin.loader,
+              {
+                loader: 'css-loader',
+                query: {
+                  sourceMap: true,
+                  modules: true,
+                  importLoaders: 3,
+                  localIdentName: '[local]_[hash:base64:5]', //[name]-[local]_[hash:base64:5]
                 },
-                {
-                  loader: 'postcss-loader'
+              },
+              {
+                loader: 'postcss-loader',
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  includePaths: ['node_modules'],
                 },
-                {
-                  loader: 'sass-loader',
-                  options: {
-                    includePaths: ['node_modules']
-                  }
+              },
+              {
+                loader: 'sass-resources-loader',
+                options: {
+                  resources: [
+                    './src/styles/functions/_functions.all.scss',
+                    './src/styles/settings/_settings.all.scss',
+                    './src/styles/mixins/_mixins.all.scss',
+                  ],
                 },
-                {
-                  loader: 'sass-resources-loader',
-                  options: {
-                    resources: [
-                      './src/styles/functions/_functions.all.scss',
-                      './src/styles/settings/_settings.all.scss',
-                      './src/styles/mixins/_mixins.all.scss'
-                    ]
-                  }
-                }
-              ]
-            }),
+              },
+            ],
           },
 
-          // Process GraphQL queries
+          // Process imported .graphql files
           {
-            loader: 'graphql-tag/loader',
             test: /\.(graphql)$/,
             exclude: /node_modules/,
+            loader: 'graphql-tag/loader',
           },
 
-          // Process everything else.
-          // Any imported file that isn't a match for loaders above will be processed
-          // with file-loader
+          // Inline small SVGs
           {
-            loader: 'file-loader',
-            // Exclude `js` files to keep "css" loader working as it injects
-            // it's runtime that would otherwise be processed through "file" loader.
+            test: [/\.svg$/],
+            include: paths.srcPath,
+            loader: 'url-loader',
+            options: {
+              limit: 2000,
+              name: 'assets/media/[name].[hash:8].svg',
+            },
+          },
+
+          // Everything else gets processed by `file-loader`.
+          {
+            // Exclude everything that's being handled by the loaders above.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            //
-            // Credit: Create React App
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            include: paths.srcPath,
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.graphql$/, /\.json$/, /\.svg/, /\.(css|scss)$/, /(node_modules)/],
+            loader: 'file-loader',
             options: {
               name: 'assets/media/[name].[hash:8].[ext]',
             },
-          }
+          },
+
+          // No loaders beyond this point. All loaders should be specified
+          // before the `file-loader`.
 
         ],
       }
     ],
-  }
+  },
+
+  plugins: [
+    new MiniCSSExtractPlugin({
+      filename: 'assets/css/[name].[contenthash:8].css',
+    }),
+    new ManifestPlugin({
+      fileName: 'asset-manifest.json',
+      publicPath: paths.publicPath,
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  ],
+
+  stats: {
+    colors: true,
+    assets: true,
+    modules: false,
+    builtAt: false,
+    source: false,
+    children: false,
+  },
 };

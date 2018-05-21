@@ -3,13 +3,15 @@
 const path = require('path');
 const fs = require('fs');
 
-const appDir = fs.realpathSync(process.cwd());
+const isProduction = (process.env.NODE_ENV === 'production');
 
+const appDir = fs.realpathSync(process.cwd());
 const resolve = relativePath => path.resolve(appDir, relativePath);
 
 module.exports = {
   rootPath: resolve('.'),
   buildPath: resolve('build'),
+  publicPath: isProduction ? '/' : process.env.ASSETS_URL,
   srcPath: resolve('src'),
   serverPath: resolve('server'),
   srcEntryPath: resolve('src/index.js'),

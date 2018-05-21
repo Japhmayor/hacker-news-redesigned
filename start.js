@@ -7,7 +7,8 @@ const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
 const clientConfig = require('./webpack/client.dev');
 const serverConfig = require('./webpack/server.dev');
 
-const isDevMode = process.env.NODE_ENV === 'development';
+const isDevelopment = process.env.NODE_ENV === 'development';
+const isProduction = process.env.NODE_ENV === 'development';
 const PORT_NUMBER = process.env.PORT || 3000;
 
 const app = express();
@@ -22,7 +23,7 @@ const start = () => {
   });
 };
 
-if (isDevMode) {
+if (isDevelopment) {
   const compiler = webpack([clientConfig, serverConfig]);
   const clientCompiler = compiler.compilers[0];
   const wmdOptions = {
@@ -47,6 +48,6 @@ if (isDevMode) {
 
   compiler.hooks.done.tap('Done', start);
 }
-// else {
-//   // TODO: Add production build, ideally in a different file.
-// }
+else if (isProduction) {
+
+}

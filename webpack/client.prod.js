@@ -5,10 +5,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const paths = require('./paths');
 
-if (process.env.NODE_ENV !== 'production') {
-  throw new Error('Production builds must have NODE_ENV=production.');
-}
-
 module.exports = {
   name: 'client',
   mode: 'production',
@@ -16,7 +12,7 @@ module.exports = {
   devtool: false,
   bail: true,
 
-  entry: [paths.srcPath],
+  entry: [paths.srcEntryPath],
 
   output: {
     path: paths.buildPath,
@@ -157,7 +153,7 @@ module.exports = {
       filename: 'assets/css/[name].[contenthash:8].css',
     }),
     new ManifestPlugin({
-      fileName: 'asset-manifest.json',
+      fileName: 'assets/asset-manifest.json',
       publicPath: paths.publicPath,
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),

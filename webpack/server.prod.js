@@ -1,20 +1,19 @@
-const fs = require('fs');
 const paths = require('./paths');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   name: 'server',
-  mode: 'development',
+  mode: 'production',
   target: 'node',
   externals: [nodeExternals()],
+  devtool: 'false',
+  bail: true,
 
-  entry: [
-    paths.serverEntryPath
-  ],
+  entry: [paths.serverEntryPath],
 
   output: {
-    filename: 'bundle.server.js',
-    publicPath: '/',
+    path: paths.buildPath,
+    filename: 'server/bundle.server.js',
     libraryTarget: 'commonjs2',
   },
 
@@ -87,6 +86,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 2000,
+          emitFile: false,
         },
       },
 
@@ -98,7 +98,22 @@ module.exports = {
         include: paths.srcPath,
         exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.graphql$/, /\.json$/, /\.svg/, /\.(css|scss)$/, /(node_modules)/],
         loader: 'file-loader',
-      }
+        options: {
+          emitFile: false,
+        },
+      },
+
+      // No loaders beyond this point. All loaders should be specified
+      // before the `file-loader`.
     ],
+  },
+
+  stats: {
+    colors: true,
+    assets: true,
+    modules: false,
+    builtAt: false,
+    source: false,
+    children: false,
   },
 };

@@ -4,10 +4,14 @@
   "private": true,
   "scripts": {
     "precommit": "lint-staged",
-    "prebuild": "npm run build:clean",
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack/client.prod.js --progress",
+    "prebuild:local": "yarn build:clean",
+    "prebuild:": "yarn build:clean",
+    "build": "cross-env NODE_ENV=production ASSETS_URL=http://cdn.example.com/ webpack --config ./webpack/webpack.config.prod.js --progress",
+    "build:local": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.js --progress",
     "build:clean": "rimraf ./build",
-    "start": "cross-env NODE_ENV=development node --inspect=127.0.0.1:9230 ./start.js"
+    "start": "cross-env NODE_ENV=development node --inspect=127.0.0.1:9230 ./start.js",
+    "start:prod:local": "yarn build:local && cross-env PORT=8080 node ./start.prod.js",
+    "start:prod": "yarn build && node ./start.prod.js"
   },
   "browserslist": [
     "Chrome >= 50",
@@ -35,6 +39,7 @@
     "babel-eslint": "^8.2.2",
     "babel-loader": "^8.0.0-beta.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
+    "body-parser": "^1.18.3",
     "classnames": "^2.2.5",
     "clean-webpack-plugin": "^0.1.19",
     "compression": "^1.7.2",

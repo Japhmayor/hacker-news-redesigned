@@ -8,8 +8,7 @@ const clientConfig = require('./webpack/client.dev');
 const serverConfig = require('./webpack/server.dev');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
-const isProduction = process.env.NODE_ENV === 'development';
-const PORT_NUMBER = process.env.PORT || 3000;
+const PORT_NUMBER = process.env.PORT || 3050;
 
 const app = express();
 
@@ -48,6 +47,4 @@ if (isDevelopment) {
 
   compiler.hooks.done.tap('Done', start);
 }
-else if (isProduction) {
 
-}

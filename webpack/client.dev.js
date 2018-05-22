@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const paths = require('./paths');
 
 module.exports = {
@@ -44,7 +43,7 @@ module.exports = {
         include: paths.srcPath,
         exclude: /(node_modules)/,
         use: [
-          MiniCSSExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             query: {
@@ -109,10 +108,6 @@ module.exports = {
   },
 
   plugins: [
-    new MiniCSSExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[name].[contenthash].css"
-    }),
     // Replace any references to `/bundles/` with `/asyncBundles/` on client.
     new webpack.NormalModuleReplacementPlugin(
       /\/bundles/,

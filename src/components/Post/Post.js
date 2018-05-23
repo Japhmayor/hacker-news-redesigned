@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import getHostName from '../../utils/getHostname';
+import Head from '../Head';
 import Meta from '../Meta/Meta';
 import { Author, Score } from '../Meta/MetaItem';
 import UserLink from '../UserLink/';
@@ -15,6 +16,12 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
 
   return (
     <Fragment>
+      <Head
+        url={`/post/${id}`}
+        title={title}
+        description={text}
+      />
+
       <article>
         <header className={styles.PostHeader}>
           <h1 className={styles.PostTitle}>

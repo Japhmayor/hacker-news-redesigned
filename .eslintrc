@@ -52,6 +52,7 @@
     "no-empty-character-class": "warn",
     "no-extra-parens": ["warn", "all", {
       "ignoreJSX": "all",
+      "conditionalAssign": false,
       "nestedBinaryExpressions": false,
       "enforceForArrowConditionals": false
     }],

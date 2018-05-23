@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "precommit": "lint-staged",
+    "lint:js": "eslint ./src ./server",
     "prebuild:local": "yarn build:clean",
     "prebuild:": "yarn build:clean",
     "build": "cross-env NODE_ENV=production ASSETS_URL=http://cdn.example.com/ webpack --config ./webpack/webpack.config.prod.js --progress",

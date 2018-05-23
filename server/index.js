@@ -1,5 +1,4 @@
 import React from 'react';
-import fetch from 'node-fetch';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { StaticRouter } from 'react-router-dom';
 import App from '../src/App';
@@ -14,24 +13,23 @@ const render = (manifest) => (req, res) => {
   const jsx = (
     <ApolloProvider client={client}>
       <StaticRouter location={req.url} context={context}>
-        <App/>
+        <App />
       </StaticRouter>
     </ApolloProvider>
   );
 
   // Generate script tags
-  const scripts = (manifest.client)
-    ? `
+  const scripts = manifest.client ? `
       <script src=${manifest.client['runtime~main.js']}></script>  
       <script src=${manifest.client['vendors.js']}></script>  
-      <script src=${manifest.client['main.js']}></script>  
-    `
+      <script src=${manifest.client['main.js']}></script>`
     : `<script src="/main.js"></script>`;
 
-  // Generate CSS link
-  const css = `<link rel="stylesheet" href="${!manifest.client ? '/main.css' : manifest.client['main.css']}" />`;
+  // Generate CSS Link
+  const css = `<link rel="stylesheet" href="${manifest.client ? manifest.client['main.css'] : '/main.css'}" />`;
 
-  renderToStringWithData(jsx).then((content) => {
+  renderToStringWithData(jsx)
+    .then((content) => {
       const initialState = client.extract();
 
       if (context.status) {
@@ -67,7 +65,7 @@ const render = (manifest) => (req, res) => {
         </body>
       </html>
     `);
-  });
+    });
 };
 
 export default render;

@@ -5,8 +5,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { onError } from 'apollo-link-error';
 import fetch from 'node-fetch';
 
-const getApolloClient = () => {
-  return new ApolloClient({
+const getApolloClient = () =>
+  new ApolloClient({
     ssrMode: true,
     link: ApolloLink.from([
       // TODO: Errors don't indicate anything in the browser. Fix.
@@ -31,6 +31,5 @@ const getApolloClient = () => {
 
     cache: new InMemoryCache(),
   });
-};
 
 export default getApolloClient;

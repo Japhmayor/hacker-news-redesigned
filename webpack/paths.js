@@ -15,7 +15,7 @@ module.exports = {
   srcPath: resolve('src'),
   serverPath: resolve('server'),
   srcEntryPath: resolve('src/index.js'),
-  serverEntryPath: resolve('server/index.js'),
+  serverEntryPath: resolve('src/server/index.js'),
   nodeModulesPath: resolve('./node_modules'),
   babelrcPath: resolve('./.babelrc'),
 };

@@ -32,10 +32,10 @@ if (isDevelopment) {
     stats: {
       colors: true,
       assets: true,
-      children: false,
       modules: false,
       builtAt: false,
       source: false,
+      version: false,
     },
     serverSideRender: true,
   };

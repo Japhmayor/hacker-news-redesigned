@@ -1,7 +1,7 @@
 import React from 'react';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { StaticRouter } from 'react-router-dom';
-import App from '../src/App';
+import App from '../App';
 import getApolloClient from './getApolloClient';
 
 const render = (manifest) => (req, res) => {

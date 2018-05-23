@@ -40,7 +40,7 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
       { text &&
         <div
           className={[`${styles.CommentBody} text`]}
-          dangerouslySetInnerHTML={{ __html: parseText(text) }} // TODO: Consider serving parsed from API
+          dangerouslySetInnerHTML={{ __html: parseText(text) }}
         />
       }
 
@@ -78,7 +78,6 @@ Comment.propTypes = {
   showParent: PropTypes.bool,
 };
 
-
 export default Comment;
 
 // TODO: Placeholders
@@ -91,6 +90,3 @@ export default Comment;
 // Below actions should ideally be performed on server as a single step, so the client gets clean parsed markup
 
 // TODO: Detect internal links and swap/remove the domain so it links into this app. (only item and author)
-
-// TODO: Replace <i> with <em>
-

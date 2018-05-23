@@ -6,9 +6,11 @@ import ScrollToTop from './components/HelperComponents/ScrollToTop';
 import Header from './components/Header/';
 import Main from './components/Main/';
 import routes from './routes';
+import Head from './components/Head';
 
 const App = () => (
   <Fragment>
+    <Head />
     <Header />
     <Main role="main">
       {renderRoutes(routes)}

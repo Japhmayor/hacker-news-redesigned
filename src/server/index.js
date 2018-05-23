@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { StaticRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import App from '../App';
 import getApolloClient from './getApolloClient';
 
@@ -17,6 +18,8 @@ const render = (manifest) => (req, res) => {
       </StaticRouter>
     </ApolloProvider>
   );
+
+  const helmet = Helmet.renderStatic();
 
   // Generate script tags
   const scripts = manifest.client ? `
@@ -46,13 +49,16 @@ const render = (manifest) => (req, res) => {
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                  
+          ${helmet.meta.toString()}
+          ${helmet.link.toString()}
       
           <link rel="manifest" href="/manifest.json">
 
           ${css}
           <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,600" rel="stylesheet">
       
-          <title>React App</title>
+          ${helmet.title.toString()}
         </head>
       
         <body>

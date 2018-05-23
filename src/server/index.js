@@ -26,7 +26,7 @@ const render = (manifest) => (req, res) => {
     : `<script src="/main.js"></script>`;
 
   // Generate CSS Link
-  const css = `<link rel="stylesheet" href="${manifest.client ? manifest.client['main.css'] : '/main.css'}" />`;
+  const css = `<link rel="stylesheet" href="${manifest.client ? manifest.client['main.css'] : ''}" />`;
 
   renderToStringWithData(jsx)
     .then((content) => {

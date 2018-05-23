@@ -3,6 +3,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const paths = require('./paths');
 
 module.exports = {
@@ -156,6 +157,10 @@ module.exports = {
       fileName: 'assets/asset-manifest.json',
       publicPath: paths.publicPath,
     }),
+    new webpack.DefinePlugin({
+      'PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL) || '/',
+    }),
+    // new BundleAnalyzerPlugin(), // TODO: Make this conditional, based on a flag or something.
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
 

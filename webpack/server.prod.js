@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const paths = require('./paths');
 const nodeExternals = require('webpack-node-externals');
 
@@ -107,6 +108,12 @@ module.exports = {
       // before the `file-loader`.
     ],
   },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      'PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL) || '/',
+    }),
+  ],
 
   stats: {
     colors: true,

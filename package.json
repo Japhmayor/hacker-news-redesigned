@@ -7,7 +7,7 @@
     "lint:js": "eslint ./src ./server",
     "prebuild:local": "yarn build:clean",
     "prebuild:": "yarn build:clean",
-    "build": "cross-env NODE_ENV=production ASSETS_URL=http://cdn.example.com/ webpack --config ./webpack/webpack.config.prod.js --progress",
+    "build": "cross-env NODE_ENV=production PUBLIC_URL=http://www.example.com/ ASSETS_URL=http://cdn.example.com/ webpack --config ./webpack/webpack.config.prod.js --progress",
     "build:local": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.js --progress",
     "build:clean": "rimraf ./build",
     "start": "cross-env NODE_ENV=development node --inspect=127.0.0.1:9230 ./start.js",

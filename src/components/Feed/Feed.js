@@ -5,6 +5,8 @@ import debounce from 'lodash/debounce';
 import Entry from '../Entry';
 import DirectionalNav from '../DirectionalNav/';
 import { ENTRIES_PER_PAGE } from '../../constants';
+import Head from '../Head';
+import { capitalize } from '../../utils/utils.string';
 
 const Feed = ({ entries, entryCount, feedName, page, client }) => {
   const pageCount = Math.ceil(
@@ -48,6 +50,8 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
 
   return (
     <Fragment>
+      <Head title={capitalize(feedName)} />
+
       {entries.map((entry) => (
         <Entry key={entry.id} {...entry} onPrefetch={preFetch} />
       ))}

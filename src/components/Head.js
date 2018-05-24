@@ -8,8 +8,8 @@ const Head = ({ url, title, description }) => {
 
   return (
     <Helmet
-      defaultTitle="HackerNews Redesigned"
-      titleTemplate="%s | HackerNews Redesigned"
+      defaultTitle="Hacker News Redesigned"
+      titleTemplate="%s | Hacker News Redesigned"
     >
       <link rel="canonical" href={completeURL} />
 
@@ -29,7 +29,7 @@ const Head = ({ url, title, description }) => {
       <meta property="og:title" content={title} />
       <meta property="og:image" content="http://example.com/image.jpg" /> {/* TODO: Use a generic image/logo*/}
       <meta property="og:description" content={description} />
-      <meta property="og:site_name" content="HackerNews Redesigned" />
+      <meta property="og:site_name" content="Hacker News Redesigned" />
       <meta property="og:locale" content="en_US" />
 
       <title>{title}</title>

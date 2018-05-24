@@ -23,4 +23,12 @@ export function backticksToText(text) {
   return text.replace(pattern, '<code>$2</code>');
 }
 
-// TODO: Move this functionality to the server when implementing GraphQL; might be too costly.
+/**
+ * Capitalize text
+ *
+ * @param {String} text – Text to capitalize
+ * @param {Boolean} lowerRest – Turn the rest of the text to lowercase
+ * @return {String} Capitalized text
+ * */
+export const capitalize = ([first, ...rest], lowerRest = false) =>
+  first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));

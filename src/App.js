@@ -12,7 +12,7 @@ const App = () => (
   <Fragment>
     <Head />
     <Header />
-    <Main role="main">
+    <Main>
       {renderRoutes(routes)}
     </Main>
     <ScrollToTop />
@@ -28,8 +28,3 @@ export default hot(module)(App);
 // http://almerosteyn.com/2017/09/aria-live-regions-in-react
 // http://almerosteyn.com/2017/03/accessible-react-navigation
 // https://simplyaccessible.com/article/react-a11y/
-
-// TODO: Title and other <head> stuff
-
-// TODO: Caching should be handled throughout the app, all requests are network-only atm.
-

@@ -71,6 +71,15 @@ const render = (manifest) => (req, res) => {
         </body>
       </html>
     `);
+    })
+    .catch((e) => {
+      console.error('RENDERING ERROR:', e); // eslint-disable-line no-console
+      res.status(500);
+      res.end(
+        `Something went wrong on the server. Please submit an issue to https://github.com/tigranpetrossian/hnpwa with the following error text:\n\n${
+          e
+        }`
+      );
     });
 };
 

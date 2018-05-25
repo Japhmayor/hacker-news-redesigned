@@ -41,6 +41,7 @@ if (isDevelopment) {
   };
 
   app.use(compression());
+  app.use(express.static('./src/static'));
   app.use(webpackDevMiddleware(compiler, wmdOptions));
   app.use(webpackHotMiddleware(clientCompiler));
   app.use(webpackHotServerMiddleware(compiler));

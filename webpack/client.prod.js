@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -150,6 +151,10 @@ module.exports = {
   },
 
   plugins: [
+    new CopyWebpackPlugin([{
+      from: paths.srcStaticPath,
+      to: paths.buildStaticPath,
+    }]),
     new MiniCSSExtractPlugin({
       filename: 'assets/css/[name].[contenthash:8].css',
     }),

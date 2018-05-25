@@ -12,7 +12,8 @@ const PORT_NUMBER = process.env.PORT || 80;
 const app = express();
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(paths.buildPath, { maxAge: '365d' }));
+app.use(express.static(paths.buildPath));
+app.use(express.static(paths.buildStaticPath));
 app.use(serverRender(manifest));
 
 app.listen(PORT_NUMBER, () => {

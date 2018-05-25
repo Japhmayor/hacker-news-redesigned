@@ -11,8 +11,10 @@ const resolve = relativePath => path.resolve(appDir, relativePath);
 module.exports = {
   rootPath: resolve('.'),
   buildPath: resolve('build'),
+  buildStaticPath: resolve('build/static'),
   publicPath: process.env.ASSETS_URL || '/',
   srcPath: resolve('src'),
+  srcStaticPath: resolve('src/static'),
   serverPath: resolve('server'),
   srcEntryPath: resolve('src/index.js'),
   serverEntryPath: resolve('src/server/index.js'),

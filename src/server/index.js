@@ -55,7 +55,7 @@ const render = (manifest) => (req, res) => {
       
           <link rel="manifest" href="/manifest.json">
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ed732c">
-          <!--<link rel="shortcut icon" href="/favicon.ico">-->
+          <link rel="shortcut icon" href="/favicon.png">
 
           ${css}
           <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,600" rel="stylesheet">

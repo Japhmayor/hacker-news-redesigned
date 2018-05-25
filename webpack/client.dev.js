@@ -88,7 +88,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 2000,
-          name: 'static/media/[name].[ext]',
+          name: 'assets/media/[name].[ext]',
         },
       },
 
@@ -101,7 +101,7 @@ module.exports = {
         exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.graphql$/, /\.json$/, /\.svg/, /\.(css|scss)$/, /(node_modules)/],
         loader: 'file-loader',
         options: {
-          name: 'static/media/[name].[ext]',
+          name: 'assets/media/[name].[ext]',
         },
       }
     ],

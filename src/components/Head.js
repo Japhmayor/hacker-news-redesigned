@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { BASE_URL } from '../constants';
+import smImage from '../images/hn-redesigned-social-media.png';
+
+console.log(smImage);
 
 const Head = ({ url, title, description }) => {
   const completeURL = url ? BASE_URL + url : BASE_URL;
+  const imageURL = BASE_URL + smImage.substr(1);
 
   return (
     <Helmet
@@ -21,13 +25,13 @@ const Head = ({ url, title, description }) => {
       <meta name="twitter:url" content={completeURL} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="http://example.com/image.jpg" /> {/* TODO: Use a generic image/logo*/}
+      <meta name="twitter:image" content={imageURL} />
 
       {/* Open Graph */}
       <meta property="og:url" content={completeURL} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
-      <meta property="og:image" content="http://example.com/image.jpg" /> {/* TODO: Use a generic image/logo*/}
+      <meta property="og:image" content={imageURL} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content="Hacker News Redesigned" />
       <meta property="og:locale" content="en_US" />

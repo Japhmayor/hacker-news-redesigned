@@ -4,7 +4,7 @@ import logo from '../../images/hn-logo.svg';
 import * as styles from './Header.scss';
 
 const Header = (props) => (
-  <header className={styles.Header}>
+  <header className={styles.Header} role="banner">
     <div className={styles.Logo}>
       <img src={logo} alt="Hacker News" />
     </div>

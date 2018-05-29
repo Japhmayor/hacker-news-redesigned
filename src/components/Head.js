@@ -10,7 +10,7 @@ const Head = ({ url, title, description }) => {
   return (
     <Helmet
       defaultTitle="Hacker News Redesigned"
-      titleTemplate="%s | Hacker News Redesigned"
+      titleTemplate="%s – Hacker News Redesigned"
     >
       <link rel="canonical" href={completeURL} />
 

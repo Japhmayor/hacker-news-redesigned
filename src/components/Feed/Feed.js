@@ -13,7 +13,7 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
     entryCount / ENTRIES_PER_PAGE,
   );
 
-  // Make sure top feed is just homepage: i.e. top -> "/", top page 2 -> "/2"
+  // Make sure the top feed is just homepage: i.e. top -> "/", top page 2 -> "/2"
   const baseUrl = feedName !== 'top' ? `/${feedName}` : '';
 
   // 1. Show "Previous" link starting from the second page
@@ -52,9 +52,13 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
     <Fragment>
       <Head title={capitalize(feedName)} />
 
-      {entries.map((entry) => (
-        <Entry key={entry.id} {...entry} onPrefetch={preFetch} />
-      ))}
+      <section>
+        <h1>{`Feed: ${feedName}`}</h1>
+
+        {entries.map((entry) => (
+          <Entry key={entry.id} {...entry} onPrefetch={preFetch} />
+        ))}
+      </section>
 
       <DirectionalNav {...dirNavProps} />
     </Fragment>
@@ -62,7 +66,7 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
 };
 
 Feed.defaultProps = {
-  page: '1',
+  page: 1,
   feedName: 'top',
 };
 

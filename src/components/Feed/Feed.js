@@ -53,7 +53,7 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
       <Head title={capitalize(feedName)} />
 
       <section>
-        <h1>{`Feed: ${feedName}`}</h1>
+        <h1 className="u-sr-only">{`Feed: ${feedName}`}</h1>
 
         {entries.map((entry) => (
           <Entry key={entry.id} {...entry} onPrefetch={preFetch} />

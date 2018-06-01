@@ -2,10 +2,11 @@ import React from 'react';
 import commentListPlaceholderImage from '../../images/comment-list-placeholder.svg';
 
 const CommentListPlaceholder = (props) => (
-  <div role="region" aria-live="polite">
+  <div>
     <img
       src={commentListPlaceholderImage}
       alt="Loading"
+      role="presentation"
       style={{
         width: '100%',
         height: 78,

@@ -5,6 +5,7 @@ const PollPlaceholder = () => (
   <img
     src={pollPlaceholder}
     alt="Loading"
+    role="presentation"
     style={{
       display: 'block',
       width: '100%',

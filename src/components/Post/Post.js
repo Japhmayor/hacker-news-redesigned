@@ -19,7 +19,7 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
       <Head
         url={`/post/${id}`}
         title={title}
-        description={text}
+        description={text || undefined}
       />
 
       <article>

@@ -4,7 +4,6 @@ import getHostName from '../../utils/getHostname';
 import Head from '../Head';
 import Meta from '../Meta/Meta';
 import { Author, Score } from '../Meta/MetaItem';
-import UserLink from '../UserLink/';
 import EntryLink from '../Entry/EntryLink';
 import Time from '../Time';
 import Poll from '../Poll';
@@ -36,31 +35,26 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
 
           <Meta>
             {score &&
-            <Score>+ {score}</Score>
+              <Score score={score} />
             }
 
             {author &&
-            <Author>
-              by <UserLink to={`/user/${author}`} text={author} />
-            </Author>
+              <Author name={author} />
             }
 
-            <Time
-              to={`/post/${id}`}
-              time={time}
-            />
+            <Time to={`/post/${id}`} time={time} />
           </Meta>
         </header>
 
         {text &&
-        <div
-          className={`${styles.PostBody} text`}
-          dangerouslySetInnerHTML={{ __html: text }}
-        />
+          <div
+            className={`${styles.PostBody} text`}
+            dangerouslySetInnerHTML={{ __html: text }}
+          />
         }
 
         {type === 'poll' && poll &&
-        <Poll {...poll} />
+          <Poll {...poll} />
         }
       </article>
 
@@ -73,10 +67,10 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
       }
 
       {commentCount > 0 &&
-      <CommentListContainer
-        commentCount={commentCount}
-        commentIDs={commentIDs}
-      />
+        <CommentListContainer
+          commentCount={commentCount}
+          commentIDs={commentIDs}
+        />
       }
     </Fragment>
   );

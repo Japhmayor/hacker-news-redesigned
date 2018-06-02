@@ -62,9 +62,12 @@ export function getTimePassed(seconds) {
  * @return {String|undefined} – Timestamp in following format: March 13, 2018, at 12:45 PM
  * */
 export function getExactDateTime(seconds) {
-  return new Date(seconds * 1000)
-    .toString();
-  // toLocaleString is extremely slow, momentjs is not an option
+  const options = {
+    year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
+  };
+  const dateTimeFormat = new Intl.DateTimeFormat('en-US', options);
+
+  return dateTimeFormat.format(new Date(seconds * 1000));
 }
 
 export function getDate(seconds) {

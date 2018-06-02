@@ -23,8 +23,3 @@ export default hot(module)(App);
 
 
 // TODO: Need a way to notify screen readers about navigating between pages.
-// TODO: Overall, should provide near-perfect accessibility.
-// Research Aria Live regions and implement accordingly. Might need Redux or Context
-// http://almerosteyn.com/2017/09/aria-live-regions-in-react
-// http://almerosteyn.com/2017/03/accessible-react-navigation
-// https://simplyaccessible.com/article/react-a11y/

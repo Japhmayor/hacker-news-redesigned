@@ -5,7 +5,6 @@ import Meta from '../Meta/Meta';
 import { Author, Score } from '../Meta/MetaItem';
 import Time from '../Time';
 import getHostName from '../../utils/getHostname';
-import UserLink from '../UserLink/';
 import COMMENT_LIST_QUERY from '../../queries/CommentList.graphql';
 import EntryLink from './EntryLink';
 import * as styles from './Entry.scss';
@@ -35,24 +34,20 @@ const Entry = ({ id, type, url, title, score, author, time, commentCount, commen
 
       <Meta size="small">
         {score && type !== 'job' &&
-          <Score>+ {score}</Score>
+          <Score score={score} />
         }
 
         {!isJob && author &&
-          <Author>
-            by <UserLink to={`/user/${author}`} text={author} />
-          </Author>
+          <Author name={author} />
         }
 
-        <Time
-          to={`/post/${id}`}
-          time={time}
-        />
+        <Time to={`/post/${id}`} time={time} />
 
         {Boolean(commentCount) &&
           <Link
             className={styles.EntryCommentLink}
             to={`/post/${id}`}
+            aria-label={`${commentCount} comments. Visit the post page`}
             title={`${commentCount} comments`}
           >
             {commentCount}

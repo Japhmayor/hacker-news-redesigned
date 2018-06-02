@@ -11,7 +11,7 @@ const Time = ({ to, time }) => (
 
     <Link
       to={to}
-      aria-label={`Posted ${timeUtils.getTimePassed(time)}. Go to the entry page`}
+      aria-label={`Posted ${timeUtils.getTimePassed(time)}. Visit the post page.`}
     >
       {timeUtils.getTimePassed(time)}
     </Link>

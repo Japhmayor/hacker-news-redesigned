@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import * as styles from './UserLink.scss';
 
-const UserLink = ({ comment, text, to }) => {
+const UserLink = ({ inComment, text, to }) => {
   const className = classNames(
     [styles.UserLink],
-    { [styles.onComment]: comment },
+    { [styles.onComment]: inComment },
   );
 
   return (
     <Link
       className={className}
       to={to}
+      aria-label={`Written by ${text}`}
     >
       {text}
     </Link>
@@ -21,7 +22,7 @@ const UserLink = ({ comment, text, to }) => {
 };
 
 UserLink.propTypes = {
-  comment: PropTypes.bool,
+  inComment: PropTypes.bool,
   text: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };

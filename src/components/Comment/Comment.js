@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { COMMENT_DEPTH } from '../../constants';
 import Meta from '../Meta/Meta';
-import UserLink from '../UserLink/';
 import { Author } from '../Meta/MetaItem';
 import Time from '../Time';
 import parseText from '../../utils/parseText';
@@ -22,22 +21,17 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
     <div className={styles.Comment}>
       <Meta>
         {author &&
-        <Author>
-          <UserLink to={`/user/${author}`} text={author} comment />
-        </Author>
+          <Author name={author} inComment />
         }
 
-        <Time
-          to={`/comment/${id}`}
-          time={time}
-        />
+        <Time to={`/comment/${id}`} time={time} />
 
         {showParent &&
-        <Link to={parentURL}>parent</Link>
+          <Link to={parentURL}>parent</Link>
         }
       </Meta>
 
-      { text &&
+      {text &&
         <div
           className={[`${styles.CommentBody} text`]}
           dangerouslySetInnerHTML={{ __html: parseText(text) }}
@@ -45,20 +39,20 @@ const Comment = ({ id, text, time, author, deleted, parent, parentPostID, commen
       }
 
       {commentIDs && commentIDs.length > 0 &&
-      (
-        // When maximum depth reached, render a link to the rest of the thread.
-        level < COMMENT_DEPTH
-          ? <div className={styles.CommentReplies}>
-            {comments.map((comment) =>
-              <Comment
-                key={comment.id}
-                {...comment}
-                level={level + 1}
-              />)
-            }
-          </div>
-          : <Link className={styles.CommentContinueThread} to={`/comment/${id}`}>Continue the thread</Link>
-      )
+        (
+          // When maximum depth reached, render a link to the rest of the thread.
+          level < COMMENT_DEPTH
+            ? <div className={styles.CommentReplies}>
+              {comments.map((comment) =>
+                <Comment
+                  key={comment.id}
+                  {...comment}
+                  level={level + 1}
+                />)
+              }
+            </div>
+            : <Link className={styles.CommentContinueThread} to={`/comment/${id}`}>Continue the thread</Link>
+        )
       }
     </div>
   );

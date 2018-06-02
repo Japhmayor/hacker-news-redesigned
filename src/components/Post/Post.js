@@ -69,7 +69,7 @@ const Post = ({ id, type, url, title, text, score, author, time, poll, commentCo
           <h2 className={styles.PostCommentsTitle}>{commentCount} Comments</h2>
 
         </Fragment>
-        : <h2 className={styles.PostCommentsEmptyState}>No one commented yet</h2>
+        : type !== 'job' && <h2 className={styles.PostCommentsEmptyState}>No one commented yet</h2>
       }
 
       {commentCount > 0 &&
@@ -106,6 +106,3 @@ Post.propTypes = {
 };
 
 export default Post;
-
-
-// TODO: Don't show empty state if type==='job'

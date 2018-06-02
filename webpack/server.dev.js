@@ -6,6 +6,7 @@ module.exports = {
   name: 'server',
   mode: 'development',
   target: 'node',
+  devtool: 'cheap-module-source-map',
   externals: [nodeExternals()],
 
   entry: [

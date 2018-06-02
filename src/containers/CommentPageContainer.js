@@ -5,6 +5,7 @@ import PostPlaceholder from '../components/Post/PostPlaceholder';
 import CommentPage from '../components/CommentPage/CommentPage';
 import Error from '../components/Error';
 import COMMENT_QUERY from '../queries/Comment.graphql';
+import NotFound from '../components/HelperComponents/NotFound';
 
 const CommentPageContainer = (props) => {
   const id = props.match.params.id;
@@ -29,7 +30,9 @@ const CommentPageContainer = (props) => {
 
 
           if (!data.comment) {
-            return <Error text="The comment you’re looking for doesn’t exist." />;
+            return <NotFound
+              text="The comment you’re looking for doesn’t exist."
+            />;
           }
 
           return <CommentPage {...data.comment} />;
@@ -48,5 +51,3 @@ CommentPageContainer.propTypes = {
 };
 
 export default CommentPageContainer;
-
-// TODO: PropTypes

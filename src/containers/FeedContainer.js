@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import Feed from '../components/Feed';
-import EntryPlaceholder from '../components/Entry/EntryPlaceholder';
-import Repeat from '../components/HelperComponents/Repeat';
+import Feed, { FeedPlaceholder } from '../components/Feed';
 import { ENTRIES_PER_PAGE } from '../constants';
 import FEED_QUERY from '../queries/Feed.graphql';
-import Error from '../components/Error/Error';
+import Error from '../components/Error';
 
 const FeedContainer = (props) => {
   const { feedName = 'top' } = props.match.params;
@@ -28,9 +26,7 @@ const FeedContainer = (props) => {
         ({ data, loading, error }) => {
           if (loading) {
             return (
-              <Repeat times={ENTRIES_PER_PAGE}>
-                <EntryPlaceholder />
-              </Repeat>
+              <FeedPlaceholder />
             );
           }
 
@@ -63,3 +59,4 @@ FeedContainer.propTypes = {
 };
 
 export default FeedContainer;
+

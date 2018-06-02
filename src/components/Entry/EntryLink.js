@@ -18,5 +18,3 @@ EntryLink.propTypes = {
 };
 
 export default EntryLink;
-
-// TODO: Proptypes

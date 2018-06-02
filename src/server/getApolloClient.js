@@ -21,7 +21,6 @@ const getApolloClient = () => {
   return new ApolloClient({
     ssrMode: true,
     link: ApolloLink.from([
-      // TODO: Errors don't indicate anything in the browser. Fix.
       onError(({ graphQLErrors, networkError }) => {
         if (graphQLErrors) {
           graphQLErrors.map(({ message, locations, path }) =>

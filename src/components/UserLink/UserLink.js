@@ -28,5 +28,3 @@ UserLink.propTypes = {
 
 
 export default UserLink;
-
-// TODO PropTypes

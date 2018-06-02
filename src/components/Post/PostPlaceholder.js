@@ -1,8 +1,6 @@
 import React from 'react';
 import postPlaceholderImage from '../../images/post-placeholder.svg';
 
-// TODO: The placeholder is ugly and generic. Need something that works & looks better.
-
 const PostPlaceholder = (props) => (
   <div>
     <img

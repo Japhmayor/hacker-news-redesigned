@@ -42,5 +42,3 @@ DirectionalNav.propTypes = {
 };
 
 export default DirectionalNav;
-
-// TODO: PropTypes

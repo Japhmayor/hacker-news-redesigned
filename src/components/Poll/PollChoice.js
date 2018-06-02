@@ -24,5 +24,3 @@ PollChoice.propTypes = {
 };
 
 export default PollChoice;
-
-// TODO: Sort descending

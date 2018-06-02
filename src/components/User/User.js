@@ -33,5 +33,3 @@ User.propTypes = {
 };
 
 export default User;
-
-// TODO: Add Post/Comment tabs to the page (figure out filtering from a single array of IDs)

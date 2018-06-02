@@ -80,13 +80,9 @@ Comment.propTypes = {
 
 export default Comment;
 
-// TODO: Placeholders
-
-// TODO: Comments should be collapsible. Collapsed comments are saved in localStorage.
+// TODO: Comments should be collapsible. IDs of collapsed comments are saved in localStorage.
 //       Older than X days comments should be removed from localStorage for performance reasons.
 
 // TODO: Would be kinda nice to parse links into titles or something, but not sure how and how costly it is.
-
-// Below actions should ideally be performed on server as a single step, so the client gets clean parsed markup
 
 // TODO: Detect internal links and swap/remove the domain so it links into this app. (only item and author)

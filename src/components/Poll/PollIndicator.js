@@ -13,5 +13,3 @@ PollIndicator.propTypes = {
 };
 
 export default PollIndicator;
-
-// TODO: PropTypes

@@ -28,5 +28,3 @@ CommentPage.propTypes = {
 };
 
 export default CommentPage;
-
-// TODO: PropTypes

@@ -25,5 +25,3 @@ Time.propTypes = {
 
 
 export default Time;
-
-// TODO: PropTypes

@@ -49,5 +49,3 @@ UserPageContainer.propTypes = {
 };
 
 export default UserPageContainer;
-
-// TODO: Deal with non existing usernames

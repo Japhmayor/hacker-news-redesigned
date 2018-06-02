@@ -25,8 +25,6 @@ const routes = [
   {
     component: NotFound,
   },
-
-  // TODO: Figure out and add 404
 ];
 
 export default routes;

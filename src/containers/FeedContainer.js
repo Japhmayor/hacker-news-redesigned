@@ -63,5 +63,3 @@ FeedContainer.propTypes = {
 };
 
 export default FeedContainer;
-
-// TODO: Consider prefetching https://www.apollographql.com/docs/react/features/performance.html#prefetching

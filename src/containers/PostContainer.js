@@ -50,5 +50,3 @@ PostContainer.propTypes = {
 };
 
 export default PostContainer;
-
-// TODO: Generic error design.

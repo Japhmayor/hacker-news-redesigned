@@ -1,4 +1,4 @@
-.NotFound {
+.Error {
   position: absolute;
   top: spacing(16);
   right: spacing(10);
@@ -9,14 +9,14 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.ErrorTitle {
+  font-size: calc(16vw + 16px);
+  font-weight: $font-weight-base;
+  line-height: 1;
 
   @media (min-height: 700px) {
     margin-top: -22vh;
   }
-}
-
-.NotFoundTitle {
-  font-size: calc(16vw + 16px);
-  font-weight: $font-weight-base;
-  line-height: 1;
 }

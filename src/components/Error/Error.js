@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import * as styles from './Error.scss';
 
 const Error = ({ type, text }) => (
-  <div className={styles.NotFound}>
-    <h1 className={styles.NotFoundTitle}>
+  <div className={styles.Error}>
+    <h1 className={styles.ErrorTitle}>
       {type === 'notfound'
         ? '404'
         : '500'}

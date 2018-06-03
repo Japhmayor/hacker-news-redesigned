@@ -22,10 +22,7 @@ const PostContainer = (props) => {
           }
 
           if (error) {
-            return <Error
-              type="error"
-              text={`Could not load the user post.`}
-            />;
+            return <Error text="Failed loading the post." />;
           }
 
           if (!data.post) {

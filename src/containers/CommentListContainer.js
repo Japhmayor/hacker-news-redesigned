@@ -2,8 +2,9 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 import CommentList from '../components/CommentList/CommentList';
-import COMMENT_LIST_QUERY from '../queries/CommentList.graphql';
+import Error from '../components/Error';
 import CommentListPlaceholder from '../components/CommentList/CommentListPlaceholder';
+import COMMENT_LIST_QUERY from '../queries/CommentList.graphql';
 
 const CommentListContainer = ({ commentIDs }) => (
   <Query
@@ -19,7 +20,7 @@ const CommentListContainer = ({ commentIDs }) => (
         }
 
         if (error) {
-          return 'Failed loading the post. Please try again';
+          return <Error text="Failed loading comments." />;
         }
 
         return (

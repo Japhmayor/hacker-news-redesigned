@@ -22,17 +22,12 @@ const CommentPageContainer = (props) => {
           }
 
           if (error) {
-            return <Error
-              type="error"
-              text={`Could not load comments.`}
-            />;
+            return <Error text="Failed loading the comment." />;
           }
 
 
           if (!data.comment) {
-            return <NotFound
-              text="The comment you’re looking for doesn’t exist."
-            />;
+            return <NotFound text="The comment you’re looking for doesn’t exist." />;
           }
 
           return <CommentPage {...data.comment} />;

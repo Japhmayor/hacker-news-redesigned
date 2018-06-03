@@ -5,6 +5,7 @@ import debounce from 'lodash/debounce';
 import Entry from '../Entry';
 import DirectionalNav from '../DirectionalNav/';
 import { ENTRIES_PER_PAGE } from '../../constants';
+import FEED_QUERY from '../../queries/Feed.graphql';
 import Head from '../Head';
 import { capitalize } from '../../utils/utils.string';
 
@@ -47,6 +48,22 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
       trailing: true,
     },
   );
+
+  // Prefetch remaining feeds for faster access.
+  if (typeof window !== 'undefined') {
+    ['top', 'new', 'show', 'ask', 'jobs']
+      .filter((name) => name !== feedName)
+      .forEach((name) => {
+        client.query({
+          query: FEED_QUERY,
+          variables: {
+            feedName: name,
+            limit: 30,
+            page: 1,
+          },
+        });
+      });
+  }
 
   return (
     <Fragment>

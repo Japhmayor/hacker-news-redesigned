@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import User from '../components/User/User';
 import Error from '../components/Error';
 import USER_QUERY from '../queries/User.graphql';
+import NotFound from '../components/HelperComponents/NotFound';
 
 const UserPageContainer = (props) => {
   const username = props.match.params.username;
@@ -20,17 +21,11 @@ const UserPageContainer = (props) => {
           }
 
           if (error) {
-            return <Error
-              type="error"
-              text={`Could not load the user profile.`}
-            />;
+            return <Error text="Failed loading the user profile." />;
           }
 
           if (!data.user) {
-            return <Error
-              type="notfound"
-              text={`The user with that name doesn’t exist.`}
-            />;
+            return <NotFound text="The user with that name doesn’t exist." />;
           }
 
           return <User {...data.user} />;

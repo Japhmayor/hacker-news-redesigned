@@ -29,10 +29,7 @@ const FeedContainer = (props) => {
           }
 
           if (error) {
-            return <Error
-              type="error"
-              text={`Could not load the feed.`}
-            />;
+            return <Error text="Failed loading the feed." />;
           }
 
           return <Feed

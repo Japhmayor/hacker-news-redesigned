@@ -24,6 +24,7 @@ const Error = ({ type, text }) => (
 );
 
 Error.defaultProps = {
+  type: 'error',
   text: 'The page doesn\'t exist.',
 };
 

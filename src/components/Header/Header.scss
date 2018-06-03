@@ -52,3 +52,15 @@
     box-shadow: 0 -4px 0 0 #ffd8bd inset;
   }
 }
+
+.SkipToContent {
+  @include container;
+
+  a {
+    display: inline-block;
+    margin: spacing(3) 0;
+    padding: spacing(1) spacing(2);
+    color: color("neutral", 20);
+    outline: 1px dotted color("neutral", 40);
+  }
+}

@@ -10,7 +10,7 @@ const User = ({ username, karma, createdAt, about }) => (
 
     <header className={styles.UserHeader}>
       <h2>{username}</h2>
-      <span className={styles.UserScore} title="Karma">{karma}</span>
+      <span className={styles.UserKarma} title="Karma">{karma}</span>
       <div className={styles.UserDate}>
         On HN since {getDate(createdAt)}
       </div>

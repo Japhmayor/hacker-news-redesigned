@@ -25,9 +25,7 @@ const FeedContainer = (props) => {
       {
         ({ data, loading, error }) => {
           if (loading) {
-            return (
-              <FeedPlaceholder />
-            );
+            return <FeedPlaceholder />;
           }
 
           if (error) {

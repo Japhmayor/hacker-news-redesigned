@@ -5,6 +5,7 @@ import User from '../components/User/User';
 import Error from '../components/Error';
 import USER_QUERY from '../queries/User.graphql';
 import NotFound from '../components/HelperComponents/NotFound';
+import UserPlaceholder from '../components/User/UserPlaceholder';
 
 const UserPageContainer = (props) => {
   const username = props.match.params.username;
@@ -17,7 +18,7 @@ const UserPageContainer = (props) => {
       {
         ({ data, loading, error }) => {
           if (loading) {
-            return 'Loading';
+            return <UserPlaceholder />;
           }
 
           if (error) {

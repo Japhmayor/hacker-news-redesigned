@@ -7,7 +7,7 @@ const manifest = {
 };
 const serverRender = require('./build/server/bundle.server.js').default;
 
-const PORT_NUMBER = process.env.PORT || 80;
+const PORT_NUMBER = process.env.PORT || 8080;
 
 const app = express();
 app.use(compression());

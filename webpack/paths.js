@@ -12,7 +12,7 @@ module.exports = {
   rootPath: resolve('.'),
   buildPath: resolve('build'),
   buildStaticPath: resolve('build/static'),
-  publicPath: process.env.ASSETS_URL || '',
+  publicPath: process.env.ASSETS_URL || '/',
   srcPath: resolve('src'),
   srcStaticPath: resolve('src/static'),
   serverPath: resolve('server'),

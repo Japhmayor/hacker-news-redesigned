@@ -166,6 +166,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL),
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.LOCAL': JSON.stringify(process.env.LOCAL),
     }),
     // new BundleAnalyzerPlugin(), // TODO: Make this conditional, based on a flag or something.
     new SWPrecacheWebpackPlugin({

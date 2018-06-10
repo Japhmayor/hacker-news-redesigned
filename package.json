@@ -13,7 +13,8 @@
     "start": "cross-env NODE_ENV=development node --inspect=127.0.0.1:9230 start.js",
     "poststart": "yarn lint:js",
     "start:prod:local": "yarn build:local && cross-env PORT=8080 node start.prod.js",
-    "start:prod": "yarn build && node start.prod.js"
+    "start:prod": "cross-env NODE_ENV=production node start.prod.js",
+    "buildstart:prod": "yarn build && yarn start:prod"
   },
   "browserslist": [
     "Chrome >= 50",

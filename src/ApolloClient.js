@@ -22,7 +22,9 @@ const client = new ApolloClient({
     }),
     new HttpLink({
       /* eslint-disable no-undef */
-      uri: process.env.NODE_ENV === 'production' ? `${BASE_URL}:4000/graphql` : 'http://localhost:4000/graphql',
+      uri: process.env.NODE_ENV === 'production'
+        ? `${BASE_URL}/graphql` // In production API is accessible at https://hn.tigran.io/graphql (proxied with Nginx)
+        : 'http://localhost:4000/graphql',
       /* eslint-enable no-undef */
       credentials: 'same-origin',
     }),

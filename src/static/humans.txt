@@ -1,0 +1,4 @@
+Hacked together by: http://github.com/tigranpetrossian/
+Twitter: @tigran_io
+
+Source code and details about the implementation can be found at https://github.com/tigranpetrossian/hnpwa

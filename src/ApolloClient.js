@@ -22,7 +22,7 @@ const client = new ApolloClient({
     }),
     new HttpLink({
       /* eslint-disable no-undef */
-      uri: process.env.NODE_ENV === 'production' ? `${BASE_URL}/graphql` : 'http://localhost:4000/graphql',
+      uri: process.env.NODE_ENV === 'production' ? `${BASE_URL}:4000/graphql` : 'http://localhost:4000/graphql',
       /* eslint-enable no-undef */
       credentials: 'same-origin',
     }),

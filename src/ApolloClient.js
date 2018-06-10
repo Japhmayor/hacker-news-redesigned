@@ -3,7 +3,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
+import { BASE_URL } from './constants';
 
+// A client for browser. For server client see: src/server/getApolloClient.js
 const client = new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
@@ -19,7 +21,9 @@ const client = new ApolloClient({
       }
     }),
     new HttpLink({
-      uri: 'http://localhost:4000/graphql',
+      /* eslint-disable no-undef */
+      uri: process.env.NODE_ENV === 'production' ? `${BASE_URL}/graphql` : 'http://localhost:4000/graphql',
+      /* eslint-enable no-undef */
       credentials: 'same-origin',
     }),
   ]),

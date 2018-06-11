@@ -23,9 +23,9 @@ const render = (manifest) => (req, res) => {
 
   // Generate script tags
   const scripts = manifest.client ? `
-      <script src=${manifest.client['runtime~main.js']}></script>  
-      <script src=${manifest.client['vendors.js']}></script>  
-      <script src=${manifest.client['main.js']}></script>`
+      <script src=${manifest.client['runtime~main.js']} defer ></script>  
+      <script src=${manifest.client['vendors.js']} defer ></script>  
+      <script src=${manifest.client['main.js']} defer ></script>`
     : `<script src="/main.js"></script>`;
 
   // Generate CSS Link

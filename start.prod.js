@@ -39,7 +39,7 @@ const cssPath = './build' + /\/assets.*\.css$/.exec(cssURL)[0];
 let css;
 
 try {
-  css = fs.readFileSync('./build' + manifest.client['main.css'], 'utf8');
+  css = fs.readFileSync(cssPath, 'utf8');
 } catch(e) {
   console.log('Encountered an error when reading the CSS file.')
 }

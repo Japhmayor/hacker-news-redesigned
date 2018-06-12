@@ -41,7 +41,8 @@ let css;
 try {
   css = fs.readFileSync(cssPath, 'utf8');
 } catch(e) {
-  console.log('Encountered an error when reading the CSS file.')
+  console.log('Encountered an error when reading the CSS file.');
+  process.exit();
 }
 app.use(serverRender(manifest, css));
 

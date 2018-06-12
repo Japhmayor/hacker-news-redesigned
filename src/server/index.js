@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import App from '../App';
 import getApolloClient from './getApolloClient';
 
-const render = (manifest) => (req, res) => {
+const render = (manifest, css) => (req, res) => {
   const context = {};
 
   // Get a new instance of Apollo client on each request
@@ -27,9 +27,6 @@ const render = (manifest) => (req, res) => {
       <script src=${manifest.client['vendors.js']} defer ></script>  
       <script src=${manifest.client['main.js']} defer ></script>`
     : `<script src="/main.js"></script>`;
-
-  // Generate CSS Link
-  const css = `<link rel="stylesheet" href="${manifest.client ? manifest.client['main.css'] : ''}" />`;
 
   renderToStringWithData(jsx)
     .then((content) => {
@@ -58,7 +55,7 @@ const render = (manifest) => (req, res) => {
           <link rel="shortcut icon" href="/favicon.png">
           <link rel="apple-touch-icon" href="/icon.png">
 
-          ${css}
+          <style>${css}</style>
           <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,600" rel="stylesheet">
       
           ${helmet.title.toString()}

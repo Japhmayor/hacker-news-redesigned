@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const paths = require('./webpack/paths');
+const fs = require('fs');
 const manifest = {
   client: require('./build/assets/asset-manifest'),
 };
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Static assets
 // Set max-age for all static assets to 1 month.
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   // Prevent /service-worker.js from being cached so updates can be scheduled when the file changes.
   if (req.url !== '/service-worker.js') {
     res.header('Cache-Control', 'public, max-age=2592000')
@@ -23,9 +24,18 @@ app.use(function (req, res, next) {
 });
 app.use(express.static(paths.buildPath));
 app.use(express.static(paths.buildStaticPath));
-app.use(serverRender(manifest));
+
+// Pull contents of main.css and pass it as a string into a render function
+// where it gets inlined to optimize the critical rendering path:
+// https://developers.google.com/web/fundamentals/performance/critical-rendering-path/
+//
+// The CSS output is fairly small (4kb gzipped), so inlining all of it
+// makes more sense instead of getting into Critical CSS conundrum.
+// This is performed outside of the render function to avoid reading
+// the file on each request.
+const css = fs.readFileSync('./build' + manifest.client['main.css'], 'utf8');
+app.use(serverRender(manifest, css));
 
 app.listen(PORT_NUMBER, () => {
   console.log(`Production server is running at port ${PORT_NUMBER}`);
 });
-

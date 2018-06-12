@@ -111,6 +111,7 @@
 
     a {
       color: color("neutral", 20);
+      word-break: break-word;
       transition: opacity 0.1s ease-in-out;
 
       &:hover { // TODO: Occureneces of this are all over the place and need to be refactored.

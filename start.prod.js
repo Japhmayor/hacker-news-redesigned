@@ -33,7 +33,16 @@ app.use(express.static(paths.buildStaticPath));
 // makes more sense instead of getting into Critical CSS conundrum.
 // This is performed outside of the render function to avoid reading
 // the file on each request.
-const css = fs.readFileSync('./build' + manifest.client['main.css'], 'utf8');
+const cssURL = manifest.client['main.css'];
+// Strip out ASSET_URL from CSS path
+const cssPath = './build' + /\/assets.*\.css$/.exec(cssURL)[0];
+let css;
+
+try {
+  css = fs.readFileSync('./build' + manifest.client['main.css'], 'utf8');
+} catch(e) {
+  console.log('Encountered an error when reading the CSS file.')
+}
 app.use(serverRender(manifest, css));
 
 app.listen(PORT_NUMBER, () => {

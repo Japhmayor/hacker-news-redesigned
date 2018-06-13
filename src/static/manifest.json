@@ -1,6 +1,6 @@
 {
-  "name": "Hacker News Redesigned",
-  "short_name": "HN Redesigned",
+  "name": "Hacker News",
+  "short_name": "Hacker News",
   "display": "standalone",
   "start_url": ".",
   "theme_color": "#ed732c",

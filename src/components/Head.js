@@ -5,12 +5,12 @@ import { BASE_URL } from '../constants';
 
 const Head = ({ url, title, description }) => {
   const completeURL = url ? BASE_URL + url : BASE_URL;
-  const imageURL = `/hn-redesigned-social-media.png`;
+  const imageURL = `/hn-social-media.png`;
 
   return (
     <Helmet
-      defaultTitle="Hacker News Redesigned"
-      titleTemplate="%s – Hacker News Redesigned"
+      defaultTitle="Hacker News"
+      titleTemplate="%s – Hacker News"
     >
       <link rel="canonical" href={completeURL} />
 
@@ -30,7 +30,7 @@ const Head = ({ url, title, description }) => {
       <meta property="og:title" content={title} />
       <meta property="og:image" content={imageURL} />
       <meta property="og:description" content={description} />
-      <meta property="og:site_name" content="Hacker News Redesigned" />
+      <meta property="og:site_name" content="Hacker News" />
       <meta property="og:locale" content="en_US" />
 
       <title>{title}</title>

@@ -1,15 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const paths = require('./webpack/paths');
+const compression = require('compression');
 const fs = require('fs');
 const manifest = {
   client: require('./build/assets/asset-manifest'),
 };
 const serverRender = require('./build/server/bundle.server.js').default;
-
-const PORT_NUMBER = process.env.PORT || 8080;
-
+const PORT_NUMBER = 8080;
 const app = express();
+
+// Enable compression when running in production mode locally,
+// useful for testing performance and running tools like Lighthouse.
+if (process.env.NODE_ENV === 'production' && process.env.LOCAL === 'true') {
+  app.use(compression());
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 

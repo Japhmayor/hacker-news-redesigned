@@ -20,6 +20,3 @@ const App = () => (
 );
 
 export default hot(module)(App);
-
-
-// TODO: Need a way to notify screen readers about navigating between pages.

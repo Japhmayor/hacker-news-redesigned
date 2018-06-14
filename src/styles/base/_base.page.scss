@@ -1,8 +1,14 @@
-body {
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  font-weight: $font-weight-base;
-  line-height: $line-height-base;
-  color: $body-color;
-  background-color: $body-background;
+:global {
+  body {
+    font-family: $_font-family-native;
+    font-size: $font-size-base;
+    font-weight: $font-weight-base;
+    line-height: $line-height-base;
+    color: $body-color;
+    background-color: $body-background;
+  }
+
+  .fonts-loaded body {
+    font-family: $font-family-base;
+  }
 }

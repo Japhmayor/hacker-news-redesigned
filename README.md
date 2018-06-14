@@ -52,6 +52,5 @@ Note: you will need to have the API running locally as well. See the [API reposi
 * Subtle notifications on feed updates
 
 ### Code
-* Font loading improvements to eliminate FOIT altogether
 * Code splitting
 * Client-side cache invalidation: heavily caching the data on the client, and invalidating by listening to [API updates](https://hacker-news.firebaseio.com/v0/updates.json)

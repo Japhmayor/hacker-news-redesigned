@@ -15,6 +15,7 @@ module.exports = {
   publicPath: process.env.ASSETS_URL || '/',
   srcPath: resolve('src'),
   srcStaticPath: resolve('src/static'),
+  srcStylesPath: resolve('src/styles'),
   serverPath: resolve('server'),
   srcEntryPath: resolve('src/index.js'),
   serverEntryPath: resolve('src/server/index.js'),

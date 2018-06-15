@@ -33,9 +33,9 @@ module.exports = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true // set to true if you want JS source maps
+        sourceMap: true, // set to true if you want JS source maps
       }),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({}),
     ],
     splitChunks: {
       chunks: 'all',
@@ -147,15 +147,21 @@ module.exports = {
           // before the `file-loader`.
 
         ],
-      }
+      },
     ],
   },
 
   plugins: [
-    new CopyWebpackPlugin([{
-      from: paths.srcStaticPath,
-      to: paths.buildStaticPath,
-    }]),
+    new CopyWebpackPlugin([
+      {
+        from: paths.srcStaticPath,
+        to: paths.buildStaticPath,
+      },
+      {
+        from: paths.srcStylesPath + '/fonts.css',
+        to: paths.buildPath + '/assets/css/fonts.css',
+      },
+    ]),
     new MiniCSSExtractPlugin({
       filename: 'assets/css/[name].[contenthash:8].css',
     }),

@@ -14,7 +14,6 @@ module.exports = {
 
   output: {
     filename: '[name].js',
-    chunkFilename: '[name].js',
     publicPath: '/'
   },
 
@@ -108,11 +107,6 @@ module.exports = {
   },
 
   plugins: [
-    // Replace any references to `/bundles/` with `/asyncBundles/` on client.
-    new webpack.NormalModuleReplacementPlugin(
-      /\/bundles/,
-      (resource) => resource.request = resource.request.replace(/bundles/, 'asyncBundles'),
-    ),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),

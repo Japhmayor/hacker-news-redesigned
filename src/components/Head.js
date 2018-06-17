@@ -4,9 +4,7 @@ import { Helmet } from 'react-helmet';
 import { BASE_URL } from '../constants';
 
 const Head = ({ url, title, description }) => {
-  console.log(url);
   const completeURL = url ? BASE_URL + url : BASE_URL;
-  console.log(completeURL);
   const imageURL = `/hn-social-media.png`;
 
   return (

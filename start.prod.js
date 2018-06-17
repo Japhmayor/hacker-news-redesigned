@@ -21,8 +21,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Static assets
 // Set max-age for all static assets to 1 month.
 app.use(function(req, res, next) {
-  // Prevent /service-worker.js from being cached so updates can be scheduled when the file changes.
-  if (req.url !== '/service-worker.js') {
+  const extensions = /\.(js|css|png|jpg|svg)$/;
+
+  // Exclude /service-worker.js from cache so updates can be scheduled when the file changes.
+  if (req.url !== '/service-worker.js' && extensions.test(req.url)) {
     res.header('Cache-Control', 'public, max-age=2592000')
   }
   next();

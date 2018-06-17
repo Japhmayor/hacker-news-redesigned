@@ -111,7 +111,7 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
-      'PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL) || '/',
+      'process.env.PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL),
     }),
   ],
 

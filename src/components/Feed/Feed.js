@@ -67,7 +67,10 @@ const Feed = ({ entries, entryCount, feedName, page, client }) => {
 
   return (
     <Fragment>
-      <Head title={capitalize(feedName)} />
+      <Head
+        title={capitalize(feedName)}
+        url={feedName !== 'top' ? `/${feedName}` : '/'}
+      />
 
       <section>
         <h1 className="u-sr-only">{`Feed: ${feedName}`}</h1>

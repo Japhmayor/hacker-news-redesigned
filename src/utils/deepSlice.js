@@ -1,5 +1,4 @@
 // Horrible way to recursively select given number of comments from a nested structure, in order of occurence.
-// I'd encourage you to not look at the implementation for the sake of your own sanity.
 
 function deepSlice(list, limit) {
   let count = 0;
@@ -13,6 +12,7 @@ function deepSlice(list, limit) {
       }
 
       count++;
+
       if (!comment.comments) {
         output.push(comment);
       }

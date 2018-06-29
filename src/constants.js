@@ -6,3 +6,5 @@ export const BASE_URL = typeof process.env.PUBLIC_URL !== 'undefined' ? process.
 export const ENTRIES_PER_PAGE = 30;
 
 export const COMMENT_DEPTH = 6;
+
+export const GA_TRACKING_ID = 'UA-100086807-2';

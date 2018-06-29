@@ -3,6 +3,7 @@ import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { StaticRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import App from '../App';
+import { GA_TRACKING_ID } from '../constants';
 import getApolloClient from './getApolloClient';
 import fonts from './fonts';
 
@@ -29,6 +30,18 @@ const render = (manifest, css) => (req, res) => {
       <script src=${manifest.client['main.js']} defer ></script>`
     : `<script src="/main.js"></script>`;
 
+  const gtag = `
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}"></script>
+    <script>
+      
+window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', GA_TRACKING_ID);
+    </script>
+  `;
+
   renderToStringWithData(jsx)
     .then((content) => {
       const initialState = client.extract();
@@ -48,6 +61,8 @@ const render = (manifest, css) => (req, res) => {
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta name="theme-color" content="#ed732c"/>
+          
+          ${gtag}
           
           ${helmet.title.toString()}
           ${helmet.meta.toString()}

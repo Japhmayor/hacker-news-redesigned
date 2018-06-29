@@ -6,7 +6,10 @@ import * as styles from './User.scss';
 
 const User = ({ username, karma, createdAt, about }) => (
   <div className={styles.User}>
-    <Head title={`User: ${username}`} />
+    <Head
+      url={`/user/${username}`}
+      title={`User: ${username}`}
+    />
 
     <header className={styles.UserHeader}>
       <h2>{username}</h2>

@@ -7,7 +7,10 @@ import * as styles from './CommentPage.scss';
 
 const CommentPage = (props) => (
   <Fragment>
-    <Head title={props.parentPostTitle} />
+    <Head
+      url={`/comment/${props.id}`}
+      title={props.parentPostTitle}
+    />
 
     <h1 className={styles.CommentPageTitle}>
       <small>Comment thread in:</small>
@@ -23,6 +26,7 @@ const CommentPage = (props) => (
 );
 
 CommentPage.propTypes = {
+  id: PropTypes.string.isRequired,
   parentPostID: PropTypes.string.isRequired,
   parentPostTitle: PropTypes.string.isRequired,
 };

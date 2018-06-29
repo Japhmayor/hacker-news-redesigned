@@ -3,7 +3,7 @@ import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { StaticRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import App from '../App';
-import { GA_TRACKING_ID } from '../constants';
+import { GA_TRACKING_ID } from '../utils/ga';
 import getApolloClient from './getApolloClient';
 import fonts from './fonts';
 
@@ -33,12 +33,11 @@ const render = (manifest, css) => (req, res) => {
   const gtag = `
     <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}"></script>
     <script>
-      
-window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
     
-      gtag('config', GA_TRACKING_ID);
+      gtag('config', '${GA_TRACKING_ID}');
     </script>
   `;
 

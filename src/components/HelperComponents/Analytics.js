@@ -6,7 +6,7 @@ import { pageview } from '../../utils/ga';
 class Analytics extends React.Component {
   static propTypes = {
     location: PropTypes.shape({
-      pathname: PropTypes,
+      pathname: PropTypes.string,
     }).isRequired,
   };
 

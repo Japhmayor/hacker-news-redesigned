@@ -33,11 +33,12 @@ const render = (manifest, css) => (req, res) => {
   const gtag = `
     <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', '${GA_TRACKING_ID}');
+      if (window.location.hostname !== 'localhost') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_TRACKING_ID}');
+      }
     </script>
   `;
 

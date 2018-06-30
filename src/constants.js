@@ -4,7 +4,7 @@ export const BASE_URL = typeof process.env.PUBLIC_URL !== 'undefined' ? process.
 /* eslint-enable no-undef */
 
 export const ENTRIES_PER_PAGE = 30;
-
 export const COMMENT_DEPTH = 6;
 
-
+export const isBrowser = typeof window !== 'undefined' && window.document;
+export const isLocalhost = (isBrowser && window.location.hostname) === 'localhost';

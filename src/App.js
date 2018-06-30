@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader';
 import './styles/main.scss';
 import { renderRoutes } from 'react-router-config';
 import ScrollToTop from './components/HelperComponents/ScrollToTop';
+import Analytics from './components/HelperComponents/Analytics';
 import Header from './components/Header/';
 import Main from './components/Main/';
 import routes from './routes';
@@ -16,6 +17,7 @@ const App = () => (
       {renderRoutes(routes)}
     </Main>
     <ScrollToTop />
+    <Analytics />
   </Fragment>
 );
 
